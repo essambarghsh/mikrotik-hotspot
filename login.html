@@ -1,0 +1,71 @@
+<!doctype html>  
+<html lang="en">  
+<head>  
+    <meta charset="utf-8">  
+    <meta http-equiv="pragma" content="no-cache" />  
+    <meta http-equiv="expires" content="-1" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <title>تسجيل الدخول للإنترنت</title>  
+    <link rel="stylesheet" href="css/app.css">  
+</head>  
+<body>
+
+    $(if chap-id)
+        <form name="sendin" action="$(link-login-only)" method="post" style="display:none">  
+            <input type="hidden" name="username" />  
+            <input type="hidden" name="password" />  
+            <input type="hidden" name="dst" value="$(link-orig)" />  
+            <input type="hidden" name="popup" value="true" />  
+        </form>
+
+        <script src="/md5.js"></script>  
+        <script>  
+            function doLogin(method) {  
+                if (method === 'card') {  
+                    var cardNumber = document.login.cardnumber.value;  
+                    document.sendin.username.value = cardNumber;  
+                    document.sendin.password.value = hexMD5('$(chap-id)' + cardNumber + '$(chap-challenge)');  
+                } else {  
+                    document.sendin.username.value = document.login.username.value;  
+                    document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');  
+                }  
+                document.sendin.submit();  
+                return false;  
+            }  
+        </script>
+    $(endif)
+
+    <div id="header">
+        <div class="loader-progress"></div>
+    </div>
+
+    $(if error) $(error) $(endif)
+
+    <div class="ie-fixMinHeight">  
+        <div class="main">  
+            <div class="wrap animated fadeIn">  
+                <form name="login" action="$(link-login-only)" method="post" onSubmit="return false;">  
+                    <input type="hidden" name="dst" value="$(link-orig)" />  
+                    <input type="hidden" name="popup" value="true" />  
+
+                    <label>  
+                        <input name="username" type="text" value="$(username)" placeholder="Username" />  
+                    </label>  
+                    <label>  
+                        <input name="password" type="password" placeholder="Password" />  
+                    </label>  
+                    <input type="button" value="تسجيل الدخول" onClick="doLogin('normal')" />  
+
+                    <div style="text-align: center; margin: 40px;">أو</div>  
+
+                    <label>  
+                        <input name="cardnumber" type="text" placeholder="رقم الكارت" />  
+                    </label>  
+                    <input type="button" value="الدخول بالكارت" onClick="doLogin('card')" />  
+                </form>  
+            </div>  
+        </div>  
+    </div>
+    <script src="loadComponents.js"></script>
+</body>  
+</html>  

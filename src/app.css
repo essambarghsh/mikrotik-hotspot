@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --primary-color: #2871FF;
+        --primary-dark-color: #1B32C8;
+        --header-h: 64px;
+    }
+}
+
+body {
+    color: #000000;
+    background-color: #f4f9ff;
+}
+
+input[type=text],
+input[type=tel],
+input[type=password],
+input[type=email] {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-3 px-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-skin-primary focus:border-skin-primary
+    focus:outline-none;
+}
+
+label {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+}
+
+.loader-progress {
+    height: 5px;
+    width: 100%;
+    max-width: 50%;
+    margin: 16px auto;
+    border-radius: 9999px;
+    --c:no-repeat linear-gradient(#6100ee 0 0);
+    background: var(--c),var(--c),#d7b8fc;
+    background-size: 60% 100%;
+    animation: l16 3s infinite;
+}
+
+@keyframes l16 {
+    0%   {background-position:-150% 0,-150% 0}
+    66%  {background-position: 250% 0,-150% 0}
+    100% {background-position: 250% 0, 250% 0}
+}
+
+.header {
+    @apply flex items-center h-[var(--header-h)]
+}

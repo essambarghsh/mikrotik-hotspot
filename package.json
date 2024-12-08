@@ -1,0 +1,17 @@
+{
+	"name": "hotspot",
+	"slug": "hotspot",
+	"version": "1.0.0",
+	"prev_stable_version": "1.0.0",
+	"author": "Ashwab, Essam Barghsh",
+	"homepage": "https://www.ashwab.com/",
+	"scripts": {
+		"dev": "npm run watch:hotspot:app",
+		"build": "npm run build:hotspot:app",
+		"watch:hotspot:app": "tailwindcss -i ./src/app.css -o ./css/app.css --watch",
+		"build:hotspot:app": "tailwindcss -i ./src/app.css -o ./css/app.css --minify"
+	},
+	"devDependencies": {
+		"tailwindcss": "^3.4.16"
+	}
+}

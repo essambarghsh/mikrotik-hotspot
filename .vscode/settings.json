@@ -1,0 +1,13 @@
+{
+    "css.customData": [".vscode/tailwind.json"],
+    "css.lint.vendorPrefix": "ignore",
+    "scss.lint.unknownAtRules": "ignore",
+    "css.lint.propertyIgnoredDueToDisplay": "ignore",
+    "less.lint.propertyIgnoredDueToDisplay": "ignore",
+    "scss.lint.propertyIgnoredDueToDisplay": "ignore",
+    "workbench.layoutControl.enabled": true,
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/xml": true
+    }
+}
