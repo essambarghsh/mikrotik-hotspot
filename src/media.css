@@ -1,0 +1,7 @@
+@screen md {
+    .header .menu {
+        position: unset;
+        transform: translateX(0);
+        overflow: unset;
+    }
+}
