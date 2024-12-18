@@ -63,3 +63,119 @@
 .cr-link {
     @apply hover:underline hover:text-skin-primary;
 }
+
+.prefix-text {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 0.7s ease-out forwards;
+    @apply ml-2;
+}
+
+.animated-text {
+    display: inline-block;
+    position: relative;
+    width: 78px;
+    animation: delay-start 0.7s step-end forwards;
+    visibility: hidden;
+}
+
+.animated-text span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUpOut 0.7s ease-in-out;
+    white-space: nowrap;
+}
+
+.animated-text span {
+    @apply mt-1;
+}
+
+.prefix-text,
+.animated-text {
+    @apply h-[32px] md:h-[36px] lg:h-[44px] text-lg md:text-2xl lg:text-3xl font-black
+}
+
+.hero {
+    @apply py-16;
+    color: #ffffff;
+    background: var(--primary-color);
+    background: linear-gradient(60deg, var(--primary-color) 0%, var(--primary-dark-color) 100%);
+}
+
+.shortcuts {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8;
+}
+
+.shortcuts a {
+    @apply flex items-center rounded-xl p-4 md:p-8 text-skin-primary relative h-full
+    border border-skin-primary hover:border-transparent hover:text-white;
+    transition: var(--normal-speed) all;
+}
+
+.shortcuts a::after {
+    content: "";
+    @apply absolute inset-0 bg-skin-primary block -z-[1] rounded-xl
+    opacity-5 border border-transparent;
+    transition: var(--normal-speed) all;
+}
+
+.shortcuts a:hover::after {
+    @apply -inset-2 lg:-inset-4 border-skin-primary opacity-100
+}
+
+.shortcuts a:hover:active::after {
+    @apply -inset-1 lg:-inset-2;
+}
+
+.shortcuts-icon {
+    @apply block ml-4 md:ml-8;
+}
+
+.shortcuts-icon svg {
+    @apply w-12 h-12 md:w-16 md:h-16;
+}
+
+.shortcuts-newtab-icon {
+    @apply absolute top-2 left-2 opacity-0;
+}
+
+.shortcuts a:hover .shortcuts-newtab-icon {
+    @apply opacity-100;
+}
+
+.sites {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6 md:gap-8
+}
+
+.sites a {
+    @apply flex items-center p-3 rounded-xl shadow-md relative overflow-hidden
+    border border-gray-200 text-black hover:text-skin-primary bg-white h-full
+    hover:border-skin-primary text-sm font-medium
+    after:absolute after:z-[1] after:inset-0 after:bg-skin-primary after:opacity-0 hover:after:opacity-10;
+    transition: var(--normal-speed) all;
+}
+
+.sites a img {
+    @apply w-auto h-10 ml-3 z-10;
+    transition: var(--normal-speed) all;
+}
+
+.sites a span {
+    @apply z-10;
+}
+
+.sites a:hover img {
+    @apply scale-110 -rotate-12;
+}
+
+#christmas-card .snowflake {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    user-select: none;
+    animation: christmas-snowfall linear infinite;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+}

@@ -1,0 +1,112 @@
+{
+    "sites": [
+        {
+            "id": 1,
+            "name": "جوجل",
+            "img_slug": "logos--google-icon.png",
+            "url": "https://www.google.com"
+        },
+        {
+            "id": 2,
+            "name": "ChatGPT",
+            "img_slug": "chatgpt.png",
+            "url": "https://chatgpt.com"
+        },
+        {
+            "id": 3,
+            "name": "فيسبوك",
+            "img_slug": "logos--facebook.png",
+            "url": "https://www.facebook.com"
+        },
+        {
+            "id": 4,
+            "name": "يوتيوب",
+            "img_slug": "youtube.png",
+            "url": "https://www.youtube.com"
+        },
+        {
+            "id": 5,
+            "name": "جيميل",
+            "img_slug": "gmail.png",
+            "url": "https://mail.google.com/mail/u/0"
+        },
+        {
+            "id": 6,
+            "name": "متجر بلاي",
+            "img_slug": "logos--google-play-icon.png",
+            "url": "https://play.google.com/store/apps"
+        },
+        {
+            "id": 7,
+            "name": "الخريطة",
+            "img_slug": "logos--google-maps.png",
+            "url": "https://www.google.com/maps"
+        },
+        {
+            "id": 8,
+            "name": "واتساب",
+            "img_slug": "logos--whatsapp-icon.png",
+            "url": "https://web.whatsapp.com"
+        },
+        {
+            "id": 9,
+            "name": "ماسنجر",
+            "img_slug": "logos--messenger.png",
+            "url": "https://www.messenger.com"
+        },
+        {
+            "id": 10,
+            "name": "تلجرام",
+            "img_slug": "logos--telegram.png",
+            "url": "https://web.telegram.org"
+        },
+        {
+            "id": 11,
+            "name": "آوتلوك",
+            "img_slug": "vscode-icons--file-type-outlook.png",
+            "url": "https://login.live.com"
+        },
+        {
+            "id": 12,
+            "name": "مدير كلمات السر",
+            "img_slug": "mdi--1password.png",
+            "url": "https://my.1password.com"
+        },
+        {
+            "id": 13,
+            "name": "نتفليكس",
+            "img_slug": "netflix.png",
+            "url": "https://www.netflix.com"
+        },
+        {
+            "id": 14,
+            "name": "انستجرام",
+            "img_slug": "instagram.png",
+            "url": "https://www.instagram.com"
+        },
+        {
+            "id": 15,
+            "name": "سناب شات",
+            "img_slug": "snapchat.png",
+            "url": "https://web.snapchat.com"
+        },
+        {
+            "id": 16,
+            "name": "X",
+            "img_slug": "twitter.png",
+            "url": "https://x.com"
+        },
+        {
+            "id": 17,
+            "name": "Quora",
+            "img_slug": "quora.png",
+            "url": "https://quora.com"
+        },
+        {
+            "id": 18,
+            "name": "اليوم السابع",
+            "img_slug": "youm7.png",
+            "url": "https://www.youm7.com"
+        }
+    ]
+}

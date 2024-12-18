@@ -242,11 +242,40 @@ document.addEventListener("DOMContentLoaded", function () {
                     // console.error('Error loading pos:', error);  
                 });  
         }, delay);  
-    }  
+    }
+
+    function loadSites(delay = 0) {  
+        const sitesContainer = document.getElementById('sites');  
+
+        setTimeout(() => {  
+            fetch(`${BASE_URL}sites.json`)  
+                .then(response => response.json())  
+                .then(data => {  
+                    const sitesHTML = data.sites.map(sites => `  
+                        <li>
+                            <a href="${sites.url}" target="_blank" title="${sites.name}">
+                                <img src="${BASE_URL}img/sites/${sites.img_slug}" alt="${sites.name}">
+                                <span class="line-clamp-1">${sites.name}</span>
+                            </a>
+                        </li>
+                    `).join('');  
+
+                    sitesContainer.innerHTML = `  
+                        <ul class="sites">  
+                            ${sitesHTML}  
+                        </ul>  
+                    `;  
+                })  
+                .catch(error => {  
+                    // console.error('Error loading sites:', error);  
+                });  
+        }, delay);  
+    }
 
     // Load components with absolute paths  
     loadComponent("header", "components/header.html", 400);  
     loadComponent("footer", "components/footer.html", 0);  
     loadPlans(400);  
     loadPOS(400);  
+    loadSites(400);  
 });  
