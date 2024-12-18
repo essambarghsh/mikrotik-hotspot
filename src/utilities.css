@@ -179,3 +179,13 @@
     animation: christmas-snowfall linear infinite;
     filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
 }
+
+.wa-link-support {
+    @apply fixed right-4 bottom-4 rounded-full overflow-hidden px-1 py-1 pl-4 bg-white flex items-center
+    shadow-md border border-gray-200 text-xs z-50;
+    transition: var(--normal-speed) all;
+}
+
+.wa-link-support img {
+    @apply w-10 h-10 min-w-10 ml-2
+}
