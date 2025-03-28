@@ -140,3 +140,40 @@ document.addEventListener("componentLoaded", function (e) {
         });
     }
 });
+
+// Function to handle input focus/blur effects on wa-link-support
+function setupWaLinkSupport() {
+    // Create a style element for our custom CSS rules
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+        .wa-link-support.hidden-wa-link {
+            display: none !important;
+            pointer-events: none !important;
+        }
+        
+        input:focus ~ .wa-link-support, 
+        input:focus ~ * .wa-link-support,
+        input:focus ~ * ~ .wa-link-support {
+            display: none !important;
+            pointer-events: none !important;
+        }
+    `;
+    document.head.appendChild(styleElement);
+    
+    // Setup input event listeners
+    document.addEventListener('focusin', function(e) {
+        if (e.target.tagName === 'INPUT') {
+            const waLinks = document.querySelectorAll('.wa-link-support');
+            waLinks.forEach(link => link.classList.add('hidden-wa-link'));
+        }
+    });
+    
+    document.addEventListener('focusout', function(e) {
+        if (e.target.tagName === 'INPUT') {
+            const waLinks = document.querySelectorAll('.wa-link-support');
+            waLinks.forEach(link => link.classList.remove('hidden-wa-link'));
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', setupWaLinkSupport);
