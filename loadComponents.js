@@ -145,10 +145,80 @@ document.addEventListener("DOMContentLoaded", function () {
         }, delay);  
     }
 
+    function loadEventContent(delay = 0) {
+        const eventContainer = document.getElementById('eventSection');
+        
+        if (eventContainer) {
+            setTimeout(() => {
+                fetch(`${BASE_URL}settings.json`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const activeEvent = data.settings.events.active;
+                        
+                        if (activeEvent) {
+                            // Map event ID to template path
+                            const eventTemplates = {
+                                'ramadan': 'events/ramadan.html',
+                                'eidFitr': 'events/eidFitr.html',
+                                'eidAdha': 'events/eidAdha.html',
+                                'newYear': 'events/newYear.html'
+                            };
+                            
+                            // Map event ID to display name
+                            const eventNames = {
+                                'ramadan': 'رمضان',
+                                'eidFitr': 'عيد الفطر',
+                                'eidAdha': 'عيد الأضحى',
+                                'newYear': 'رأس السنة'
+                            };
+                            
+                            const templatePath = eventTemplates[activeEvent];
+                            
+                            if (templatePath) {
+                                fetch(`${BASE_URL}${templatePath}`)
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error(`Failed to load ${templatePath}`);
+                                        }
+                                        return response.text();
+                                    })
+                                    .then(eventContent => {
+                                        eventContainer.innerHTML = eventContent;
+                                        eventContainer.style.display = 'block';
+                                        
+                                        // Dispatch event loaded event
+                                        const event = new CustomEvent("eventContentLoaded", { 
+                                            detail: {
+                                                eventId: activeEvent,
+                                                eventName: eventNames[activeEvent]
+                                            } 
+                                        });
+                                        document.dispatchEvent(event);
+                                    })
+                                    .catch(error => {
+                                        console.error(`Error loading event content:`, error);
+                                        eventContainer.style.display = 'none';
+                                    });
+                            } else {
+                                eventContainer.style.display = 'none';
+                            }
+                        } else {
+                            eventContainer.style.display = 'none';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading settings:', error);
+                        eventContainer.style.display = 'none';
+                    });
+            }, delay);
+        }
+    }
+
     // Load components with absolute paths  
-    loadComponent("header", "components/header.html", 400);  
-    loadComponent("footer", "components/footer.html", 0);  
-    loadPlans(400);  
-    loadPOS(400);  
-    loadSites(400);  
+    loadComponent("header", "components/header.html", 400);
+    loadComponent("footer", "components/footer.html", 0);
+    loadPlans(400);
+    loadPOS(400);
+    loadSites(400);
+    loadEventContent(400);
 });  

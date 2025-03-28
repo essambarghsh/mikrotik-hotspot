@@ -2,7 +2,7 @@
     "sites": [
         {
             "id": 1,
-            "name": "جوجل",
+            "name": "البحث",
             "img_slug": "logos--google-icon.png",
             "url": "https://www.google.com"
         },
@@ -11,6 +11,18 @@
             "name": "ChatGPT",
             "img_slug": "chatgpt.png",
             "url": "https://chatgpt.com"
+        },
+        {
+            "id": 200,
+            "name": "Claude",
+            "img_slug": "claude.png",
+            "url": "https://claude.ai"
+        },
+        {
+            "id": 300,
+            "name": "WATCH IT",
+            "img_slug": "watchit.png",
+            "url": "https://www.watchit.com"
         },
         {
             "id": 3,

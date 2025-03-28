@@ -8,6 +8,7 @@
     "workbench.layoutControl.enabled": true,
     "search.exclude": {
         "**/node_modules": true,
-        "**/xml": true
+        "**/xml": true,
+        "**/css": true
     }
 }

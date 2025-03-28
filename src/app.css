@@ -2,7 +2,6 @@
 
 @theme {
     --color-primary: #2871FF;
-    --color-primary-dark: #1B32C8;
     --header-h: 80px;
     --normal-speed: 120ms;
 }
@@ -82,7 +81,7 @@ input[type=email] {
 }
 
 input[type=button] {
-    @apply flex items-center justify-center h-16 px-8 w-auto border-none rounded-xl bg-primary-dark hover:opacity-80 active:scale-95 text-white text-xs font-bold cursor-pointer;
+    @apply flex items-center justify-center h-16 px-8 w-auto border-none rounded-xl bg-primary hover:opacity-80 active:scale-95 text-white text-xs font-bold cursor-pointer;
     transition: var(--normal-speed) all;
 }
 
@@ -163,7 +162,7 @@ label {
 }
 
 .header-user .user-dropdown-content>ul>li .dropdown-item-link {
-    @apply flex items-center px-4 py-3 hover:bg-gray-100;
+    @apply flex items-center px-4 py-3 hover:bg-gray-100 text-xs;
 }
 
 .header-user .user-dropdown-content .dropdown-item-icon {
@@ -176,7 +175,7 @@ label {
 }
 
 .header-user .user-dropdown-content .dropdown-item-name {
-    @apply text-sm font-medium line-clamp-1;
+    @apply font-medium line-clamp-1;
 }
 
 .header-user .user-dropdown-content .dropdown-item.danger .dropdown-item-link {
@@ -233,15 +232,16 @@ label {
 }
 
 .dropdown-sub {
-    @apply grid grid-cols-2 px-4 py-2 gap-3;
+    @apply flex flex-col px-2 py-1;
 }
 
 .dropdown-sub>li {
-    @apply h-full;
+    @apply h-full mb-2 last:mb-0;
 }
 
 .dropdown-sub>li>a {
-    @apply flex flex-col items-center justify-center px-3 py-3 rounded-lg bg-gray-100 hover:bg-slate-200 h-full
+    @apply flex items-center px-3 py-3 rounded-lg
+    bg-gray-100 hover:bg-slate-200 h-full
 }
 
 .dropdown-sub .dropdown-subitem-name {
@@ -249,7 +249,11 @@ label {
 }
 
 .dropdown-sub .dropdown-subitem-icon {
-    @apply mb-3;
+    @apply ml-3;
+}
+
+.dropdown-sub .dropdown-subitem-icon img {
+    @apply size-6;
 }
 
 .card {
@@ -360,15 +364,17 @@ label {
 }
 
 .pos-logo {
-    @apply sm:ml-4 min-w-[98px] mb-4 sm:mb-0 min-h-[98px] px-4 py-4 bg-primary border border-gray-200 flex items-center justify-center rounded-lg;
+    @apply sm:ml-4 min-w-[82px] mb-4 sm:mb-0 min-h-[82px] p-1 bg-primary border
+    border-gray-200 flex items-center justify-center rounded-lg
+    [&>img]:size-12;
 }
 
 .pos-name {
-    @apply text-sm font-bold text-gray-800 text-center sm:text-right block;
+    @apply text-xs font-bold text-gray-800 text-center sm:text-right block;
 }
 
 .pos-address {
-    @apply flex items-center justify-center sm:justify-start mt-2 mb-3 text-sm text-gray-800 font-normal;
+    @apply flex items-center justify-center sm:justify-start mt-2 mb-3 text-xs text-gray-800 font-normal;
 }
 
 .pos-address-icon {
@@ -380,7 +386,7 @@ label {
 }
 
 .pos-badge {
-    @apply inline-flex px-3 py-3 rounded-full border border-gray-200 text-xs text-gray-600 leading-none
+    @apply inline-flex px-2 py-1.5 rounded-full border border-gray-200 text-[0.625rem] text-gray-600 leading-none
 }
 
 
@@ -495,7 +501,6 @@ label {
     @apply py-16;
     color: #ffffff;
     background: var(--color-primary);
-    background: linear-gradient(60deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
 }
 
 .shortcuts {
@@ -542,12 +547,14 @@ label {
 }
 
 .sites a {
-    @apply flex items-center p-3 rounded-xl shadow-md relative overflow-hidden border border-gray-200 text-black hover:text-primary bg-white h-full hover:border-primary text-sm font-medium after:absolute after:z-[1] after:inset-0 after:bg-primary after:opacity-0 hover:after:opacity-10;
+    @apply flex items-center p-3 rounded-xl shadow-md relative overflow-hidden border
+    border-gray-200 text-black hover:text-primary bg-white h-full hover:border-primary
+    text-xs font-medium after:absolute after:z-[1] after:inset-0 after:bg-primary after:opacity-0 hover:after:opacity-10;
     transition: var(--normal-speed) all;
 }
 
 .sites a img {
-    @apply w-auto h-10 ml-3 z-10;
+    @apply w-auto h-10 ml-3 z-10 max-w-[55px];
     transition: var(--normal-speed) all;
 }
 
