@@ -1,4 +1,634 @@
-@import './base.css';
-@import './components.css';
-@import './utilities.css';
-@import './media.css';
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #2871FF;
+    --color-primary-dark: #1B32C8;
+    --header-h: 80px;
+    --normal-speed: 120ms;
+}
+
+@utility container {
+    padding-inline: 16px;
+    margin-inline: auto;
+    max-width: 80rem;
+}
+
+@utility position-unset {
+    position: unset;
+}
+
+@utility overflow-unset {
+    overflow: unset;
+}
+
+@utility transform-translate-x-0 {
+    transform: translateX(0);
+}
+
+@utility logo {
+    @apply flex items-center justify-center rounded-none relative -mr-4 lg:mr-0 font-black text-base text-primary min-w-[123px] h-[80px] ml-auto md:ml-0 leading-none after:absolute after:inset-0 after:opacity-10 after:w-[123px];
+}
+
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('/fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Regular.ttf') format('truetype');
+    font-weight: 400;
+    /* Regular */
+    font-style: normal;
+    font-display: swap;
+    /* Ensures text is displayed while the font loads */
+}
+
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('/fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Bold.ttf') format('truetype');
+    font-weight: 700;
+    /* Bold */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('/fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Medium.ttf') format('truetype');
+    font-weight: 500;
+    /* Medium */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('/fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Black.ttf') format('truetype');
+    font-weight: 900;
+    /* Black */
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-weight: 400;
+    font-size: 0;
+    color: #000000;
+    background-color: #f4f9ff;
+}
+
+input[type=text],
+input[type=tel],
+input[type=password],
+input[type=email] {
+    @apply block w-full border-none rounded-xl outline-none focus:outline-none h-16 px-5 py-4 text-base placeholder:text-sm text-black bg-white;
+}
+
+input[type=button] {
+    @apply flex items-center justify-center h-16 px-8 w-auto border-none rounded-xl bg-primary-dark hover:opacity-80 active:scale-95 text-white text-xs font-bold cursor-pointer;
+    transition: var(--normal-speed) all;
+}
+
+label {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+}
+
+.header {
+    @apply flex items-center h-[var(--header-h)] z-20 sticky top-0 right-0 left-0;
+    isolation: isolate;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px 0 #63636333;
+}
+
+.header .loader-progress {
+    @apply fixed top-[var(--header-h)] right-0 left-0;
+}
+
+.header .menu {
+    @apply fixed top-0 right-0 bottom-0 w-full max-w-[320px] md:max-w-full bg-white md:bg-transparent z-40 flex-grow overflow-y-auto;
+    transform: translateX(100%);
+    transition: transform 0.2s ease;
+}
+
+.menu.show-menu {
+    transform: translateX(0);
+}
+
+.side-menu-backdrop {
+    position: fixed;
+    @apply block md:hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 30;
+    opacity: 0;
+    transition:
+        background-color 0.3s ease,
+        opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.side-menu-backdrop.show-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-menu-actions {
+    @apply md:hidden h-[var(--header-h)] min-h-[var(--header-h)] flex items-center justify-between px-4 border-b border-gray-200;
+}
+
+.header .menu ul {
+    @apply flex flex-col md:flex-row z-40 relative h-full bg-white md:bg-transparent md:h-auto;
+}
+
+.header .menu ul li {
+    @apply md:first-of-type:mr-auto md:last-of-type:ml-auto;
+}
+
+.header-user .user-dropdown-content {
+    @apply absolute left-0 z-10 hidden;
+    @apply w-[90%] md:w-[280px];
+    top: calc(var(--header-h) + -8px)
+}
+
+.header-user .user-dropdown-content.show {
+    display: block;
+}
+
+.header-user .user-dropdown-content>ul {
+    @apply block rounded-xl bg-white w-full overflow-hidden;
+    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.header-user .user-dropdown-content>ul>li .dropdown-item-link {
+    @apply flex items-center px-4 py-3 hover:bg-gray-100;
+}
+
+.header-user .user-dropdown-content .dropdown-item-icon {
+    @apply flex ml-3;
+}
+
+.header-user .user-dropdown-content .dropdown-item-icon img,
+.header-user .user-dropdown-content .dropdown-item-icon svg {
+    @apply w-[28px] min-w-[28px] h-[28px] opacity-90;
+}
+
+.header-user .user-dropdown-content .dropdown-item-name {
+    @apply text-sm font-medium line-clamp-1;
+}
+
+.header-user .user-dropdown-content .dropdown-item.danger .dropdown-item-link {
+    @apply text-red-600;
+}
+
+.header-user .user-dropdown-content hr {
+    @apply border-gray-200;
+}
+
+
+
+.logo {
+    @apply logo;
+}
+
+.logo svg {
+    @apply w-9 h-9 ml-2;
+}
+
+.menu-logo {
+    @apply logo;
+}
+
+.menu-close {
+    @apply px-2;
+}
+
+.header .user-dropdown-toggle {
+    @apply h-[54px] w-[54px] bg-primary rounded-full flex items-center justify-center text-white active:scale-95;
+}
+
+.header .menu ul li {
+    @apply border-b last:border-b-0 md:border-b-0 border-gray-200
+}
+
+.header .menu ul li a {
+    @apply relative flex items-center md:justify-center h-[54px] px-4 md:px-6 md:rounded-full text-sm font-medium hover:after:opacity-10 hover:text-primary;
+    transition: var(--normal-speed) all;
+}
+
+.header .menu ul li a::after {
+    content: "";
+    @apply absolute flex left-0 top-0 right-0 bottom-0 bg-primary opacity-0 md:rounded-full;
+    transition: var(--normal-speed) all;
+}
+
+.header .menu-open {
+    @apply h-[54px] w-[54px] bg-gray-100 border border-gray-200 ml-3 rounded-full flex items-center justify-center text-white active:scale-95;
+}
+
+.header .menu-open img {
+    @apply w-7 h-7;
+}
+
+.dropdown-sub {
+    @apply grid grid-cols-2 px-4 py-2 gap-3;
+}
+
+.dropdown-sub>li {
+    @apply h-full;
+}
+
+.dropdown-sub>li>a {
+    @apply flex flex-col items-center justify-center px-3 py-3 rounded-lg bg-gray-100 hover:bg-slate-200 h-full
+}
+
+.dropdown-sub .dropdown-subitem-name {
+    @apply text-center text-xs font-medium leading-relaxed;
+}
+
+.dropdown-sub .dropdown-subitem-icon {
+    @apply mb-3;
+}
+
+.card {
+    @apply w-full flex flex-col p-4 md:p-8 rounded-xl overflow-hidden;
+    background-color: #ffffff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.card-footer {
+    @apply -mx-4 md:-mx-8 -mb-4 md:-mb-8 bg-white p-4 md:p-8 mt-auto;
+}
+
+.card.cart-login {
+    color: #ffffff;
+    background: #ff9c3f;
+}
+
+.card.user-login {
+    color: #ffffff;
+    background: var(--color-primary);
+}
+
+.card-header {
+    @apply flex items-center;
+}
+
+.card-title {
+    @apply font-bold text-base md:text-lg;
+}
+
+.card-subtitle {
+    @apply text-sm font-normal leading-loose;
+}
+
+.card-logo {
+    @apply ml-3;
+}
+
+.card-logo img,
+.card-logo svg {
+    @apply w-14 h-14 min-w-14;
+}
+
+.card-body {
+    @apply py-4 md:py-8 mt-auto;
+}
+
+.plans,
+.plans-skeleton {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-8;
+}
+
+.plan,
+.plan-skeleton {
+    @apply block px-3 md:px-5 pb-5 pt-10 bg-white rounded-xl relative mt-10;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px
+}
+
+.plan-heading {
+    @apply flex items-center justify-center text-sm font-bold mb-5 text-center leading-relaxed;
+}
+
+.plan-badge {
+    @apply w-20 h-10 px-4 pointer-events-auto flex items-center justify-center rounded-full bg-red-500 text-white text-sm font-bold;
+}
+
+.plan-badge-animate {
+    @apply animate-ping absolute inline-flex h-9 w-16 rounded-full bg-red-500 opacity-90;
+}
+
+.plan-badge-top {
+    @apply flex items-center justify-center absolute right-0 left-0 -top-5 pointer-events-none w-full;
+}
+
+.plan-price {
+    @apply flex items-center justify-center leading-none w-full px-3 py-4 md:px-4 rounded-full text-sm md:text-base font-black mb-5 text-center bg-primary text-white;
+}
+
+.plan-features {
+    @apply md:px-4;
+}
+
+.plan-features li {
+    @apply flex items-center mb-3 last:mb-0;
+}
+
+.plan-features .plan-feature-icon {
+    @apply w-4 h-4 ml-1.5;
+}
+
+.plan-features .plan-feature-name {
+    @apply text-xs lg:font-bold text-gray-700 flex items-center justify-between gap-1 w-full;
+}
+
+.plan.type-cart .plan-price {
+    @apply bg-[#ff9c3f];
+}
+
+.pos-grid,
+.pos-grid-skeleton {
+    @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8;
+}
+
+.pos,
+.pos-skeleton {
+    @apply flex flex-col sm:flex-row items-center sm:items-start px-4 py-4 bg-white rounded-xl relative;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px
+}
+
+.pos-logo {
+    @apply sm:ml-4 min-w-[98px] mb-4 sm:mb-0 min-h-[98px] px-4 py-4 bg-primary border border-gray-200 flex items-center justify-center rounded-lg;
+}
+
+.pos-name {
+    @apply text-sm font-bold text-gray-800 text-center sm:text-right block;
+}
+
+.pos-address {
+    @apply flex items-center justify-center sm:justify-start mt-2 mb-3 text-sm text-gray-800 font-normal;
+}
+
+.pos-address-icon {
+    @apply ml-1 opacity-60 min-w-5;
+}
+
+.pos-badges {
+    @apply flex items-center justify-center sm:justify-start flex-wrap gap-3;
+}
+
+.pos-badge {
+    @apply inline-flex px-3 py-3 rounded-full border border-gray-200 text-xs text-gray-600 leading-none
+}
+
+
+.mine {
+    min-height: 80vh;
+}
+
+.loader-progress {
+    height: 2px;
+    width: 100%;
+    border-radius: 9999px;
+    --c: no-repeat linear-gradient(var(--color-primary) 0 0);
+    background: var(--c), var(--c), transparent;
+    background-size: 60% 100%;
+    animation: l16 3s infinite;
+}
+
+@keyframes l16 {
+    0% {
+        background-position: -150% 0, -150% 0
+    }
+
+    66% {
+        background-position: 250% 0, -150% 0
+    }
+
+    100% {
+        background-position: 250% 0, 250% 0
+    }
+}
+
+.lds-dual-ring,
+.lds-dual-ring:after {
+    box-sizing: border-box;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6.4px solid currentColor;
+    border-color: currentColor transparent currentColor transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.footer {
+    @apply mt-8;
+}
+
+.card-shadow {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.cr-link {
+    @apply hover:underline hover:text-primary;
+}
+
+.prefix-text {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 0.7s ease-out forwards;
+    @apply ml-2;
+}
+
+.animated-text {
+    display: inline-block;
+    position: relative;
+    width: 78px;
+    animation: delay-start 0.7s step-end forwards;
+    visibility: hidden;
+}
+
+.animated-text span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUpOut 0.7s ease-in-out;
+    white-space: nowrap;
+}
+
+.animated-text span {
+    @apply mt-1;
+}
+
+.prefix-text,
+.animated-text {
+    @apply h-[32px] md:h-[36px] lg:h-[44px] text-lg md:text-2xl lg:text-3xl font-black
+}
+
+.hero {
+    @apply py-16;
+    color: #ffffff;
+    background: var(--color-primary);
+    background: linear-gradient(60deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+}
+
+.shortcuts {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8;
+}
+
+.shortcuts a {
+    @apply flex items-center rounded-xl p-4 md:p-8 text-primary relative h-full border border-primary hover:border-transparent hover:text-white;
+    transition: var(--normal-speed) all;
+}
+
+.shortcuts a::after {
+    content: "";
+    @apply absolute inset-0 bg-primary block -z-[1] rounded-xl opacity-5 border border-transparent;
+    transition: var(--normal-speed) all;
+}
+
+.shortcuts a:hover::after {
+    @apply -inset-2 lg:-inset-4 border-primary opacity-100
+}
+
+.shortcuts a:hover:active::after {
+    @apply -inset-1 lg:-inset-2;
+}
+
+.shortcuts-icon {
+    @apply block ml-4 md:ml-8;
+}
+
+.shortcuts-icon svg {
+    @apply w-12 h-12 md:w-16 md:h-16;
+}
+
+.shortcuts-newtab-icon {
+    @apply absolute top-2 left-2 opacity-0;
+}
+
+.shortcuts a:hover .shortcuts-newtab-icon {
+    @apply opacity-100;
+}
+
+.sites {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6 md:gap-8
+}
+
+.sites a {
+    @apply flex items-center p-3 rounded-xl shadow-md relative overflow-hidden border border-gray-200 text-black hover:text-primary bg-white h-full hover:border-primary text-sm font-medium after:absolute after:z-[1] after:inset-0 after:bg-primary after:opacity-0 hover:after:opacity-10;
+    transition: var(--normal-speed) all;
+}
+
+.sites a img {
+    @apply w-auto h-10 ml-3 z-10;
+    transition: var(--normal-speed) all;
+}
+
+.sites a span {
+    @apply z-10;
+}
+
+.sites a:hover img {
+    @apply scale-110 -rotate-12;
+}
+
+#christmas-card .snowflake {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    user-select: none;
+    animation: christmas-snowfall linear infinite;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+}
+
+.wa-link-support {
+    @apply fixed right-4 bottom-4 rounded-full overflow-hidden px-1 py-1 pl-4 bg-white flex items-center shadow-md border border-gray-200 text-xs z-50;
+    transition: var(--normal-speed) all;
+}
+
+.wa-link-support img {
+    @apply w-10 h-10 min-w-10 ml-2
+}
+
+
+
+.header .menu {
+    @apply md:position-unset md:overflow-unset md:transform-translate-x-0
+}
+
+@keyframes delay-start {
+    to {
+        visibility: visible;
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUpOut {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    15% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    85% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes christmas-snowfall {
+    0% {
+        transform: translateY(-10vh);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}

@@ -8,10 +8,11 @@
 	"scripts": {
 		"dev": "npm run watch:hotspot:app",
 		"build": "npm run build:hotspot:app",
-		"watch:hotspot:app": "tailwindcss -i ./src/app.css -o ./css/app.css --watch",
-		"build:hotspot:app": "tailwindcss -i ./src/app.css -o ./css/app.css --minify"
+		"watch:hotspot:app": "npx @tailwindcss/cli -i ./src/app.css -o ./css/app.css --watch",
+		"build:hotspot:app": "npx @tailwindcss/cli -i ./src/app.css -o ./css/app.css --minify"
 	},
-	"devDependencies": {
-		"tailwindcss": "^3.4.16"
+	"dependencies": {
+		"@tailwindcss/cli": "^4.0.17",
+		"tailwindcss": "^4.0.17"
 	}
 }
