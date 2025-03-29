@@ -1,5 +1,58 @@
-<div>
-    <div class="container">
-        eidFitr
+<div class="text-base">
+    <div class="relative w-full overflow-hidden bg-black">
+        <div class="container" >
+            
+            <!-- Static decorative elements -->
+            <div class="absolute top-4 left-4 text-amber-200 opacity-70 text-2xl">✨</div>
+            <div class="absolute bottom-8 left-14 text-amber-200 opacity-70 text-2xl">✨</div>
+            <div class="absolute bottom-20 right-8 text-amber-200 opacity-70 text-xl">⭐</div>
+            <div class="absolute top-1/2 left-1/4 text-amber-200 opacity-70 text-xl">✨</div>
+            
+            <div class="relative px-6 py-16 md:px-8 text-center">
+                
+                <!-- Using emoji -->
+                <div class="flex justify-center mb-6">
+                    <div style="animation: bounce 3s ease-in-out infinite;">
+                        <span style="font-size: 4rem;">🌙</span>
+                    </div>
+                </div>
+                
+                <div class="mb-5 text-2xl font-black text-white md:text-3xl lg:text-4xl">
+                    عيد فطر مبارك
+                </div>
+                
+                <div class="max-w-lg mx-auto text-white mb-8">
+                    <p class="text-lg font-medium mb-2">كل عام وأنتم بخير</p>
+                    <p class="text-base mb-6">تقبل الله منا ومنكم صالح الأعمال</p>
+                </div>
+                
+                <!-- Simplified gift message -->
+                <div class="backdrop-blur-sm rounded-xl p-4 md:p-6 bg-white/10"
+                     style="animation: fadeIn 1s ease-out;">
+                    <h3 class="text-xl font-bold text-amber-200 mb-3">هدية العيد</h3>
+                    <p class="text-white">كروت فكة مجانية متاحة لدى الموزعين المعتمدين</p>
+                    <div class="mt-4">
+                        <a href="#pos" class="inline-block px-6 py-2.5 bg-amber-100 text-amber-900 font-medium rounded-full hover:bg-amber-200 transition">الموزعين</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<style>
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>

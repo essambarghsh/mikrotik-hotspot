@@ -177,3 +177,63 @@ function setupWaLinkSupport() {
 }
 
 document.addEventListener('DOMContentLoaded', setupWaLinkSupport);
+
+// Color Rotation System (Sequential with Page Reload Memory)
+(function() {
+    // Define the list of colors to rotate through
+    const colors = [
+        '#e12729',
+        '#159ab7',
+        '#ed008c',
+        '#7971ea',
+        '#ff8400',
+        '#ff9ed7',
+        '#116594',
+    ];
+    
+    let currentColorIndex = -1; // Start with -1 to indicate no color selected yet
+    const STORAGE_KEY = 'website-color-index';
+    
+    // Function to update the primary color
+    function updatePrimaryColor(colorIndex) {
+        currentColorIndex = colorIndex;
+        document.documentElement.style.setProperty('--color-primary', colors[colorIndex]);
+        // Save to localStorage for next page load
+        localStorage.setItem(STORAGE_KEY, colorIndex.toString());
+    }
+    
+    // Function to handle the color rotation
+    function rotateColors() {
+        // Get the next color index (cycle through the list)
+        const nextIndex = (currentColorIndex + 1) % colors.length;
+        
+        // Update the color
+        updatePrimaryColor(nextIndex);
+    }
+    
+    // Initialize the color system
+    function initColorSystem() {
+        // Check localStorage for the last used color index
+        const savedIndex = localStorage.getItem(STORAGE_KEY);
+        
+        if (savedIndex !== null) {
+            // Use the next color in sequence
+            const nextIndex = (parseInt(savedIndex) + 1) % colors.length;
+            updatePrimaryColor(nextIndex);
+        } else {
+            // First time using the site, start with the first color
+            updatePrimaryColor(0);
+        }
+        
+        // Set up color rotation every 30 seconds
+        setInterval(rotateColors, 30000);
+    }
+    
+    // Initialize when the DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initColorSystem);
+    } else {
+        // DOM is already loaded
+        initColorSystem();
+    }
+})();
