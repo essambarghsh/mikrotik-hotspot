@@ -1,36 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-::root {
+@theme {
     --color-primary: #2871FF;
     --header-h: 80px;
     --normal-speed: 120ms;
 }
 
-@layer utilities {
-    .position-unset {
-        position: unset;
-    }
-
-    .container {
-        padding-inline: 16px;
-        margin-inline: auto;
-        max-width: 80rem;
-    }
-
-    .overflow-unset {
-        overflow: unset;
-    }
-
-    .transform-translate-x-0 {
-        transform: translateX(0);
-    }
+@utility container {
+    padding-inline: 16px;
+    margin-inline: auto;
+    max-width: 80rem;
 }
 
-.logo,
-.menu-logo {
-    @apply flex items-center justify-center rounded-none relative -mr-4 lg:mr-0 font-black text-base text-[var(--color-primary)] min-w-[123px] h-[80px] ml-auto md:ml-0 leading-none after:absolute after:inset-0 after:opacity-10 after:w-[123px];
+@utility position-unset {
+    position: unset;
+}
+
+@utility overflow-unset {
+    overflow: unset;
+}
+
+@utility transform-translate-x-0 {
+    transform: translateX(0);
+}
+
+@utility logo {
+    @apply flex items-center justify-center rounded-none relative -mr-4 lg:mr-0 font-black text-base text-primary min-w-[123px] h-[80px] ml-auto md:ml-0 leading-none after:absolute after:inset-0 after:opacity-10 after:w-[123px];
 }
 
 @font-face {
@@ -82,102 +77,33 @@ input[type=text],
 input[type=tel],
 input[type=password],
 input[type=email] {
-    display: block;
-    width: 100%;
-    border: none;
-    border-radius: 0.75rem;
-    outline: none;
-    height: 4rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    font-size: 1rem;
-    color: #000000;
-    background-color: #ffffff;
+    @apply block w-full border-none rounded-xl outline-none focus:outline-none h-16 px-5 py-4 text-base placeholder:text-sm text-black bg-white;
 }
 
 input[type=button] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 4rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    width: auto;
-    border: none;
-    border-radius: 0.75rem;
-    background-color: var(--color-primary);
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: 700;
-    cursor: pointer;
+    @apply flex items-center justify-center h-16 px-8 w-auto border-none rounded-xl bg-primary hover:opacity-80 active:scale-95 text-white text-xs font-bold cursor-pointer;
     transition: var(--normal-speed) all;
 }
 
-input[type=button]:hover {
-    opacity: 0.8;
-}
-
-input[type=button]:active {
-    transform: scale(0.95);
-}
-
 label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #111827;
-}
-
-@media (prefers-color-scheme: dark) {
-    label {
-        color: #ffffff;
-    }
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    height: var(--header-h);
-    z-index: 20;
-    position: sticky;
-    top: 0;
-    right: 0;
-    left: 0;
+    @apply flex items-center h-[var(--header-h)] z-20 sticky top-0 right-0 left-0;
     isolation: isolate;
     background-color: #ffffff;
     box-shadow: 0 2px 8px 0 #63636333;
 }
 
 .header .loader-progress {
-    position: fixed;
-    top: var(--header-h);
-    right: 0;
-    left: 0;
+    @apply fixed top-[var(--header-h)] right-0 left-0;
 }
 
 .header .menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    max-width: 320px;
-    background-color: #ffffff;
-    z-index: 40;
-    flex-grow: 1;
-    overflow-y: auto;
+    @apply fixed top-0 right-0 bottom-0 w-full max-w-[320px] md:max-w-full bg-white md:bg-transparent z-40 flex-grow overflow-y-auto;
     transform: translateX(100%);
     transition: transform 0.2s ease;
-}
-
-@media (min-width: 768px) {
-    .header .menu {
-        max-width: 100%;
-        background-color: transparent;
-    }
 }
 
 .menu.show-menu {
@@ -209,60 +135,21 @@ label {
 }
 
 .mobile-menu-actions {
-    height: var(--header-h);
-    min-height: var(--header-h);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-@media (min-width: 768px) {
-    .mobile-menu-actions {
-        display: none;
-    }
+    @apply md:hidden h-[var(--header-h)] min-h-[var(--header-h)] flex items-center justify-between px-4 border-b border-gray-200;
 }
 
 .header .menu ul {
-    display: flex;
-    flex-direction: column;
-    z-index: 40;
-    position: relative;
-    height: 100%;
-    background-color: #ffffff;
+    @apply flex flex-col md:flex-row z-40 relative h-full bg-white md:bg-transparent md:h-auto;
 }
 
-@media (min-width: 768px) {
-    .header .menu ul {
-        flex-direction: row;
-        background-color: transparent;
-        height: auto;
-    }
-}
-
-.header .menu ul li:first-of-type {
-    margin-right: auto;
-}
-
-.header .menu ul li:last-of-type {
-    margin-left: auto;
+.header .menu ul li {
+    @apply md:first-of-type:mr-auto md:last-of-type:ml-auto;
 }
 
 .header-user .user-dropdown-content {
-    position: absolute;
-    left: 0;
-    z-index: 10;
-    display: none;
-    width: 90%;
-    top: calc(var(--header-h) - 8px);
-}
-
-@media (min-width: 768px) {
-    .header-user .user-dropdown-content {
-        width: 280px;
-    }
+    @apply absolute left-0 z-10 hidden;
+    @apply w-[90%] md:w-[280px];
+    top: calc(var(--header-h) + -8px)
 }
 
 .header-user .user-dropdown-content.show {
@@ -270,39 +157,21 @@ label {
 }
 
 .header-user .user-dropdown-content>ul {
-    display: block;
-    border-radius: 0.75rem;
-    background-color: #ffffff;
-    width: 100%;
-    overflow: hidden;
+    @apply block rounded-xl bg-white w-full overflow-hidden;
     box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .header-user .user-dropdown-content>ul>li .dropdown-item-link {
-    display: flex;
-    align-items: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    font-size: 0.75rem;
-}
-
-.header-user .user-dropdown-content>ul>li .dropdown-item-link:hover {
-    background-color: #f3f4f6;
+    @apply flex items-center px-4 py-3 hover:bg-gray-100 text-xs;
 }
 
 .header-user .user-dropdown-content .dropdown-item-icon {
-    display: flex;
-    margin-left: 0.75rem;
+    @apply flex ml-3;
 }
 
 .header-user .user-dropdown-content .dropdown-item-icon img,
 .header-user .user-dropdown-content .dropdown-item-icon svg {
-    width: 28px;
-    min-width: 28px;
-    height: 28px;
-    opacity: 0.9;
+    @apply w-[28px] min-w-[28px] h-[28px] opacity-90;
 }
 
 .header-user .user-dropdown-content .dropdown-item-name {
@@ -317,8 +186,18 @@ label {
     @apply border-gray-200;
 }
 
+
+
+.logo {
+    @apply logo;
+}
+
 .logo svg {
     @apply w-9 h-9 ml-2;
+}
+
+.menu-logo {
+    @apply logo;
 }
 
 .menu-close {
@@ -326,7 +205,7 @@ label {
 }
 
 .header .user-dropdown-toggle {
-    @apply h-[54px] w-[54px] bg-[var(--color-primary)] rounded-full flex items-center justify-center text-white active:scale-95;
+    @apply h-[54px] w-[54px] bg-primary rounded-full flex items-center justify-center text-white active:scale-95;
 }
 
 .header .menu ul li {
@@ -334,13 +213,13 @@ label {
 }
 
 .header .menu ul li a {
-    @apply relative flex items-center md:justify-center h-[54px] px-4 md:px-6 md:rounded-full text-sm font-medium hover:after:opacity-10 hover:text-[var(--color-primary)];
+    @apply relative flex items-center md:justify-center h-[54px] px-4 md:px-6 md:rounded-full text-sm font-medium hover:after:opacity-10 hover:text-primary;
     transition: var(--normal-speed) all;
 }
 
 .header .menu ul li a::after {
     content: "";
-    @apply absolute flex left-0 top-0 right-0 bottom-0 bg-[var(--color-primary)] opacity-0 md:rounded-full;
+    @apply absolute flex left-0 top-0 right-0 bottom-0 bg-primary opacity-0 md:rounded-full;
     transition: var(--normal-speed) all;
 }
 
@@ -361,7 +240,8 @@ label {
 }
 
 .dropdown-sub>li>a {
-    @apply flex items-center px-3 py-3 rounded-lg bg-gray-100 hover:bg-slate-200 h-full
+    @apply flex items-center px-3 py-3 rounded-lg
+    bg-gray-100 hover:bg-slate-200 h-full
 }
 
 .dropdown-sub .dropdown-subitem-name {
@@ -449,7 +329,7 @@ label {
 }
 
 .plan-price {
-    @apply flex items-center justify-center leading-none w-full px-3 py-4 md:px-4 rounded-full text-sm md:text-base font-black mb-5 text-center bg-[var(--color-primary)] text-white;
+    @apply flex items-center justify-center leading-none w-full px-3 py-4 md:px-4 rounded-full text-sm md:text-base font-black mb-5 text-center bg-primary text-white;
 }
 
 .plan-features {
@@ -484,7 +364,9 @@ label {
 }
 
 .pos-logo {
-    @apply sm:ml-4 min-w-[82px] mb-4 sm:mb-0 min-h-[82px] p-1 bg-[var(--color-primary)] border border-gray-200 flex items-center justify-center rounded-lg [&>img]:size-12;
+    @apply sm:ml-4 min-w-[82px] mb-4 sm:mb-0 min-h-[82px] p-1 bg-primary border
+    border-gray-200 flex items-center justify-center rounded-lg
+    [&>img]:size-12;
 }
 
 .pos-name {
@@ -578,7 +460,7 @@ label {
 }
 
 .cr-link {
-    @apply hover:underline hover:text-[var(--color-primary)];
+    @apply hover:underline hover:text-primary;
 }
 
 .prefix-text {
@@ -626,18 +508,18 @@ label {
 }
 
 .shortcuts a {
-    @apply flex items-center rounded-xl p-4 md:p-8 text-[var(--color-primary)] relative h-full border border-[var(--color-primary)] hover:border-transparent hover:text-white;
+    @apply flex items-center rounded-xl p-4 md:p-8 text-primary relative h-full border border-primary hover:border-transparent hover:text-white;
     transition: var(--normal-speed) all;
 }
 
 .shortcuts a::after {
     content: "";
-    @apply absolute inset-0 bg-[var(--color-primary)] block -z-[1] rounded-xl opacity-5 border border-transparent;
+    @apply absolute inset-0 bg-primary block -z-[1] rounded-xl opacity-5 border border-transparent;
     transition: var(--normal-speed) all;
 }
 
 .shortcuts a:hover::after {
-    @apply -inset-2 lg:-inset-4 border-[var(--color-primary)] opacity-100
+    @apply -inset-2 lg:-inset-4 border-primary opacity-100
 }
 
 .shortcuts a:hover:active::after {
@@ -665,7 +547,9 @@ label {
 }
 
 .sites a {
-    @apply flex items-center p-3 rounded-xl shadow-md relative overflow-hidden border border-gray-200 text-black hover:text-[var(--color-primary)] bg-white h-full hover:border-[var(--color-primary)] text-xs font-medium after:absolute after:z-[1] after:inset-0 after:bg-[var(--color-primary)] after:opacity-0 hover:after:opacity-10;
+    @apply flex items-center p-3 rounded-xl shadow-md relative overflow-hidden border
+    border-gray-200 text-black hover:text-primary bg-white h-full hover:border-primary
+    text-xs font-medium after:absolute after:z-[1] after:inset-0 after:bg-primary after:opacity-0 hover:after:opacity-10;
     transition: var(--normal-speed) all;
 }
 

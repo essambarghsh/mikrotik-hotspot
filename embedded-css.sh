@@ -58,11 +58,11 @@ for file in login.html alogin.html; do
         # Create the new file with CSS embedded
         {
             cat "$before_head"
-            echo "    <!-- CSS-DIRECTLY-EMBEDDED -->"
-            echo "    <style>"
+            echo " "
+            echo "<style type="text/css">"
             cat css/app.css
-            echo "    </style>"
-            echo "    <!-- END-CSS-DIRECTLY-EMBEDDED -->"
+            echo " "
+            echo "</style>"
             cat "$after_head"
         } > "$file.new"
         

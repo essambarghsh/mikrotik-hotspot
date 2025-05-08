@@ -6,12 +6,13 @@
 	"author": "Ashwab, Essam Barghsh",
 	"homepage": "https://www.ashwab.com/",
 	"scripts": {
-		"dev": "npm run watch:hotspot:app",
-		"build": "npm run build:hotspot:app",
-		"build:hotspot:app": "npx tailwindcss -i ./src/app.css -o ./css/app.css --minify",
-		"watch:hotspot:app": "npx tailwindcss -i ./src/app.css -o ./css/app.css --watch"
+		"dev": "npm run watch:hotspot:app && ./embedded-css.sh -d",
+		"build": "npm run build:hotspot:app && ./embedded-css.sh",
+		"build:hotspot:app": "npx @tailwindcss/cli -i ./src/app.css -o ./css/app.css --minify",
+		"watch:hotspot:app": "npx @tailwindcss/cli -i ./src/app.css -o ./css/app.css --watch",
+		"remove-embedded-css": "./embedded-css.sh -d"
 	},
 	"devDependencies": {
-		"tailwindcss": "^3.4.17"
+		"tailwindcss": "^4.1.5"
 	}
 }
