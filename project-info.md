@@ -1,8 +1,9 @@
-# Mikrotik Hotspot Auth
-Generated on: 2025-05-26 18:55:35
+# Mikrotik Hotspot Auth UI
+Generated on: 2025-05-26 18:59:52
 
 ## Project Information
-* Name: Mikrotik Hotspot Auth
+* Name: Mikrotik Hotspot Auth UI
+* Description: A user interface for Mikrotik Hotspot authentication.
 * Author: Essam Barghsh
 * Language: Javascript, CSS, HTML
 

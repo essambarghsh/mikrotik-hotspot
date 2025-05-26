@@ -32,11 +32,12 @@ fi
 
 # Create the output file with header and project information
 cat > "$OUTPUT_FILE" << EOF
-# Mikrotik Hotspot Auth
+# Mikrotik Hotspot Auth UI
 Generated on: $TIMESTAMP
 
 ## Project Information
-* Name: Mikrotik Hotspot Auth
+* Name: Mikrotik Hotspot Auth UI
+* Description: A user interface for Mikrotik Hotspot authentication.
 * Author: Essam Barghsh
 * Language: Javascript, CSS, HTML
 
