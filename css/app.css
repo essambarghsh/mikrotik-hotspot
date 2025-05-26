@@ -137,6 +137,8 @@ input {
     border: 1px solid var(--primary-color);
     border-radius: 12px;
     font-size: 1rem;
+    -webkit-transition: var(--transition-duration);
+    -o-transition: var(--transition-duration);
     transition: var(--transition-duration);
     background-color: #ffffff;
 }
@@ -148,6 +150,30 @@ input:focus-visible {
     box-shadow: 0px 0px 0px 3px var(--primary-extra-light-color);
     -webkit-box-shadow: 0px 0px 0px 3px var(--primary-extra-light-color);
     -moz-box-shadow: 0px 0px 0px 3px var(--primary-extra-light-color);
+}
+
+input::-webkit-input-placeholder {
+    color: #999;
+    opacity: 1;
+    font-size: var(--text-size);
+}
+
+input::-moz-placeholder {
+    color: #999;
+    opacity: 1;
+    font-size: var(--text-size);
+}
+
+input:-ms-input-placeholder {
+    color: #999;
+    opacity: 1;
+    font-size: var(--text-size);
+}
+
+input::-ms-input-placeholder {
+    color: #999;
+    opacity: 1;
+    font-size: var(--text-size);
 }
 
 input::placeholder {
@@ -194,8 +220,14 @@ input[type="button"]:active {
 .card-logo {
     width: var(--base-height-unit);
     height: var(--base-height-unit);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     border-radius: 9999px;
     margin-left: 16px;
@@ -249,6 +281,8 @@ input[type="button"]:active {
     position: absolute;
     top: 50%;
     left: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     width: 100%;
     height: 1px;
@@ -270,7 +304,11 @@ input[type="button"]:active {
 }
 
 .login-error-message {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     max-width: 500px;
     border-radius: 16px;
@@ -302,8 +340,14 @@ input[type="button"]:active {
 }
 
 .login-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     margin-bottom: 64px;
     padding: 16px 28px;
@@ -335,9 +379,18 @@ input[type="button"]:active {
 }
 
 .test-alogin {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     height: 100vh;
     padding: 40px;
