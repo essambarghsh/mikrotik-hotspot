@@ -1,10 +1,47 @@
+/* Noto Kufi Arabic Font Declarations */
+
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('../fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('../fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('../fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('../fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --primary-color: #7fc194;
+    --primary-dark-color: #58a570;
     --primary-light-color: #c0e0c9;
     --primary-extra-light-color: #cce6d3;
     --body-bg-color: #f2f9f4;
-    --transition-duration: 0.3s;
-    --text-size: 0.75rem
+    --transition-duration: 0.2s;
+    --text-size: 0.75rem;
+    --arabic-font: 'Noto Kufi Arabic', 'Arabic Typesetting', 'Traditional Arabic', Arial, sans-serif;
+    --base-height-unit: 4rem;
 }
 
 /* 1. Use a more-intuitive box-sizing model */
@@ -32,7 +69,8 @@ body {
     /* 5. Improve text rendering */
     -webkit-font-smoothing: antialiased;
     background-color: var(--body-bg-color);
-    font-size: 0;
+    font-size: var(--text-size);
+    font-family: var(--arabic-font);
 }
 
 /* 6. Improve media defaults */
@@ -94,11 +132,13 @@ h6 {
 
 input {
     width: 100%;
-    height: 56px;
-    padding: 10px 10px;
-    border: 1px solid var(--primary-light-color);
+    height: var(--base-height-unit);
+    padding: 10px 16px;
+    border: 1px solid var(--primary-color);
     border-radius: 12px;
+    font-size: 1rem;
     transition: var(--transition-duration);
+    background-color: #ffffff;
 }
 
 input:focus,
@@ -111,12 +151,206 @@ input:focus-visible {
 }
 
 input::placeholder {
-    color: var(--primary-light-color);
+    color: #999;
     opacity: 1;
+    font-size: var(--text-size);
+}
+
+input[type="button"] {
+    display: block;
+    width: 100%;
+    height: var(--base-height-unit);
+    font-size: var(--text-size);
+    font-weight: 700;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+input[type="button"]:hover {
+    background-color: var(--primary-dark-color);
+}
+
+input[type="button"]:active {
+    transform: scale(0.95);
 }
 
 .text-base {
     font-size: var(--text-size);
     line-height: 1.5;
-    color: #333;
+    color: #000000;
+}
+
+.card {
+    display: block;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-logo {
+    width: var(--base-height-unit);
+    height: var(--base-height-unit);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    margin-left: 16px;
+    background-color: var(--primary-color);
+}
+
+.card-logo img {
+    width: 40px;
+    height: auto;
+}
+
+.card-body input[type="text"] {
+    margin-bottom: 16px;
+}
+
+.card-body input[type="text"]:last-child {
+    margin-bottom: 0;
+}
+
+.card-footer input[type="button"] {
+    margin-top: 16px;
+}
+
+.card-title {
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.card-subtitle {
+    opacity: 0.7;
+    line-height: 1.8;
+}
+
+.login-cards {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.dividing-line {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 16px 0;
+}
+
+.dividing-line::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+    background-color: var(--primary-light-color);
+    z-index: 1;
+}
+
+.dividing-line span {
+    position: relative;
+    z-index: 2;
+    padding: 0 16px;
+    background-color: var(--body-bg-color);
+    color: #616161;
+    font-size: var(--text-size);
+}
+
+.login-cards .dividing-line {
+    margin: 64px 0;
+}
+
+.login-error-message {
+    display: flex;
+    align-items: center;
+    max-width: 500px;
+    border-radius: 16px;
+    border: 1px solid #e7c9c9;
+    background-color: #b91c1c0d;
+    margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;
+    color: #680707;
+    font-size: 1rem;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.login-error-message img {
+    width: 32px;
+    height: 32px;
+    margin-left: 16px;
+}
+
+.login-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.login-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    padding: 16px 28px;
+    border-radius: 16px;
+    border: 1px solid var(--primary-light-color);
+    color: var(--primary-dark-color);
+    background-color: #ffffff;
+}
+
+.login-header svg {
+    margin-right: 16px;
+    margin-left: -8px;
+}
+
+.login-title {
+    font-size: var(--text-size);
+    font-weight: 900;
+    line-height: 1;
+}
+
+.login-title span {
+    display: block;
+    line-height: 1;
+}
+
+.login-title span.ha {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.test-alogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 40px;
+}
+
+.test-alogin h1 {
+    font-weight: 900;
+    color: var(--primary-dark-color);
+}
+
+.test-alogin p {
+    font-size: var(--text-size);
+    line-height: 1.9;
+    color: #616161;
+    margin-top: 12px;
 }

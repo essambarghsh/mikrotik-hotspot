@@ -1,164 +1,156 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="pragma" content="no-cache" />
-        <meta http-equiv="expires" content="-1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>تسجيل الدخول للإنترنت</title>
-        <link rel="stylesheet" href="css/app.css" type="text/css" />
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسجيل الدخول للإنترنت</title>
+    <link rel="stylesheet" href="css/app.css" type="text/css" />
+    <style type="text/css">body {font-size: 0}</style>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="preload"
+      href="fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+  </head>
 
-    <body>
-        $(if chap-id)
-        <form
-            name="sendin"
+  <body>
+    $(if chap-id)
+    <form
+      name="sendin"
+      action="$(link-login-only)"
+      method="post"
+      style="display: none"
+    >
+      <input type="hidden" name="username" />
+      <input type="hidden" name="password" />
+      <input type="hidden" name="dst" value="$(link-orig)" />
+      <input type="hidden" name="popup" value="true" />
+    </form>
+    <script src="md5.js"></script>
+    <script>
+      function doLogin(method) {
+        if (method === "card") {
+          var cardNumber = document.login.cardnumber.value;
+          document.sendin.username.value = cardNumber;
+          document.sendin.password.value = hexMD5(
+            "$(chap-id)" + cardNumber + "$(chap-challenge)"
+          );
+        } else {
+          document.sendin.username.value = document.login.username.value;
+          document.sendin.password.value = hexMD5(
+            "$(chap-id)" + document.login.password.value + "$(chap-challenge)"
+          );
+        }
+        document.sendin.submit();
+        return false;
+      }
+    </script>
+    $(endif)
+
+    <main class="mine">
+      <section class="login-section">
+        <div class="container login-container">
+          <div class="login-header">
+            <h1 class="login-title">
+                <span class="ha">HA</span>
+                <span>تسجيل الدخول</span>
+            </h1>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"><g fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M2.75 8.988A12.068 12.068 0 0 1 21.25 9"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5.64 11.964a8.297 8.297 0 0 1 12.72.01m-9.805 3.029a4.495 4.495 0 0 1 6.89.005"/><circle cx="12" cy="17.878" r="1.445" fill="currentColor"/></g></svg>
+          </div>
+          $(if error)
+          <div class="login-error-message text-base">
+            <img src="img/iconoir--wifi-error.png" alt="" />
+            <span>$(error)</span>
+          </div>
+          $(endif)
+          <form
+            name="login"
             action="$(link-login-only)"
             method="post"
-            style="display: none"
-        >
-            <input type="hidden" name="username" />
-            <input type="hidden" name="password" />
+            onSubmit="return false;"
+          >
             <input type="hidden" name="dst" value="$(link-orig)" />
             <input type="hidden" name="popup" value="true" />
-        </form>
-        <script src="md5.js"></script>
-        <script>
-            function doLogin(method) {
-                if (method === "card") {
-                    var cardNumber =
-                        document.login.cardnumber.value;
-                    document.sendin.username.value = cardNumber;
-                    document.sendin.password.value = hexMD5(
-                        "$(chap-id)" + cardNumber +
-                            "$(chap-challenge)",
-                    );
-                } else {
-                    document.sendin.username.value =
-                        document.login.username.value;
-                    document.sendin.password.value = hexMD5(
-                        "$(chap-id)" +
-                            document.login.password.value +
-                            "$(chap-challenge)",
-                    );
-                }
-                document.sendin.submit();
-                return false;
-            }
-        </script>
-        $(endif)
-
-        <header id="header" class="header text-base">
-            TODO: header
-        </header>
-
-        <main class="mine">
-            <section class="login-section">
-                <div class="container login-container">
-                    $(if error)
-                    <div class="login-error-message">
-                        <div class="flex items-center">
-                            <img
-                                class="w-10 h-10 ml-4"
-                                src="img/iconoir--wifi-error.png"
-                                alt=""
-                            >
-                            <span class="block leading-loose">$(error)</span>
-                        </div>
-                    </div>
-                    $(endif)
-                    <form
-                        name="login"
-                        action="$(link-login-only)"
-                        method="post"
-                        onSubmit="return false;"
-                    >
-                        <input type="hidden" name="dst" value="$(link-orig)" />
-                        <input type="hidden" name="popup" value="true" />
-                        <div
-                            class="flex flex-col md:flex-row gap-x-8 space-y-8 md:space-y-0 text-base"
-                        >
-                            <div class="card user-login">
-                                <div class="card-header">
-                                    <div class="card-logo">
-                                        <img
-                                            src="img/solar--user-bold-duotone-md.png"
-                                            alt=""
-                                        >
-                                    </div>
-                                    <div class="card-info">
-                                        <h2 class="card-title">عندك باقة؟</h2>
-                                        <p class="card-subtitle">
-                                            سجل الدخول باستخدام باقتك
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="card-body space-y-4 md:space-y-6">
-                                    <input
-                                        name="username"
-                                        type="text"
-                                        value="$(username)"
-                                        placeholder="ادخل اسم المستخدم"
-                                    />
-                                    <input
-                                        name="password"
-                                        type="password"
-                                        placeholder="ادخل كلمة السر"
-                                    />
-                                </div>
-                                <div class="card-footer">
-                                    <input
-                                        type="button"
-                                        value="تسجيل الدخول"
-                                        onClick="doLogin('normal')"
-                                    />
-                                </div>
-                            </div>
-                            <div class="card cart-login">
-                                <div class="card-header">
-                                    <div class="card-logo">
-                                        <img
-                                            src="img/solar--card-2-bold.png"
-                                            alt=""
-                                        >
-                                    </div>
-                                    <div class="card-info">
-                                        <h2 class="card-title">
-                                            معاك كارت فكة؟
-                                        </h2>
-                                        <p class="card-subtitle md:hidden">
-                                            ادخل بكارت فكة
-                                        </p>
-                                        <p
-                                            class="card-subtitle hidden md:block"
-                                        >
-                                            سجل الدخول للواي فاي باستخدام كارت
-                                            فكة
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="card-body md:space-y-6">
-                                    <input
-                                        name="cardnumber"
-                                        type="text"
-                                        placeholder="ادخل رقم الكارت"
-                                    />
-                                </div>
-                                <div class="card-footer">
-                                    <input
-                                        class="!bg-[#ff9c3f]"
-                                        type="button"
-                                        value="الدخول بالكارت"
-                                        onClick="doLogin('card')"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+            <div class="login-cards text-base">
+              <div class="card user-login">
+                <div class="card-header">
+                  <div class="card-logo">
+                    <img src="img/solar--user-bold-duotone-md.png" alt="" />
+                  </div>
+                  <div class="card-info">
+                    <h2 class="card-title">عندك باقة؟</h2>
+                    <p class="card-subtitle">سجل الدخول باستخدام باقتك</p>
+                  </div>
                 </div>
-            </section>
-        </main>
-        <script src="app.js" type="text/javascript"></script>
-    </body>
+                <div class="card-body">
+                  <input
+                    name="username"
+                    type="text"
+                    value="$(username)"
+                    placeholder="ادخل اسم المستخدم"
+                  />
+                  <input
+                    name="password"
+                    type="password"
+                    placeholder="ادخل كلمة السر"
+                  />
+                </div>
+                <div class="card-footer">
+                  <input
+                    type="button"
+                    value="تسجيل الدخول"
+                    onClick="doLogin('normal')"
+                  />
+                </div>
+              </div>
+              <div class="dividing-line">
+                <span>أو</span>
+              </div>
+              <div class="card cart-login">
+                <div class="card-header">
+                  <div class="card-logo">
+                    <img src="img/solar--card-2-bold.png" alt="" />
+                  </div>
+                  <div class="card-info">
+                    <h2 class="card-title">معاك كارت فكة؟</h2>
+                    <p class="card-subtitle hidden md:block">
+                      سجل الدخول باستخدام كارت فكة
+                    </p>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <input
+                    name="cardnumber"
+                    type="text"
+                    placeholder="ادخل رقم الكارت"
+                  />
+                </div>
+                <div class="card-footer">
+                  <input
+                    class="!bg-[#ff9c3f]"
+                    type="button"
+                    value="الدخول بالكارت"
+                    onClick="doLogin('card')"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script src="app.js" type="text/javascript"></script>
+  </body>
 </html>

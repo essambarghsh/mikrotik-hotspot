@@ -1,5 +1,5 @@
 # Mikrotik Hotspot Auth UI
-Generated on: 2025-05-26 18:59:52
+Generated on: 2025-05-26 20:47:52
 
 ## Project Information
 * Name: Mikrotik Hotspot Auth UI
@@ -14,6 +14,8 @@ Generated on: 2025-05-26 18:59:52
 ## Directory Structure
 ```
 .
+├── .claude
+│   └── instructions.md
 ├── css
 │   └── app.css
 ├── fonts
@@ -91,5 +93,5 @@ Generated on: 2025-05-26 18:59:52
 ├── rlogin.html
 └── status.html
 
-9 directories, 68 files
+10 directories, 69 files
 ```
