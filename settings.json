@@ -1,8 +1,0 @@
-{
-  "settings": {
-    "events": {
-      "active": "normal",
-      "_available": ["ramadan", "eidFitr", "eidAdha", "newYear"]
-    }
-  }
-}
