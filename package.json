@@ -6,6 +6,11 @@
 	"author": "Ashwab, Essam Barghsh",
 	"homepage": "https://www.ashwab.com",
 	"scripts": {
-		"info": "./info.sh"
+		"info": "./info.sh",
+		"plans": "./configure-plans.sh",
+		"plans:validate": "./configure-plans.sh --validate",
+		"plans:backups": "./configure-plans.sh --list-backups",
+		"plans:status": "./configure-plans.sh --file status.html",
+		"plans:help": "./configure-plans.sh --help"
 	}
 }
