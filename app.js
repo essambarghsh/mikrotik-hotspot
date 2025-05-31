@@ -20,16 +20,6 @@ class ColorPaletteChanger {
                 }
             },
             {
-                name: 'Emerald Green',
-                colors: {
-                    '--primary-color': '#10b981',
-                    '--primary-dark-color': '#059669',
-                    '--primary-light-color': '#a7f3d0',
-                    '--primary-extra-light-color': '#c6f6d5',
-                    '--body-bg-color': '#ecfdf5'
-                }
-            },
-            {
                 name: 'Purple Dream',
                 colors: {
                     '--primary-color': '#8b5cf6',
@@ -57,16 +47,6 @@ class ColorPaletteChanger {
                     '--primary-light-color': '#fda4af',
                     '--primary-extra-light-color': '#fecdd3',
                     '--body-bg-color': '#fff1f2'
-                }
-            },
-            {
-                name: 'Teal Ocean',
-                colors: {
-                    '--primary-color': '#14b8a6',
-                    '--primary-dark-color': '#0f766e',
-                    '--primary-light-color': '#99f6e4',
-                    '--primary-extra-light-color': '#ccfbf1',
-                    '--body-bg-color': '#f0fdfa'
                 }
             }
         ];
