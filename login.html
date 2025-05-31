@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>تسجيل الدخول للإنترنت</title>
     <link rel="stylesheet" href="css/app.css" type="text/css" />
-    <style type="text/css">body {font-size: 0}</style>
+    <style type="text/css">
+      body {font-size: 0}</style>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link
       rel="preload"
@@ -56,6 +57,23 @@
         document.sendin.submit();
         return false;
       }
+      
+      // Password toggle functionality
+      function togglePassword() {
+        const passwordInput = document.login.password;
+        const eyeIcon = document.querySelector('.eye-icon');
+        const eyeSlashIcon = document.querySelector('.eye-slash-icon');
+        
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          eyeIcon.style.display = 'none';
+          eyeSlashIcon.style.display = 'block';
+        } else {
+          passwordInput.type = 'password';
+          eyeIcon.style.display = 'block';
+          eyeSlashIcon.style.display = 'none';
+        }
+      }
     </script>
     $(endif)
 
@@ -101,11 +119,25 @@
                     value="$(username)"
                     placeholder="ادخل اسم المستخدم"
                   />
-                  <input
-                    name="password"
-                    type="password"
-                    placeholder="ادخل كلمة السر"
-                  />
+                  <div class="password-field">
+                    <input
+                      name="password"
+                      type="password"
+                      placeholder="ادخل كلمة السر"
+                    />
+                    <button type="button" class="password-toggle" onclick="togglePassword()" aria-label="إظهار/إخفاء كلمة السر">
+                      <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                      </svg>
+                      <svg class="eye-slash-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                        <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 11 8 11 8a13.16 13.16 0 0 1-1.67 2.68"/>
+                        <path d="M6.61 6.61A13.526 13.526 0 0 0 1 12s4 8 11 8a9.74 9.74 0 0 0 5.39-1.61"/>
+                        <line x1="2" y1="2" x2="22" y2="22"/>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
                 <div class="card-footer">
                   <input
@@ -148,6 +180,34 @@
               </div>
             </div>
           </form>
+        </div>
+      </section>
+      <section class="pricing-section text-base">
+        <div class="container">
+          <div class="plans" id="plans">
+            <div class="plan">
+              <div class="plan-header">
+                <h3 class="plan-price">50 جنية</h3>
+                <span class="usage-limit">20 جيجا</span>
+              </div>
+              <div class="plan-body">
+                <ul class="plan-speeds">
+                  <li>
+                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed">1 ميجا</span>
+                  </li>
+                  <li>
+                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed">2 ميجا</span>
+                  </li>
+                  <li>
+                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed">3 ميجا</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

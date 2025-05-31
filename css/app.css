@@ -125,7 +125,7 @@ h6 {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -243,7 +243,7 @@ input[type="button"]:active {
     margin-bottom: 16px;
 }
 
-.card-body input[type="text"]:last-child {
+.card-body input[type="text"]:last-of-type {
     margin-bottom: 0;
 }
 
@@ -434,4 +434,165 @@ input[type="button"]:active {
 .card.cart-login input[type="text"]:focus,
 .card.cart-login input[type="text"]:focus-visible {
     box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1);
+}
+
+.password-field {
+    position: relative;
+    display: block;
+    margin-top: 16px;
+}
+
+.password-toggle {
+    position: absolute;
+    left: 4px;
+    top: 4%;
+    bottom: 4px;
+    width: calc(var(--base-height-unit) - 8px);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    z-index: 2;
+    height: auto;
+}
+
+.password-toggle:hover {
+    color: var(--primary-color);
+}
+
+.password-toggle svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+    transition: color 0.2s ease;
+}
+
+.password-toggle:hover svg {
+    color: var(--primary-dark-color);
+}
+
+.password-field input[type="password"],
+.password-field input[type="text"] {
+    padding-left: var(--base-height-unit);
+}
+
+.pricing-section {
+    padding-top: 56px;
+    padding-bottom: 64px;
+    background-color: #ffffff;
+}
+
+.plans {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -12px;
+}
+
+.plan {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .plan {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .plan {
+        width: 33.333333333%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .plan {
+        width: 25%;
+    }
+}
+
+.plan-header {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    height: 100%;
+    min-width: 110px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    background-color: var(--primary-color);
+}
+
+.plan-body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-top: 2px;
+    border-bottom: 2px;
+    border-left: 2px;
+    border-right: 0;
+    border-style: solid;
+    border-color: var(--primary-light-color);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    padding: 16px;
+    padding-bottom: 4px;
+    background-color: var(--primary-extra-light-color);
+}
+
+.plan-speeds {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.plan-speeds li {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+    margin-bottom: 12px;
+}
+
+.plan-speed-icon {
+    margin-left: 8px;
+}
+
+.plan-speed-icon svg {
+    width: 16px;
+    height: 16px;
+    color: var(--primary-color);
+}
+
+.plan-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.usage-limit {
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 8px;
+    color: #ffffff;
+}
+
+.plan-speed {
+    color: #000000;
+    font-weight: 700;
+    font-size: 12px;
 }
