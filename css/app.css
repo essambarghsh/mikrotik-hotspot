@@ -548,13 +548,13 @@ input[type="button"]:active {
 }
 
 .plan-speed-icon {
-    margin-left: 8px;
+    margin-left: 4px;
 }
 
 .plan-speed-icon svg {
-    width: 16px;
-    height: 16px;
-    color: var(--primary-color);
+    width: 14px;
+    height: 14px;
+    color: #000000;
 }
 
 .plan-price {
