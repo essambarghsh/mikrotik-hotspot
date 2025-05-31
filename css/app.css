@@ -33,11 +33,11 @@
 }
 
 :root {
-    --primary-color: #7fc194;
-    --primary-dark-color: #58a570;
-    --primary-light-color: #c0e0c9;
-    --primary-extra-light-color: #cce6d3;
-    --body-bg-color: #f2f9f4;
+    --primary-color: #1877F2;
+    --primary-dark-color: #1367d2;
+    --primary-light-color: #a9cbfe;
+    --primary-extra-light-color: #bed8ff;
+    --body-bg-color: #e9f2ff;
     --transition-duration: 0.2s;
     --text-size: 0.75rem;
     --arabic-font: 'Noto Kufi Arabic', 'Arabic Typesetting', 'Traditional Arabic', Arial, sans-serif;
@@ -336,7 +336,8 @@ input[type="button"]:active {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-bottom: 80px;
 }
 
 .login-header {
@@ -406,4 +407,31 @@ input[type="button"]:active {
     line-height: 1.9;
     color: #616161;
     margin-top: 12px;
+}
+
+.card.cart-login .card-logo {
+    background-color: #000000;
+}
+
+.card.cart-login input[type="button"] {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.card.cart-login input[type="button"]:focus,
+.card.cart-login input[type="button"]:focus-visible {
+    box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card.cart-login input[type="button"]:hover {
+    background-color: #333333;
+}
+
+.card.cart-login input[type="text"] {
+    border-color: #000000;
+}
+
+.card.cart-login input[type="text"]:focus,
+.card.cart-login input[type="text"]:focus-visible {
+    box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1);
 }
