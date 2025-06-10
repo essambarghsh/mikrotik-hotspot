@@ -72,6 +72,8 @@ check_plans_file() {
         echo '      "price": "50 جنية",'
         echo '      "data_limit": "20 جيجا",'
         echo '      "badge": "20GB",'
+        echo '      "extra_badge": "Popular",'
+        echo '      "css_classes": ["featured", "discount"],'
         echo '      "speeds": ["1 ميجا", "2 ميجا", "3 ميجا"]'
         echo '    }'
         echo '  ]'
@@ -105,14 +107,24 @@ validate_json() {
     for ((i=0; i<plan_count; i++)); do
         local plan=$(jq ".plans[$i]" "$PLANS_FILE")
         
+        # Check required fields
         if ! echo "$plan" | jq -e 'has("price") and has("data_limit") and has("badge") and has("speeds")' > /dev/null; then
             print_error "Plan $((i+1)) missing required fields (price, data_limit, badge, speeds)"
             exit 1
         fi
         
+        # Check speeds is array
         if ! echo "$plan" | jq -e '.speeds | type == "array"' > /dev/null; then
             print_error "Plan $((i+1)) speeds must be an array"
             exit 1
+        fi
+        
+        # Check optional css_classes is array if present
+        if echo "$plan" | jq -e 'has("css_classes")' > /dev/null; then
+            if ! echo "$plan" | jq -e '.css_classes | type == "array"' > /dev/null; then
+                print_error "Plan $((i+1)) css_classes must be an array"
+                exit 1
+            fi
         fi
     done
     
@@ -126,9 +138,37 @@ generate_plan_html() {
     local data_limit=$(echo "$plan_json" | jq -r '.data_limit')
     local badge=$(echo "$plan_json" | jq -r '.badge')
     
+    # Get extra badge (optional)
+    local extra_badge=""
+    if echo "$plan_json" | jq -e 'has("extra_badge")' > /dev/null; then
+        extra_badge=$(echo "$plan_json" | jq -r '.extra_badge // ""')
+    fi
+    
+    # Get CSS classes (optional)
+    local css_classes="plan"
+    if echo "$plan_json" | jq -e 'has("css_classes")' > /dev/null; then
+        local custom_classes=$(echo "$plan_json" | jq -r '.css_classes[]?' | tr '\n' ' ')
+        if [[ -n "$custom_classes" ]]; then
+            css_classes="plan $custom_classes"
+        fi
+    fi
+    
+    # Start the plan div with custom classes and badges container
     cat << EOF
-            <div class="plan">
-              <div class="plan-badge">$badge</div>
+            <div class="$css_classes">
+              <div class="badges">
+                <div class="plan-badge">$badge</div>
+EOF
+
+    # Add extra badge if it exists
+    if [[ -n "$extra_badge" && "$extra_badge" != "null" ]]; then
+        cat << EOF
+                <div class="extra-badge">$extra_badge</div>
+EOF
+    fi
+
+    cat << EOF
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">$price</h3>
                 <span class="usage-limit">$data_limit</span>
@@ -277,13 +317,40 @@ show_summary() {
     echo "  • Source file: $PLANS_FILE"
     echo
     print_status "Plan details:"
-    jq -r '.plans[] | "  • \(.price) - \(.data_limit) - [\(.badge)] - \(.speeds | length) speeds"' "$PLANS_FILE"
+    
+    # Enhanced summary showing new features
+    for ((i=0; i<plan_count; i++)); do
+        local plan=$(jq ".plans[$i]" "$PLANS_FILE")
+        local price=$(echo "$plan" | jq -r '.price')
+        local data_limit=$(echo "$plan" | jq -r '.data_limit')
+        local badge=$(echo "$plan" | jq -r '.badge')
+        local speeds_count=$(echo "$plan" | jq '.speeds | length')
+        
+        # Check for extra badge
+        local extra_info=""
+        if echo "$plan" | jq -e 'has("extra_badge")' > /dev/null; then
+            local extra_badge=$(echo "$plan" | jq -r '.extra_badge // ""')
+            if [[ -n "$extra_badge" && "$extra_badge" != "null" ]]; then
+                extra_info=" +Badge:$extra_badge"
+            fi
+        fi
+        
+        # Check for CSS classes
+        if echo "$plan" | jq -e 'has("css_classes")' > /dev/null; then
+            local classes=$(echo "$plan" | jq -r '.css_classes[]?' | tr '\n' ',' | sed 's/,$//')
+            if [[ -n "$classes" ]]; then
+                extra_info="$extra_info +Classes:$classes"
+            fi
+        fi
+        
+        echo "  • $price - $data_limit - [$badge] - $speeds_count speeds$extra_info"
+    done
 }
 
 # Main execution
 main() {
-    echo "🎯 Mikrotik Hotspot Plan Configurator"
-    echo "======================================"
+    echo "🎯 Mikrotik Hotspot Plan Configurator (Enhanced)"
+    echo "==============================================="
     echo
     
     # Set target file
@@ -329,17 +396,23 @@ while [[ $# -gt 0 ]]; do
             echo "  $PLANS_FILE          JSON file containing plan data (required)"
             echo "  HTML files           Files containing <div class=\"plans\" id=\"plans\">"
             echo
-            echo "JSON Structure:"
+            echo "Enhanced JSON Structure:"
             echo "  {"
             echo "    \"plans\": ["
             echo "      {"
             echo "        \"price\": \"50 جنية\","
             echo "        \"data_limit\": \"20 جيجا\","
             echo "        \"badge\": \"20GB\","
+            echo "        \"extra_badge\": \"Popular\",          // Optional"
+            echo "        \"css_classes\": [\"featured\", \"discount\"], // Optional"
             echo "        \"speeds\": [\"1 ميجا\", \"2 ميجا\"]"
             echo "      }"
             echo "    ]"
             echo "  }"
+            echo
+            echo "New Features:"
+            echo "  • extra_badge: Additional badge text (e.g., 'Popular', 'Best Value')"
+            echo "  • css_classes: Array of custom CSS classes for styling"
             echo
             echo "Examples:"
             echo "  $0                   Update login.html with plans from plans.json"

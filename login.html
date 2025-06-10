@@ -6,9 +6,12 @@
     <meta http-equiv="expires" content="-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>تسجيل الدخول للإنترنت</title>
-    <link rel="stylesheet" href="css/app.css" type="text/css" />
+    <link rel="stylesheet" href="css/app.css?v=2.0.0" type="text/css" />
     <style type="text/css">
-      body {font-size: 0}</style>
+      body {
+        font-size: 0;
+      }
+    </style>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link
       rel="preload"
@@ -57,136 +60,195 @@
         document.sendin.submit();
         return false;
       }
-      
+
       // Password toggle functionality
       function togglePassword() {
         const passwordInput = document.login.password;
-        const eyeIcon = document.querySelector('.eye-icon');
-        const eyeSlashIcon = document.querySelector('.eye-slash-icon');
-        
-        if (passwordInput.type === 'password') {
-          passwordInput.type = 'text';
-          eyeIcon.style.display = 'none';
-          eyeSlashIcon.style.display = 'block';
+        const eyeIcon = document.querySelector(".eye-icon");
+        const eyeSlashIcon = document.querySelector(".eye-slash-icon");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          eyeIcon.style.display = "none";
+          eyeSlashIcon.style.display = "block";
         } else {
-          passwordInput.type = 'password';
-          eyeIcon.style.display = 'block';
-          eyeSlashIcon.style.display = 'none';
+          passwordInput.type = "password";
+          eyeIcon.style.display = "block";
+          eyeSlashIcon.style.display = "none";
         }
       }
     </script>
     $(endif)
 
-    <main class="mine">
+    <main class="main">
       <section class="login-section">
         <div class="container login-container">
-          <div class="login-header">
-            <h1 class="login-title">
-                <span class="ha">HA</span>
-                <span>تسجيل الدخول</span>
-            </h1>
-            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"><g fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M2.75 8.988A12.068 12.068 0 0 1 21.25 9"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5.64 11.964a8.297 8.297 0 0 1 12.72.01m-9.805 3.029a4.495 4.495 0 0 1 6.89.005"/><circle cx="12" cy="17.878" r="1.445" fill="currentColor"/></g></svg>
-          </div>
-          $(if error)
-          <div class="login-error-message text-base">
-            <img src="img/iconoir--wifi-error.png" alt="" />
-            <span>$(error)</span>
-          </div>
-          $(endif)
-          <form
-            name="login"
-            action="$(link-login-only)"
-            method="post"
-            onSubmit="return false;"
-          >
-            <input type="hidden" name="dst" value="$(link-orig)" />
-            <input type="hidden" name="popup" value="true" />
-            <div class="login-cards text-base">
-              <div class="card user-login">
-                <div class="card-header">
-                  <div class="card-logo">
-                    <img src="img/solar--user-bold-duotone-md.png" alt="" />
-                  </div>
-                  <div class="card-info">
-                    <h2 class="card-title">عندك باقة؟</h2>
-                    <p class="card-subtitle">سجل الدخول باستخدام باقتك</p>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <input
-                    name="username"
-                    type="text"
-                    value="$(username)"
-                    placeholder="ادخل اسم المستخدم"
-                  />
-                  <div class="password-field">
-                    <input
-                      name="password"
-                      type="password"
-                      placeholder="ادخل كلمة السر"
+          <div class="login-main">
+            <div class="login-content">
+              <div class="login-header">
+                <h1 class="login-title">
+                  <span class="ha">HA</span>
+                  <span>تسجيل الدخول</span>
+                </h1>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="80"
+                  height="80"
+                  viewBox="0 0 24 24"
+                >
+                  <g fill="none">
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2.2"
+                      d="M2.75 8.988A12.068 12.068 0 0 1 21.25 9"
                     />
-                    <button type="button" class="password-toggle" onclick="togglePassword()" aria-label="إظهار/إخفاء كلمة السر">
-                      <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                      </svg>
-                      <svg class="eye-slash-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                        <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 11 8 11 8a13.16 13.16 0 0 1-1.67 2.68"/>
-                        <path d="M6.61 6.61A13.526 13.526 0 0 0 1 12s4 8 11 8a9.74 9.74 0 0 0 5.39-1.61"/>
-                        <line x1="2" y1="2" x2="22" y2="22"/>
-                      </svg>
-                    </button>
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2.2"
+                      d="M5.64 11.964a8.297 8.297 0 0 1 12.72.01m-9.805 3.029a4.495 4.495 0 0 1 6.89.005"
+                    />
+                    <circle cx="12" cy="17.878" r="1.445" fill="currentColor" />
+                  </g>
+                </svg>
+              </div>
+              $(if error)
+              <div class="login-error-message text-base">
+                <img src="img/iconoir--wifi-error.png" alt="" />
+                <span>$(error)</span>
+              </div>
+              $(endif)
+              <form
+                name="login"
+                action="$(link-login-only)"
+                method="post"
+                onSubmit="return false;"
+              >
+                <input type="hidden" name="dst" value="$(link-orig)" />
+                <input type="hidden" name="popup" value="true" />
+                <div class="login-cards text-base">
+                  <div class="card user-login">
+                    <div class="card-header">
+                      <div class="card-logo">
+                        <img src="img/solar--user-bold-duotone-md.png" alt="" />
+                      </div>
+                      <div class="card-info">
+                        <h2 class="card-title">عندك باقة؟</h2>
+                        <p class="card-subtitle">سجل الدخول باستخدام باقتك</p>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <input
+                        name="username"
+                        type="text"
+                        value="$(username)"
+                        placeholder="ادخل اسم المستخدم"
+                      />
+                      <div class="password-field">
+                        <input
+                          name="password"
+                          type="password"
+                          placeholder="ادخل كلمة السر"
+                        />
+                        <button
+                          type="button"
+                          class="password-toggle"
+                          onclick="togglePassword()"
+                          aria-label="إظهار/إخفاء كلمة السر"
+                        >
+                          <svg
+                            class="eye-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path
+                              d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                            />
+                            <circle cx="12" cy="12" r="3" />
+                          </svg>
+                          <svg
+                            class="eye-slash-icon"
+                            style="display: none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
+                            <path
+                              d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 11 8 11 8a13.16 13.16 0 0 1-1.67 2.68"
+                            />
+                            <path
+                              d="M6.61 6.61A13.526 13.526 0 0 0 1 12s4 8 11 8a9.74 9.74 0 0 0 5.39-1.61"
+                            />
+                            <line x1="2" y1="2" x2="22" y2="22" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <input
+                        type="button"
+                        value="تسجيل الدخول"
+                        onClick="doLogin('normal')"
+                      />
+                    </div>
+                  </div>
+                  <div class="dividing-line">
+                    <span>أو</span>
+                  </div>
+                  <div class="card cart-login">
+                    <div class="card-header">
+                      <div class="card-logo">
+                        <img src="img/solar--card-2-bold.png" alt="" />
+                      </div>
+                      <div class="card-info">
+                        <h2 class="card-title">معاك كارت فكة؟</h2>
+                        <p class="card-subtitle hidden md:block">
+                          سجل الدخول باستخدام كارت فكة
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <input
+                        name="cardnumber"
+                        type="text"
+                        placeholder="ادخل رقم الكارت"
+                      />
+                    </div>
+                    <div class="card-footer">
+                      <input
+                        class="!bg-[#ff9c3f]"
+                        type="button"
+                        value="الدخول بالكارت"
+                        onClick="doLogin('card')"
+                      />
+                    </div>
                   </div>
                 </div>
-                <div class="card-footer">
-                  <input
-                    type="button"
-                    value="تسجيل الدخول"
-                    onClick="doLogin('normal')"
-                  />
-                </div>
-              </div>
-              <div class="dividing-line">
-                <span>أو</span>
-              </div>
-              <div class="card cart-login">
-                <div class="card-header">
-                  <div class="card-logo">
-                    <img src="img/solar--card-2-bold.png" alt="" />
-                  </div>
-                  <div class="card-info">
-                    <h2 class="card-title">معاك كارت فكة؟</h2>
-                    <p class="card-subtitle hidden md:block">
-                      سجل الدخول باستخدام كارت فكة
-                    </p>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <input
-                    name="cardnumber"
-                    type="text"
-                    placeholder="ادخل رقم الكارت"
-                  />
-                </div>
-                <div class="card-footer">
-                  <input
-                    class="!bg-[#ff9c3f]"
-                    type="button"
-                    value="الدخول بالكارت"
-                    onClick="doLogin('card')"
-                  />
-                </div>
-              </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       </section>
       <section class="pricing-section text-base">
         <div class="container">
           <div class="plans" id="plans">
             <div class="plan">
-              <div class="plan-badge">20GB</div>
+              <div class="badges">
+                <div class="plan-badge">20GB</div>
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">50 جنية</h3>
                 <span class="usage-limit">20 جيجا</span>
@@ -210,7 +272,9 @@
             </div>
 
             <div class="plan">
-              <div class="plan-badge">30GB</div>
+              <div class="badges">
+                <div class="plan-badge">30GB</div>
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">75 جنية</h3>
                 <span class="usage-limit">30 جيجا</span>
@@ -238,7 +302,9 @@
             </div>
 
             <div class="plan">
-              <div class="plan-badge">40GB</div>
+              <div class="badges">
+                <div class="plan-badge">40GB</div>
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">100 جنية</h3>
                 <span class="usage-limit">40 جيجا</span>
@@ -274,7 +340,9 @@
             </div>
 
             <div class="plan">
-              <div class="plan-badge">60GB</div>
+              <div class="badges">
+                <div class="plan-badge">60GB</div>
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">140 جنية</h3>
                 <span class="usage-limit">60 جيجا</span>
@@ -306,7 +374,9 @@
             </div>
 
             <div class="plan">
-              <div class="plan-badge">80GB</div>
+              <div class="badges">
+                <div class="plan-badge">80GB</div>
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">190 جنية</h3>
                 <span class="usage-limit">80 جيجا</span>
@@ -342,7 +412,9 @@
             </div>
 
             <div class="plan">
-              <div class="plan-badge">100GB</div>
+              <div class="badges">
+                <div class="plan-badge">100GB</div>
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">230 جنية</h3>
                 <span class="usage-limit">100 جيجا</span>
@@ -378,7 +450,9 @@
             </div>
 
             <div class="plan">
-              <div class="plan-badge">140GB</div>
+              <div class="badges">
+                <div class="plan-badge">140GB</div>
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">300 جنية</h3>
                 <span class="usage-limit">140 جيجا</span>
@@ -414,7 +488,9 @@
             </div>
 
             <div class="plan">
-              <div class="plan-badge">180GB</div>
+              <div class="badges">
+                <div class="plan-badge">180GB</div>
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">400 جنية</h3>
                 <span class="usage-limit">180 جيجا</span>
@@ -450,7 +526,9 @@
             </div>
 
             <div class="plan">
-              <div class="plan-badge">230GB</div>
+              <div class="badges">
+                <div class="plan-badge">230GB</div>
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">500 جنية</h3>
                 <span class="usage-limit">230 جيجا</span>
@@ -486,7 +564,9 @@
             </div>
 
             <div class="plan">
-              <div class="plan-badge">300GB</div>
+              <div class="badges">
+                <div class="plan-badge">300GB</div>
+              </div>
               <div class="plan-header">
                 <h3 class="plan-price">640 جنية</h3>
                 <span class="usage-limit">300 جيجا</span>
@@ -520,10 +600,48 @@
                 </ul>
               </div>
             </div>
+
+            <div class="plan cart ">
+              <div class="badges">
+                <div class="plan-badge">2GB</div>
+                <div class="extra-badge">كارت فكة</div>
+              </div>
+              <div class="plan-header">
+                <h3 class="plan-price">11 جنية</h3>
+                <span class="usage-limit">2 جيجا</span>
+              </div>
+              <div class="plan-body">
+                <ul class="plan-speeds">
+                  <li>
+                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed">5 ميجا</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="plan cart ">
+              <div class="badges">
+                <div class="plan-badge">4GB</div>
+                <div class="extra-badge">كارت فكة</div>
+              </div>
+              <div class="plan-header">
+                <h3 class="plan-price">20 جنية</h3>
+                <span class="usage-limit">4 جيجا</span>
+              </div>
+              <div class="plan-body">
+                <ul class="plan-speeds">
+                  <li>
+                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed">5 ميجا</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
-    <script src="app.js" type="text/javascript"></script>
+    <script src="app.js?v=2.0.0" type="text/javascript"></script>
   </body>
 </html>

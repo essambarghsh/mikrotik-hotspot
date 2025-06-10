@@ -123,6 +123,26 @@
                 "16 ميجا",
                 "30 ميجا"
             ]
+        },
+        {
+            "price": "11 جنية",
+            "data_limit": "2 جيجا",
+            "badge": "2GB",
+            "extra_badge": "كارت فكة",
+            "css_classes": ["cart"],
+            "speeds": [
+                "5 ميجا"
+            ]
+        },
+        {
+            "price": "20 جنية",
+            "data_limit": "4 جيجا",
+            "badge": "4GB",
+            "extra_badge": "كارت فكة",
+            "css_classes": ["cart"],
+            "speeds": [
+                "5 ميجا"
+            ]
         }
     ]
 }

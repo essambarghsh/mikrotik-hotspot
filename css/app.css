@@ -262,7 +262,6 @@ input[type="button"]:active {
 }
 
 .login-cards {
-    max-width: 500px;
     margin: 0 auto;
 }
 
@@ -310,7 +309,6 @@ input[type="button"]:active {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    max-width: 500px;
     border-radius: 16px;
     border: 1px solid #e7c9c9;
     background-color: #b91c1c0d;
@@ -337,7 +335,7 @@ input[type="button"]:active {
     justify-content: center;
     min-height: 100vh;
     padding-top: 20px;
-    padding-bottom: 80px;
+    padding-bottom: 56px;
 }
 
 .login-header {
@@ -497,37 +495,44 @@ input[type="button"]:active {
     position: relative;
     display: flex;
     align-items: center;
+    flex-direction: column;
     padding: 16px;
     width: 100%;
+    margin-bottom: 16px;
 }
 
 .plan-header {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 1rem;
+    padding: 16px;
+    padding-top: 28px;
     height: 100%;
-    width: 160px;
+    width: 100%;
     min-width: 160px;
-    max-width: 160px;
+    max-width: 100%;
     border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
+    border-top-left-radius: 16px;
     background-color: var(--primary-color);
 }
 
 .plan-body {
     display: flex;
+    justify-content: center;
     height: 100%;
+    width: 100%;
     flex-grow: 1;
-    border-top: 2px;
     border-bottom: 2px;
     border-left: 2px;
-    border-right: 0;
+    border-right: 2px;
+    border-top: 0;
     border-style: solid;
     border-color: var(--primary-light-color);
-    border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
-    padding: 16px;
+    border-bottom-right-radius: 16px;
+    padding-top: 16px;
+    padding-left: 13px;
+    padding-right: 16px;
     padding-bottom: 4px;
     background-color: var(--primary-extra-light-color);
 }
@@ -535,6 +540,7 @@ input[type="button"]:active {
 .plan-speeds {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -582,35 +588,97 @@ input[type="button"]:active {
     font-size: 12px;
 }
 
-.plan-badge {
+.badges {
     position: absolute;
-    left: 12px;
-    top: -0;
+    top: -5px;
+    left: 8px;
+    right: auto;
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+    pointer-events: none;
+    gap: 8px;
+    z-index: 10;
+}
+
+.plan-badge,
+.extra-badge {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 32px;
+    height: 38px;
     padding: 0 16px;
     border-radius: 9999px;
+    border: 3px solid #ffffff;
     font-size: 12px;
     font-weight: 700;
     background-color: var(--primary-color);
     color: #ffffff;
+    transition: var(--transition-duration) all;
+}
+
+.plan.cart {
+    --primary-color: #000000;
+    --primary-light-color: #00000036;
+    --primary-extra-light-color: #0000000d;
+}
+
+.login-container {
+    width: 100%;
+}
+
+.login-main {
+    border-color: var(--primary-extra-light-color);
 }
 
 @media (min-width: 768px) {
     .plan {
         width: 50%;
     }
+
+    .login-content {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .login-main {
+        background-color: #ffffff;
+        border-radius: 16px;
+        padding-inline: 32px;
+        padding-block: 56px;
+        border: 2px dashed var(--primary-extra-light-color);
+    }
 }
 
 @media (min-width: 1024px) {
     .plan {
-        width: 33.333333333%;
+        flex-direction: row;
     }
 
     .plan-badge {
         left: 4px;
+    }
+
+    .plan-header {
+        width: 160px;
+        max-width: 160px;
+        border-top-right-radius: 16px;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 16px;
+    }
+
+    .plan-body {
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 0;
+        border-bottom: 2px;
+        border-left: 2px;
+        border-right: 0;
+        border-top: 2px;
+        border-style: solid;
+        border-color: var(--primary-light-color);
+        padding-top: 28px;
+        justify-content: start;
     }
 }
 
