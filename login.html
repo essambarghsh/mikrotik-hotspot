@@ -118,7 +118,60 @@
               $(if error)
               <div class="login-error-message text-base">
                 <img src="img/iconoir--wifi-error.png" alt="" />
-                <span>$(error)</span>
+                <span>
+                  <script type="text/javascript">
+                      var error = "$(error)";
+                      if (error == "user_exceeded_download_quota") {
+                          document.write("انتهت كمية التحميل لهذا الجهاز . ");
+                      }
+                      else if (error == "account_expired") {
+                          document.write("عفوا الاشتراك منتهى . ");
+                      }
+                      else if (error == "already authorizing, retry later") {
+                          document.write("برجاء اعادة المحاولة");
+                      }
+                      else if (error == "Incorrect_MAC_address") {
+                          document.write("هذا الجهاز لايملك صلاحية لاستخدام هذا اليوزر . ");
+                      }
+                      else if (error == "user_exceeded_daily_uptime_quota") {
+                          document.write("انتهت مدة الوقت المخصصة لهذا اليوم  . ");
+                      }
+                      else if (error == "user_exceeded_daily_uptime_quota") {
+                          document.write("انتهت مدة الوقت المخصصة لهذا اليوم  . ");
+                      }
+                      else if (error == "RADIUS server is not responding") {
+                          document.write("من فضلك اعد المحاولة وكتابة الارقام بطرقة اسرع . ");
+                      }
+                      else if (error == "user_exceeded_daily_upload_quota") {
+                          document.write("انتهت كمية اليوم المخصصة للرفع . ");
+                      }
+                      else if (error == "user_exceeded_daily_total_quota") {
+                          document.write("انتهت الكمية الكلية المخصصة لليوم . ");
+                      }
+                      else if (error == "User Disabled") {
+                          document.write("تم ايقاف هذا المستخدم");
+                      }
+                      else if (error == "invalid username or password") {
+                          document.write("اسم المستخدم او كلمة السر خاطئة");
+                      }
+                      else if (error.search("traffic limit") != -1) {
+                          document.write("لقد انتهى رصيد تحميل هذا الحساب");
+                      }
+                      else if (error == "Login Failed. Please check your username and password") {
+                          document.write("تاكد من ادخال بيانات صحيحة وباللغة الانجليزية .");
+                      }
+                      else if (error.search("Invalid_srvid") != -1) {
+                          document.write("لا يوجد صلاحيات لاستخدام هذا الحساب يرجا الاتصال بالدعم الفنى");
+                      }
+                      else if (error.search("not found") != -1) {
+                          document.write("لقد ادخلت اسم المستخدم بطريقة غير صحيحة، الرجاء المحاولة مرة اخرى ");
+                      }
+                      else if (error == "user_exceeded_total_quota_limit") {
+                          document.write("لقد انتهى رصيد تحميل هذا الحساب");
+                      }
+                      else document.write("$(error)<br />")
+                  </script>
+                </span>
               </div>
               $(endif)
               <form
@@ -256,15 +309,111 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">1 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">2 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">3 ميجا</span>
                   </li>
                 </ul>
@@ -282,19 +431,147 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">1 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">2 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">3 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">4 ميجا</span>
                   </li>
                 </ul>
@@ -312,27 +589,219 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">1 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">2 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">3 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">4 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">5 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">8 ميجا</span>
                   </li>
                 </ul>
@@ -350,23 +819,183 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">1 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">2 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">5 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">8 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">16 ميجا</span>
                   </li>
                 </ul>
@@ -384,27 +1013,219 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">2 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">4 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">5 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">8 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">16 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">30 ميجا</span>
                   </li>
                 </ul>
@@ -422,27 +1243,219 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">2 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">4 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">5 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">8 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">16 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">30 ميجا</span>
                   </li>
                 </ul>
@@ -460,27 +1473,219 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">2 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">4 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">5 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">8 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">16 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">30 ميجا</span>
                   </li>
                 </ul>
@@ -498,27 +1703,219 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">2 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">4 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">5 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">8 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">16 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">30 ميجا</span>
                   </li>
                 </ul>
@@ -536,27 +1933,219 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">2 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">4 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">5 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">8 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">16 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">30 ميجا</span>
                   </li>
                 </ul>
@@ -574,34 +2163,226 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">2 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">4 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">5 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">8 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">16 ميجا</span>
                   </li>
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">30 ميجا</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div class="plan cart ">
+            <div class="plan cart">
               <div class="badges">
                 <div class="plan-badge">2GB</div>
                 <div class="extra-badge">كارت فكة</div>
@@ -613,14 +2394,46 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">5 ميجا</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div class="plan cart ">
+            <div class="plan cart">
               <div class="badges">
                 <div class="plan-badge">4GB</div>
                 <div class="extra-badge">كارت فكة</div>
@@ -632,7 +2445,39 @@
               <div class="plan-body">
                 <ul class="plan-speeds">
                   <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
+                    <span class="plan-speed-icon"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                      >
+                        <defs>
+                          <mask id="ipSCheckOne0">
+                            <g
+                              fill="none"
+                              stroke-linejoin="round"
+                              stroke-width="4"
+                            >
+                              <path
+                                fill="#fff"
+                                stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"
+                              />
+                              <path
+                                stroke="#000"
+                                stroke-linecap="round"
+                                d="m16 24l6 6l12-12"
+                              />
+                            </g>
+                          </mask>
+                        </defs>
+                        <path
+                          fill="currentColor"
+                          d="M0 0h48v48H0z"
+                          mask="url(#ipSCheckOne0)"
+                        /></svg
+                    ></span>
                     <span class="plan-speed">5 ميجا</span>
                   </li>
                 </ul>
