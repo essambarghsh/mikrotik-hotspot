@@ -201,6 +201,18 @@ input[type="button"]:active {
     transform: scale(0.95);
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 .text-base {
     font-size: var(--text-size);
     line-height: 1.5;
@@ -642,11 +654,10 @@ input[type="button"]:active {
     }
 
     .login-main {
-        background-color: #ffffff;
         border-radius: 16px;
         padding-inline: 32px;
         padding-block: 56px;
-        border: 2px dashed var(--primary-extra-light-color);
+        border: 3px dashed var(--primary-extra-light-color);
     }
 }
 

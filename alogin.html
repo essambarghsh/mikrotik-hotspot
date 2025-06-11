@@ -1,21 +1,107 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>شبكة HA</title>
-        <link rel="stylesheet" href="css/app.css?v=2.0.0" type="text/css" />
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
-        <link rel="preload" href="fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Regular.ttf" as="font" type="font/ttf" crossorigin>
-        <link rel="preload" href="fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Bold.ttf" as="font" type="font/ttf" crossorigin>
-    </head>
 
-    <body>
-        <main class="main">
-            <section class="hero">
-                
-            </section>
-        </main>
-        <script src="app.js?v=2.0.0" type="text/javascript"></script>
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>شبكة HA</title>
+    <link rel="stylesheet" href="css/app.css?v=2.0.0" type="text/css" />
+    <link rel="stylesheet" href="css/page.css?v=2.0.0" type="text/css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preload" href="fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Regular.ttf" as="font" type="font/ttf"
+        crossorigin />
+    <link rel="preload" href="fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Bold.ttf" as="font" type="font/ttf"
+        crossorigin />
+    <link href="libs/css/aos.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <main class="main">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="container">
+                    <div class="hero-header">
+                        <div class="first">
+                            <div class="hero-logo" data-aos="flip-left" data-aos-delay="50">HA</div>
+                            <div class="hero-info">
+                                <h1 class="hero-title" data-aos="fade-down" data-aos-delay="200">معاك في كل مكان</h1>
+                                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">افتح واي فاي في اي مكان
+                                    من خلال شبكتنا</p>
+                                <ul class="hero-villages-list">
+                                    <li data-aos="fade-up" data-aos-delay="600">قراقص</li>
+                                    <li data-aos="fade-up" data-aos-delay="800">غربال</li>
+                                    <li data-aos="fade-up" data-aos-delay="1000">الحمامية</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="end">
+                            <span data-aos="flip-up" data-aos-delay="1200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24">
+                                    <g fill="none">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2.2" d="M2.75 8.988A12.068 12.068 0 0 1 21.25 9"></path>
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2.2"
+                                            d="M5.64 11.964a8.297 8.297 0 0 1 12.72.01m-9.805 3.029a4.495 4.495 0 0 1 6.89.005">
+                                        </path>
+                                        <circle cx="12" cy="17.878" r="1.445" fill="currentColor"></circle>
+                                    </g>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="featured-services">
+                        <ul>
+                            <li data-aos="flip-right" data-aos-delay="600">
+                                <a href="http://70.70.70.70/web/index.html#!/home" target="_blank">
+                                    <img src="img/mjala.jpg" alt="Mjala">
+                                </a>
+                            </li>
+                            <li data-aos="flip-right" data-aos-delay="800">
+                                <a href="http://70.70.70.70/web/index.html#!/list/list.html?parentId=22240&serverId=2e6989ec819648f68aa061a8ac1b9ef7"
+                                    target="_blank">
+                                    <img src="img/bein-sport.jpg" alt="Bein Sport">
+                                </a>
+                            </li>
+                            <li data-aos="flip-right" data-aos-delay="1000">
+                                <a href="http://snono.org/user-pro/#/user/home/dashboard" target="_blank">
+                                    <img src="img/subscription-management.jpg" alt="Subscription Management">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="shortcuts" id="shortcuts">
+                        <div class="shortcut" data-aos="fade-up" data-aos-delay="600">
+                            <a href="https://www.google.com" target="_blank" title="Google">
+                                <img src="img/sites/logos--google-icon.png" alt="Google">
+                                <span class="sr-only">Google</span>
+                            </a>
+                        </div>
+                        <div class="shortcut" data-aos="fade-up" data-aos-delay="800">
+                            <a href="https://chatgpt.com" target="_blank" title="ChatGPT">
+                                <img src="img/sites/chatgpt.png" alt="ChatGPT">
+                                <span class="sr-only">ChatGPT</span>
+                            </a>
+                        </div>
+                        <div class="shortcut" data-aos="fade-up" data-aos-delay="1000">
+                            <a href="https://claude.ai" target="_blank" title="Claude">
+                                <img src="img/sites/claude.png" alt="Claude">
+                                <span class="sr-only">Claude</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="app.js?v=2.0.0" type="text/javascript"></script>
+    <script src="libs/js/aos.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        AOS.init({
+            duration: 600,
+            once: true,
+        })
+    </script>
+</body>
+
 </html>
