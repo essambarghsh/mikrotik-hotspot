@@ -1,0 +1,124 @@
+{
+    "shortcuts": [
+        {
+            "name": "Google",
+            "url": "https://www.google.com",
+            "icon": "img/sites/google-new.png",
+            "target": "_blank"
+        },
+        {
+            "name": "ChatGPT",  
+            "url": "https://chatgpt.com",
+            "icon": "img/sites/chatgpt.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Claude",
+            "url": "https://claude.ai", 
+            "icon": "img/sites/claude.png",
+            "target": "_blank"
+        },
+        {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "icon": "img/sites/youtube.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Facebook",
+            "url": "https://www.facebook.com",
+            "icon": "img/sites/logos--facebook.png", 
+            "target": "_blank"
+        },
+        {
+            "name": "Messenger",
+            "url": "https://www.messenger.com",
+            "icon": "img/sites/logos--messenger.png", 
+            "target": "_blank"
+        },
+        {
+            "name": "X (Twitter)",
+            "url": "https://www.twitter.com",
+            "icon": "img/sites/twitter.png", 
+            "target": "_blank"
+        },
+        {
+            "name": "Snapchat",
+            "url": "https://www.snapchat.com",
+            "icon": "img/sites/snapchat.png", 
+            "target": "_blank"
+        },
+        {
+            "name": "WhatsApp",
+            "url": "https://web.whatsapp.com",
+            "icon": "img/sites/logos--whatsapp-icon.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Instagram", 
+            "url": "https://www.instagram.com",
+            "icon": "img/sites/instagram.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Gmail",
+            "url": "https://gmail.com",
+            "icon": "img/sites/gmail.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Google Play",
+            "url": "https://play.google.com/store/games",
+            "icon": "img/sites/logos--google-play-icon.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Google Maps",
+            "url": "https://www.google.com/maps",
+            "icon": "img/sites/logos--google-maps.png",
+            "target": "_blank"
+        },
+        {
+            "name": "WATCH IT",
+            "url": "https://www.watchit.com",
+            "icon": "img/sites/watchit.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Telegram",
+            "url": "https://web.telegram.org",
+            "icon": "img/sites/logos--telegram.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Outlook",
+            "url": "https://login.live.com",
+            "icon": "img/sites/vscode-icons--file-type-outlook.png",
+            "target": "_blank"
+        },
+        {
+            "name": "1Password",
+            "url": "https://my.1password.com",
+            "icon": "img/sites/mdi--1password.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "icon": "img/sites/netflix.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Quora",
+            "url": "https://quora.com",
+            "icon": "img/sites/quora.png",
+            "target": "_blank"
+        },
+        {
+            "name": "اليوم السابع",
+            "url": "https://www.youm7.com",
+            "icon": "img/sites/youm7.png",
+            "target": "_blank"
+        }
+    ]
+}

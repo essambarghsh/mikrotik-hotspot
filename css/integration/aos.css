@@ -1,0 +1,76 @@
+/* Extended AOS Delay Support: 3100ms - 10000ms (100ms increments) */
+/* Add this to your css/app.css file */
+
+/* AOS only supports delays up to 3000ms by default */
+/* These rules extend support from 3100ms to 10000ms with 100ms steps */
+
+body[data-aos-delay='3100'] [data-aos], [data-aos][data-aos][data-aos-delay='3100'] { transition-delay: 3100ms; }
+body[data-aos-delay='3200'] [data-aos], [data-aos][data-aos][data-aos-delay='3200'] { transition-delay: 3200ms; }
+body[data-aos-delay='3300'] [data-aos], [data-aos][data-aos][data-aos-delay='3300'] { transition-delay: 3300ms; }
+body[data-aos-delay='3400'] [data-aos], [data-aos][data-aos][data-aos-delay='3400'] { transition-delay: 3400ms; }
+body[data-aos-delay='3500'] [data-aos], [data-aos][data-aos][data-aos-delay='3500'] { transition-delay: 3500ms; }
+body[data-aos-delay='3600'] [data-aos], [data-aos][data-aos][data-aos-delay='3600'] { transition-delay: 3600ms; }
+body[data-aos-delay='3700'] [data-aos], [data-aos][data-aos][data-aos-delay='3700'] { transition-delay: 3700ms; }
+body[data-aos-delay='3800'] [data-aos], [data-aos][data-aos][data-aos-delay='3800'] { transition-delay: 3800ms; }
+body[data-aos-delay='3900'] [data-aos], [data-aos][data-aos][data-aos-delay='3900'] { transition-delay: 3900ms; }
+body[data-aos-delay='4000'] [data-aos], [data-aos][data-aos][data-aos-delay='4000'] { transition-delay: 4000ms; }
+body[data-aos-delay='4100'] [data-aos], [data-aos][data-aos][data-aos-delay='4100'] { transition-delay: 4100ms; }
+body[data-aos-delay='4200'] [data-aos], [data-aos][data-aos][data-aos-delay='4200'] { transition-delay: 4200ms; }
+body[data-aos-delay='4300'] [data-aos], [data-aos][data-aos][data-aos-delay='4300'] { transition-delay: 4300ms; }
+body[data-aos-delay='4400'] [data-aos], [data-aos][data-aos][data-aos-delay='4400'] { transition-delay: 4400ms; }
+body[data-aos-delay='4500'] [data-aos], [data-aos][data-aos][data-aos-delay='4500'] { transition-delay: 4500ms; }
+body[data-aos-delay='4600'] [data-aos], [data-aos][data-aos][data-aos-delay='4600'] { transition-delay: 4600ms; }
+body[data-aos-delay='4700'] [data-aos], [data-aos][data-aos][data-aos-delay='4700'] { transition-delay: 4700ms; }
+body[data-aos-delay='4800'] [data-aos], [data-aos][data-aos][data-aos-delay='4800'] { transition-delay: 4800ms; }
+body[data-aos-delay='4900'] [data-aos], [data-aos][data-aos][data-aos-delay='4900'] { transition-delay: 4900ms; }
+body[data-aos-delay='5000'] [data-aos], [data-aos][data-aos][data-aos-delay='5000'] { transition-delay: 5000ms; }
+body[data-aos-delay='5100'] [data-aos], [data-aos][data-aos][data-aos-delay='5100'] { transition-delay: 5100ms; }
+body[data-aos-delay='5200'] [data-aos], [data-aos][data-aos][data-aos-delay='5200'] { transition-delay: 5200ms; }
+body[data-aos-delay='5300'] [data-aos], [data-aos][data-aos][data-aos-delay='5300'] { transition-delay: 5300ms; }
+body[data-aos-delay='5400'] [data-aos], [data-aos][data-aos][data-aos-delay='5400'] { transition-delay: 5400ms; }
+body[data-aos-delay='5500'] [data-aos], [data-aos][data-aos][data-aos-delay='5500'] { transition-delay: 5500ms; }
+body[data-aos-delay='5600'] [data-aos], [data-aos][data-aos][data-aos-delay='5600'] { transition-delay: 5600ms; }
+body[data-aos-delay='5700'] [data-aos], [data-aos][data-aos][data-aos-delay='5700'] { transition-delay: 5700ms; }
+body[data-aos-delay='5800'] [data-aos], [data-aos][data-aos][data-aos-delay='5800'] { transition-delay: 5800ms; }
+body[data-aos-delay='5900'] [data-aos], [data-aos][data-aos][data-aos-delay='5900'] { transition-delay: 5900ms; }
+body[data-aos-delay='6000'] [data-aos], [data-aos][data-aos][data-aos-delay='6000'] { transition-delay: 6000ms; }
+body[data-aos-delay='6100'] [data-aos], [data-aos][data-aos][data-aos-delay='6100'] { transition-delay: 6100ms; }
+body[data-aos-delay='6200'] [data-aos], [data-aos][data-aos][data-aos-delay='6200'] { transition-delay: 6200ms; }
+body[data-aos-delay='6300'] [data-aos], [data-aos][data-aos][data-aos-delay='6300'] { transition-delay: 6300ms; }
+body[data-aos-delay='6400'] [data-aos], [data-aos][data-aos][data-aos-delay='6400'] { transition-delay: 6400ms; }
+body[data-aos-delay='6500'] [data-aos], [data-aos][data-aos][data-aos-delay='6500'] { transition-delay: 6500ms; }
+body[data-aos-delay='6600'] [data-aos], [data-aos][data-aos][data-aos-delay='6600'] { transition-delay: 6600ms; }
+body[data-aos-delay='6700'] [data-aos], [data-aos][data-aos][data-aos-delay='6700'] { transition-delay: 6700ms; }
+body[data-aos-delay='6800'] [data-aos], [data-aos][data-aos][data-aos-delay='6800'] { transition-delay: 6800ms; }
+body[data-aos-delay='6900'] [data-aos], [data-aos][data-aos][data-aos-delay='6900'] { transition-delay: 6900ms; }
+body[data-aos-delay='7000'] [data-aos], [data-aos][data-aos][data-aos-delay='7000'] { transition-delay: 7000ms; }
+body[data-aos-delay='7100'] [data-aos], [data-aos][data-aos][data-aos-delay='7100'] { transition-delay: 7100ms; }
+body[data-aos-delay='7200'] [data-aos], [data-aos][data-aos][data-aos-delay='7200'] { transition-delay: 7200ms; }
+body[data-aos-delay='7300'] [data-aos], [data-aos][data-aos][data-aos-delay='7300'] { transition-delay: 7300ms; }
+body[data-aos-delay='7400'] [data-aos], [data-aos][data-aos][data-aos-delay='7400'] { transition-delay: 7400ms; }
+body[data-aos-delay='7500'] [data-aos], [data-aos][data-aos][data-aos-delay='7500'] { transition-delay: 7500ms; }
+body[data-aos-delay='7600'] [data-aos], [data-aos][data-aos][data-aos-delay='7600'] { transition-delay: 7600ms; }
+body[data-aos-delay='7700'] [data-aos], [data-aos][data-aos][data-aos-delay='7700'] { transition-delay: 7700ms; }
+body[data-aos-delay='7800'] [data-aos], [data-aos][data-aos][data-aos-delay='7800'] { transition-delay: 7800ms; }
+body[data-aos-delay='7900'] [data-aos], [data-aos][data-aos][data-aos-delay='7900'] { transition-delay: 7900ms; }
+body[data-aos-delay='8000'] [data-aos], [data-aos][data-aos][data-aos-delay='8000'] { transition-delay: 8000ms; }
+body[data-aos-delay='8100'] [data-aos], [data-aos][data-aos][data-aos-delay='8100'] { transition-delay: 8100ms; }
+body[data-aos-delay='8200'] [data-aos], [data-aos][data-aos][data-aos-delay='8200'] { transition-delay: 8200ms; }
+body[data-aos-delay='8300'] [data-aos], [data-aos][data-aos][data-aos-delay='8300'] { transition-delay: 8300ms; }
+body[data-aos-delay='8400'] [data-aos], [data-aos][data-aos][data-aos-delay='8400'] { transition-delay: 8400ms; }
+body[data-aos-delay='8500'] [data-aos], [data-aos][data-aos][data-aos-delay='8500'] { transition-delay: 8500ms; }
+body[data-aos-delay='8600'] [data-aos], [data-aos][data-aos][data-aos-delay='8600'] { transition-delay: 8600ms; }
+body[data-aos-delay='8700'] [data-aos], [data-aos][data-aos][data-aos-delay='8700'] { transition-delay: 8700ms; }
+body[data-aos-delay='8800'] [data-aos], [data-aos][data-aos][data-aos-delay='8800'] { transition-delay: 8800ms; }
+body[data-aos-delay='8900'] [data-aos], [data-aos][data-aos][data-aos-delay='8900'] { transition-delay: 8900ms; }
+body[data-aos-delay='9000'] [data-aos], [data-aos][data-aos][data-aos-delay='9000'] { transition-delay: 9000ms; }
+body[data-aos-delay='9100'] [data-aos], [data-aos][data-aos][data-aos-delay='9100'] { transition-delay: 9100ms; }
+body[data-aos-delay='9200'] [data-aos], [data-aos][data-aos][data-aos-delay='9200'] { transition-delay: 9200ms; }
+body[data-aos-delay='9300'] [data-aos], [data-aos][data-aos][data-aos-delay='9300'] { transition-delay: 9300ms; }
+body[data-aos-delay='9400'] [data-aos], [data-aos][data-aos][data-aos-delay='9400'] { transition-delay: 9400ms; }
+body[data-aos-delay='9500'] [data-aos], [data-aos][data-aos][data-aos-delay='9500'] { transition-delay: 9500ms; }
+body[data-aos-delay='9600'] [data-aos], [data-aos][data-aos][data-aos-delay='9600'] { transition-delay: 9600ms; }
+body[data-aos-delay='9700'] [data-aos], [data-aos][data-aos][data-aos-delay='9700'] { transition-delay: 9700ms; }
+body[data-aos-delay='9800'] [data-aos], [data-aos][data-aos][data-aos-delay='9800'] { transition-delay: 9800ms; }
+body[data-aos-delay='9900'] [data-aos], [data-aos][data-aos][data-aos-delay='9900'] { transition-delay: 9900ms; }
+body[data-aos-delay='10000'] [data-aos], [data-aos][data-aos][data-aos-delay='10000'] { transition-delay: 10000ms; }

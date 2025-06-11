@@ -1,5 +1,5 @@
 # Mikrotik Hotspot Auth UI
-Generated on: 2025-05-26 20:47:52
+Generated on: 2025-06-11 18:58:55
 
 ## Project Information
 * Name: Mikrotik Hotspot Auth UI
@@ -14,10 +14,32 @@ Generated on: 2025-05-26 20:47:52
 ## Directory Structure
 ```
 .
+├── backups
+│   ├── alogin.html.20250611_172924.backup
+│   ├── alogin.html.20250611_173004.backup
+│   ├── alogin.html.20250611_173149.backup
+│   ├── alogin.html.20250611_174002.backup
+│   ├── alogin.html.20250611_182559.backup
+│   ├── alogin.html.20250611_182641.backup
+│   ├── alogin.html.20250611_184148.backup
+│   ├── alogin.html.20250611_185824.backup
+│   ├── login.html.20250611_014642.backup
+│   ├── login.html.20250611_020603.backup
+│   ├── login.html.20250611_023446.backup
+│   ├── login.html.20250611_023534.backup
+│   ├── login.html.20250611_173148.backup
+│   ├── login.html.20250611_174001.backup
+│   ├── login.html.20250611_182558.backup
+│   ├── login.html.20250611_182640.backup
+│   ├── login.html.20250611_184146.backup
+│   └── login.html.20250611_185822.backup
 ├── .claude
 │   └── instructions.md
 ├── css
-│   └── app.css
+│   ├── integration
+│   │   └── aos.css
+│   ├── app.css
+│   └── page.css
 ├── fonts
 │   └── Noto_Kufi_Arabic
 │       └── static
@@ -30,6 +52,7 @@ Generated on: 2025-05-26 20:47:52
 │   │   ├── chatgpt.png
 │   │   ├── claude.png
 │   │   ├── gmail.png
+│   │   ├── google-new.png
 │   │   ├── instagram.png
 │   │   ├── logos--facebook.png
 │   │   ├── logos--google-icon.png
@@ -47,6 +70,7 @@ Generated on: 2025-05-26 20:47:52
 │   │   ├── watchit.png
 │   │   ├── youm7.png
 │   │   └── youtube.png
+│   ├── bein-sport.jpg
 │   ├── fluent--data-area-20-filled.png
 │   ├── googleplay.png
 │   ├── hugeicons--logout-04.png
@@ -55,6 +79,7 @@ Generated on: 2025-05-26 20:47:52
 │   ├── mdi--address-marker.png
 │   ├── mingcute--close-line.png
 │   ├── mingcute--menu-line.png
+│   ├── mjala.jpg
 │   ├── noto-v1--soccer-ball.png
 │   ├── qrcode.png
 │   ├── shop.png
@@ -65,7 +90,13 @@ Generated on: 2025-05-26 20:47:52
 │   ├── solar--shop-bold.png
 │   ├── solar--shop-line-duotone.png
 │   ├── solar--user-bold-duotone-md.png
-│   └── solar--user-bold-duotone.png
+│   ├── solar--user-bold-duotone.png
+│   └── subscription-management.jpg
+├── libs
+│   ├── css
+│   │   └── aos.css
+│   └── js
+│       └── aos.js
 ├── .vscode
 │   ├── settings.json
 │   └── tailwind.json
@@ -80,6 +111,8 @@ Generated on: 2025-05-26 20:47:52
 ├── alogin.html
 ├── api.json
 ├── app.js
+├── configure-plans.sh
+├── configure-shortcuts.sh
 ├── error.html
 ├── errors.txt
 ├── favicon.ico
@@ -87,11 +120,13 @@ Generated on: 2025-05-26 20:47:52
 ├── logout.html
 ├── md5.js
 ├── package.json
+├── plans.json
 ├── radvert.html
 ├── README.md
 ├── redirect.html
 ├── rlogin.html
+├── shortcuts.json
 └── status.html
 
-10 directories, 69 files
+15 directories, 99 files
 ```
