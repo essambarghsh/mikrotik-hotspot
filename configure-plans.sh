@@ -8,8 +8,9 @@ set -e  # Exit on any error
 # Configuration
 PLANS_FILE="plans.json"
 DEFAULT_TARGET_FILE="login.html"
-TARGET_FILE="alogin.html"
+TARGET_FILE=""
 BACKUP_DIR="backups"
+LIMIT_COUNT=""  # New: limit number of items to process
 
 # Colors for output
 RED='\033[0;31m'
@@ -104,7 +105,14 @@ validate_json() {
         exit 1
     fi
     
-    for ((i=0; i<plan_count; i++)); do
+    # Determine how many plans to validate based on limit
+    local validate_count=$plan_count
+    if [[ -n "$LIMIT_COUNT" ]]; then
+        validate_count=$(( LIMIT_COUNT < plan_count ? LIMIT_COUNT : plan_count ))
+        print_status "Validating first $validate_count of $plan_count plans (limit applied)" >&2
+    fi
+    
+    for ((i=0; i<validate_count; i++)); do
         local plan=$(jq ".plans[$i]" "$PLANS_FILE")
         
         # Check required fields
@@ -197,7 +205,14 @@ EOF
 
 # Generate all plans HTML
 generate_all_plans_html() {
-    local plan_count=$(jq '.plans | length' "$PLANS_FILE")
+    local total_plans=$(jq '.plans | length' "$PLANS_FILE")
+    local plan_count=$total_plans
+    
+    # Apply limit if specified
+    if [[ -n "$LIMIT_COUNT" ]]; then
+        plan_count=$(( LIMIT_COUNT < total_plans ? LIMIT_COUNT : total_plans ))
+        print_status "Generating $plan_count of $total_plans plans (limit applied)" >&2
+    fi
     
     for ((i=0; i<plan_count; i++)); do
         local plan=$(jq ".plans[$i]" "$PLANS_FILE")
@@ -307,11 +322,21 @@ PYTHON_SCRIPT
 
 # Display summary
 show_summary() {
-    local plan_count=$(jq '.plans | length' "$PLANS_FILE")
+    local total_plans=$(jq '.plans | length' "$PLANS_FILE")
+    local processed_plans=$total_plans
+    
+    # Calculate processed plans based on limit
+    if [[ -n "$LIMIT_COUNT" ]]; then
+        processed_plans=$(( LIMIT_COUNT < total_plans ? LIMIT_COUNT : total_plans ))
+    fi
+    
     print_success "Plans configuration completed!"
     echo
     echo "Summary:"
-    echo "  • Plans configured: $plan_count"
+    echo "  • Plans processed: $processed_plans of $total_plans"
+    if [[ -n "$LIMIT_COUNT" ]]; then
+        echo "  • Limit applied: $LIMIT_COUNT"
+    fi
     echo "  • Target file: $TARGET_FILE"
     echo "  • Backup location: $BACKUP_DIR/"
     echo "  • Source file: $PLANS_FILE"
@@ -319,7 +344,7 @@ show_summary() {
     print_status "Plan details:"
     
     # Enhanced summary showing new features
-    for ((i=0; i<plan_count; i++)); do
+    for ((i=0; i<processed_plans; i++)); do
         local plan=$(jq ".plans[$i]" "$PLANS_FILE")
         local price=$(echo "$plan" | jq -r '.price')
         local data_limit=$(echo "$plan" | jq -r '.data_limit')
@@ -345,6 +370,12 @@ show_summary() {
         
         echo "  • $price - $data_limit - [$badge] - $speeds_count speeds$extra_info"
     done
+    
+    # Show skipped plans if limit was applied
+    if [[ -n "$LIMIT_COUNT" && $LIMIT_COUNT -lt $total_plans ]]; then
+        local skipped=$((total_plans - LIMIT_COUNT))
+        print_warning "Skipped $skipped plans due to --limit $LIMIT_COUNT"
+    fi
 }
 
 # Main execution
@@ -389,6 +420,7 @@ while [[ $# -gt 0 ]]; do
             echo "Options:"
             echo "  --help, -h           Show this help message"
             echo "  --file, -f FILE      Target HTML file to update (default: login.html)"
+            echo "  --limit, -l N        Limit number of plans to process (default: all)"
             echo "  --validate           Only validate JSON without updating"
             echo "  --list-backups       List available backups"
             echo
@@ -413,10 +445,13 @@ while [[ $# -gt 0 ]]; do
             echo "New Features:"
             echo "  • extra_badge: Additional badge text (e.g., 'Popular', 'Best Value')"
             echo "  • css_classes: Array of custom CSS classes for styling"
+            echo "  • --limit flag: Process only first N plans (great for development)"
             echo
             echo "Examples:"
-            echo "  $0                   Update login.html with plans from plans.json"
+            echo "  $0                   Update login.html with all plans"
             echo "  $0 -f status.html    Update status.html instead"
+            echo "  $0 --limit 3         Only process first 3 plans"
+            echo "  $0 -l 5 -f test.html Process 5 plans in test.html"
             echo "  $0 --validate        Only check if plans.json is valid"
             echo
             echo "Requirements:"
@@ -426,6 +461,14 @@ while [[ $# -gt 0 ]]; do
             ;;
         --file|-f)
             TARGET_FILE="$2"
+            shift 2
+            ;;
+        --limit|-l)
+            if [[ -z "$2" ]] || ! [[ "$2" =~ ^[0-9]+$ ]]; then
+                print_error "Limit must be a positive number"
+                exit 1
+            fi
+            LIMIT_COUNT="$2"
             shift 2
             ;;
         --validate)

@@ -7,13 +7,16 @@
 	"homepage": "https://www.ashwab.com",
 	"scripts": {
 		"build": "npm run plans && npm run shortcuts && npm run info",
+		"dev": "npm run plans:dev && npm run shortcuts:dev && npm run info",
 		"info": "./info.sh",
-		"plans": "./configure-plans.sh",
+		"plans": "./configure-plans.sh --file login.html && ./configure-plans.sh --file alogin.html",
+		"plans:dev": "./configure-plans.sh --file login.html --limit 3 && ./configure-plans.sh --file alogin.html --limit 3",
 		"plans:validate": "./configure-plans.sh --validate",
 		"plans:backups": "./configure-plans.sh --list-backups",
 		"plans:status": "./configure-plans.sh --file status.html",
 		"plans:help": "./configure-plans.sh --help",
 		"shortcuts": "./configure-shortcuts.sh",
+		"shortcuts:dev": "./configure-shortcuts.sh --limit 3",
 		"shortcuts:validate": "./configure-shortcuts.sh --validate",
 		"shortcuts:help": "./configure-shortcuts.sh --help"
 	}

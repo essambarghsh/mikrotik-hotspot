@@ -1,5 +1,5 @@
 # Mikrotik Hotspot Auth UI
-Generated on: 2025-06-12 23:17:43
+Generated on: 2025-06-13 01:55:02
 
 ## Project Information
 * Name: Mikrotik Hotspot Auth UI
@@ -15,16 +15,28 @@ Generated on: 2025-06-12 23:17:43
 ```
 .
 ├── backups
-│   ├── alogin.html.20250611_193156.backup
-│   ├── alogin.html.20250612_230952.backup
-│   ├── alogin.html.20250612_231604.backup
-│   ├── alogin.html.20250612_231741.backup
-│   ├── alogin.html.20250612_231743.backup
+│   ├── alogin.html.20250613_014754.backup
+│   ├── alogin.html.20250613_014756.backup
+│   ├── alogin.html.20250613_014809.backup
+│   ├── alogin.html.20250613_014810.backup
+│   ├── alogin.html.20250613_015223.backup
+│   ├── alogin.html.20250613_015241.backup
+│   ├── alogin.html.20250613_015243.backup
+│   ├── alogin.html.20250613_015434.backup
+│   ├── alogin.html.20250613_015435.backup
+│   ├── alogin.html.20250613_015501.backup
 │   ├── login.html.20250611_193155.backup
 │   ├── login.html.20250612_230950.backup
-│   └── login.html.20250612_231603.backup
+│   ├── login.html.20250612_231603.backup
+│   ├── login.html.20250613_013725.backup
+│   ├── login.html.20250613_015222.backup
+│   ├── login.html.20250613_015240.backup
+│   ├── login.html.20250613_015434.backup
+│   └── login.html.20250613_015501.backup
 ├── .claude
 │   └── instructions.md
+├── components
+│   └── footer.html
 ├── css
 │   ├── integration
 │   │   └── aos.css
@@ -124,5 +136,5 @@ Generated on: 2025-06-12 23:17:43
 ├── shortcuts.json
 └── status.html
 
-15 directories, 95 files
+16 directories, 106 files
 ```

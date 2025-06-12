@@ -10,6 +10,7 @@ SHORTCUTS_FILE="shortcuts.json"
 DEFAULT_TARGET_FILE="alogin.html"
 TARGET_FILE=""
 BACKUP_DIR="backups"
+LIMIT_COUNT=""  # New: limit number of items to process
 
 # Colors for output
 RED='\033[0;31m'
@@ -96,13 +97,20 @@ validate_json() {
     fi
     
     # Validate each shortcut has required fields
-    local shortcut_count=$(jq '.shortcuts | length' "$SHORTCUTS_FILE")
-    if [[ $shortcut_count -eq 0 ]]; then
+    local total_shortcuts=$(jq '.shortcuts | length' "$SHORTCUTS_FILE")
+    if [[ $total_shortcuts -eq 0 ]]; then
         print_error "No shortcuts found in $SHORTCUTS_FILE"
         exit 1
     fi
     
-    for ((i=0; i<shortcut_count; i++)); do
+    # Determine how many shortcuts to validate based on limit
+    local validate_count=$total_shortcuts
+    if [[ -n "$LIMIT_COUNT" ]]; then
+        validate_count=$(( LIMIT_COUNT < total_shortcuts ? LIMIT_COUNT : total_shortcuts ))
+        print_status "Validating first $validate_count of $total_shortcuts shortcuts (limit applied)" >&2
+    fi
+    
+    for ((i=0; i<validate_count; i++)); do
         local shortcut=$(jq ".shortcuts[$i]" "$SHORTCUTS_FILE")
         
         # Check required fields
@@ -136,8 +144,15 @@ EOF
 
 # Generate all shortcuts HTML
 generate_all_shortcuts_html() {
-    local shortcut_count=$(jq '.shortcuts | length' "$SHORTCUTS_FILE")
+    local total_shortcuts=$(jq '.shortcuts | length' "$SHORTCUTS_FILE")
+    local shortcut_count=$total_shortcuts
     local auto_delay=600  # Starting delay value
+    
+    # Apply limit if specified
+    if [[ -n "$LIMIT_COUNT" ]]; then
+        shortcut_count=$(( LIMIT_COUNT < total_shortcuts ? LIMIT_COUNT : total_shortcuts ))
+        print_status "Generating $shortcut_count of $total_shortcuts shortcuts (limit applied)" >&2
+    fi
     
     for ((i=0; i<shortcut_count; i++)); do
         local shortcut=$(jq ".shortcuts[$i]" "$SHORTCUTS_FILE")
@@ -256,21 +271,30 @@ PYTHON_SCRIPT
 
 # Display summary
 show_summary() {
-    local shortcut_count=$(jq '.shortcuts | length' "$SHORTCUTS_FILE")
+    local total_shortcuts=$(jq '.shortcuts | length' "$SHORTCUTS_FILE")
+    local processed_shortcuts=$total_shortcuts
     local auto_delay=600  # Starting delay value
+    
+    # Calculate processed shortcuts based on limit
+    if [[ -n "$LIMIT_COUNT" ]]; then
+        processed_shortcuts=$(( LIMIT_COUNT < total_shortcuts ? LIMIT_COUNT : total_shortcuts ))
+    fi
     
     print_success "Shortcuts configuration completed!"
     echo
     echo "Summary:"
-    echo "  • Shortcuts configured: $shortcut_count"
+    echo "  • Shortcuts processed: $processed_shortcuts of $total_shortcuts"
+    if [[ -n "$LIMIT_COUNT" ]]; then
+        echo "  • Limit applied: $LIMIT_COUNT"
+    fi
     echo "  • Target file: $TARGET_FILE"
     echo "  • Backup location: $BACKUP_DIR/"
     echo "  • Source file: $SHORTCUTS_FILE"
-    echo "  • Auto-delay increment: 200ms (starting at 600ms)"
+    echo "  • Auto-delay increment: 100ms (starting at 600ms)"
     echo
     print_status "Shortcut details:"
     
-    for ((i=0; i<shortcut_count; i++)); do
+    for ((i=0; i<processed_shortcuts; i++)); do
         local shortcut=$(jq ".shortcuts[$i]" "$SHORTCUTS_FILE")
         local name=$(echo "$shortcut" | jq -r '.name')
         local url=$(echo "$shortcut" | jq -r '.url')
@@ -284,12 +308,18 @@ show_summary() {
             auto_delay=$((auto_delay + 100))
         fi
     done
+    
+    # Show skipped shortcuts if limit was applied
+    if [[ -n "$LIMIT_COUNT" && $LIMIT_COUNT -lt $total_shortcuts ]]; then
+        local skipped=$((total_shortcuts - LIMIT_COUNT))
+        print_warning "Skipped $skipped shortcuts due to --limit $LIMIT_COUNT"
+    fi
 }
 
 # Main execution
 main() {
-    echo "🔗 Mikrotik Hotspot Shortcuts Configurator"
-    echo "=========================================="
+    echo "🔗 Mikrotik Hotspot Shortcuts Configurator (Enhanced)"
+    echo "====================================================="
     echo
     
     # Set target file
@@ -328,6 +358,7 @@ while [[ $# -gt 0 ]]; do
             echo "Options:"
             echo "  --help, -h           Show this help message"
             echo "  --file, -f FILE      Target HTML file to update (default: alogin.html)"
+            echo "  --limit, -l N        Limit number of shortcuts to process (default: all)"
             echo "  --validate           Only validate JSON without updating"
             echo "  --list-backups       List available backups"
             echo
@@ -343,20 +374,26 @@ while [[ $# -gt 0 ]]; do
             echo "        \"url\": \"https://www.google.com\","
             echo "        \"icon\": \"img/sites/logos--google-icon.png\","
             echo "        \"target\": \"_blank\",     // Optional (default: _blank)"
-            echo "        \"delay\": 1200            // Optional custom delay (auto: 600, 800, 1000...)"
+            echo "        \"delay\": 1200            // Optional custom delay (auto: 600, 700, 800...)"
             echo "      }"
             echo "    ]"
             echo "  }"
             echo
             echo "Delay Behavior:"
-            echo "  • Auto-generated: 600ms, 800ms, 1000ms, 1200ms... (+200ms each)"
+            echo "  • Auto-generated: 600ms, 700ms, 800ms, 900ms... (+100ms each)"
             echo "  • Custom delays in JSON take priority over auto-generation"
             echo "  • Mix and match: some shortcuts auto, others custom"
             echo
             echo "Examples:"
-            echo "  $0                   Update alogin.html with shortcuts from shortcuts.json"
+            echo "  $0                   Update alogin.html with all shortcuts"
             echo "  $0 -f login.html     Update login.html instead"
+            echo "  $0 --limit 5         Only process first 5 shortcuts"
+            echo "  $0 -l 3 -f test.html Process 3 shortcuts in test.html"
             echo "  $0 --validate        Only check if shortcuts.json is valid"
+            echo
+            echo "Development Usage:"
+            echo "  $0 --limit 3         Quick testing with just 3 shortcuts"
+            echo "  $0 -l 1              Minimal HTML with single shortcut"
             echo
             echo "Requirements:"
             echo "  - jq (JSON processor)"
@@ -365,6 +402,14 @@ while [[ $# -gt 0 ]]; do
             ;;
         --file|-f)
             TARGET_FILE="$2"
+            shift 2
+            ;;
+        --limit|-l)
+            if [[ -z "$2" ]] || ! [[ "$2" =~ ^[0-9]+$ ]]; then
+                print_error "Limit must be a positive number"
+                exit 1
+            fi
+            LIMIT_COUNT="$2"
             shift 2
             ;;
         --validate)
