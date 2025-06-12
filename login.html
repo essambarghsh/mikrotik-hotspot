@@ -1,700 +1,1364 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta http-equiv="expires" content="-1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>تسجيل الدخول للإنترنت</title>
-    <link rel="stylesheet" href="css/app.css?v=2.0.0" type="text/css" />
-    <style type="text/css">
-      body {
-        font-size: 0;
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="-1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الدخول للإنترنت</title>
+  <link rel="stylesheet" href="css/app.css?v=2.0.0" type="text/css" />
+  <style type="text/css">
+    body {
+      font-size: 0;
+    }
+  </style>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="preload" href="fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Regular.ttf" as="font" type="font/ttf"
+      crossorigin />
+  <link rel="preload" href="fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Bold.ttf" as="font" type="font/ttf"
+      crossorigin />
+</head>
+
+<body>
+  $(if chap-id)
+  <form name="sendin" action="$(link-login-only)" method="post" style="display: none">
+    <input type="hidden" name="username" />
+    <input type="hidden" name="password" />
+    <input type="hidden" name="dst" value="$(link-orig)" />
+    <input type="hidden" name="popup" value="true" />
+  </form>
+  <script src="md5.js"></script>
+  <script>
+    function doLogin(method) {
+      if (method === "card") {
+        var cardNumber = document.login.cardnumber.value;
+        document.sendin.username.value = cardNumber;
+        document.sendin.password.value = hexMD5(
+          "$(chap-id)" + cardNumber + "$(chap-challenge)"
+        );
+      } else {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5(
+          "$(chap-id)" + document.login.password.value + "$(chap-challenge)"
+        );
       }
-    </style>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link
-      rel="preload"
-      href="fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Regular.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="fonts/Noto_Kufi_Arabic/static/NotoKufiArabic-Bold.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
-  </head>
+      document.sendin.submit();
+      return false;
+    }
 
-  <body>
-    $(if chap-id)
-    <form
-      name="sendin"
-      action="$(link-login-only)"
-      method="post"
-      style="display: none"
-    >
-      <input type="hidden" name="username" />
-      <input type="hidden" name="password" />
-      <input type="hidden" name="dst" value="$(link-orig)" />
-      <input type="hidden" name="popup" value="true" />
-    </form>
-    <script src="md5.js"></script>
-    <script>
-      function doLogin(method) {
-        if (method === "card") {
-          var cardNumber = document.login.cardnumber.value;
-          document.sendin.username.value = cardNumber;
-          document.sendin.password.value = hexMD5(
-            "$(chap-id)" + cardNumber + "$(chap-challenge)"
-          );
-        } else {
-          document.sendin.username.value = document.login.username.value;
-          document.sendin.password.value = hexMD5(
-            "$(chap-id)" + document.login.password.value + "$(chap-challenge)"
-          );
-        }
-        document.sendin.submit();
-        return false;
+    // Password toggle functionality
+    function togglePassword() {
+      const passwordInput = document.login.password;
+      const eyeIcon = document.querySelector(".eye-icon");
+      const eyeSlashIcon = document.querySelector(".eye-slash-icon");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.style.display = "none";
+        eyeSlashIcon.style.display = "block";
+      } else {
+        passwordInput.type = "password";
+        eyeIcon.style.display = "block";
+        eyeSlashIcon.style.display = "none";
       }
+    }
+  </script>
+  $(endif)
 
-      // Password toggle functionality
-      function togglePassword() {
-        const passwordInput = document.login.password;
-        const eyeIcon = document.querySelector(".eye-icon");
-        const eyeSlashIcon = document.querySelector(".eye-slash-icon");
-
-        if (passwordInput.type === "password") {
-          passwordInput.type = "text";
-          eyeIcon.style.display = "none";
-          eyeSlashIcon.style.display = "block";
-        } else {
-          passwordInput.type = "password";
-          eyeIcon.style.display = "block";
-          eyeSlashIcon.style.display = "none";
-        }
-      }
-    </script>
-    $(endif)
-
-    <main class="main">
-      <section class="login-section">
-        <div class="container login-container">
-          <div class="login-main">
-            <div class="login-content">
-              <div class="login-header">
-                <h1 class="login-title">
-                  <span class="ha">HA</span>
-                  <span>تسجيل الدخول</span>
-                </h1>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="80"
-                  height="80"
-                  viewBox="0 0 24 24"
-                >
-                  <g fill="none">
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2.2"
-                      d="M2.75 8.988A12.068 12.068 0 0 1 21.25 9"
-                    />
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2.2"
-                      d="M5.64 11.964a8.297 8.297 0 0 1 12.72.01m-9.805 3.029a4.495 4.495 0 0 1 6.89.005"
-                    />
-                    <circle cx="12" cy="17.878" r="1.445" fill="currentColor" />
-                  </g>
-                </svg>
-              </div>
-              $(if error)
-              <div class="login-error-message text-base">
-                <img src="img/iconoir--wifi-error.png" alt="" />
-                <span>
-                  <script type="text/javascript">
-                      var error = "$(error)";
-                      if (error == "user_exceeded_download_quota") {
-                          document.write("انتهت كمية التحميل لهذا الجهاز . ");
-                      }
-                      else if (error == "account_expired") {
-                          document.write("عفوا الاشتراك منتهى . ");
-                      }
-                      else if (error == "already authorizing, retry later") {
-                          document.write("برجاء اعادة المحاولة");
-                      }
-                      else if (error == "Incorrect_MAC_address") {
-                          document.write("هذا الجهاز لايملك صلاحية لاستخدام هذا اليوزر . ");
-                      }
-                      else if (error == "user_exceeded_daily_uptime_quota") {
-                          document.write("انتهت مدة الوقت المخصصة لهذا اليوم  . ");
-                      }
-                      else if (error == "user_exceeded_daily_uptime_quota") {
-                          document.write("انتهت مدة الوقت المخصصة لهذا اليوم  . ");
-                      }
-                      else if (error == "RADIUS server is not responding") {
-                          document.write("من فضلك اعد المحاولة وكتابة الارقام بطرقة اسرع . ");
-                      }
-                      else if (error == "user_exceeded_daily_upload_quota") {
-                          document.write("انتهت كمية اليوم المخصصة للرفع . ");
-                      }
-                      else if (error == "user_exceeded_daily_total_quota") {
-                          document.write("انتهت الكمية الكلية المخصصة لليوم . ");
-                      }
-                      else if (error == "User Disabled") {
-                          document.write("تم ايقاف هذا المستخدم");
-                      }
-                      else if (error == "invalid username or password") {
-                          document.write("اسم المستخدم او كلمة السر خاطئة");
-                      }
-                      else if (error.search("traffic limit") != -1) {
-                          document.write("لقد انتهى رصيد تحميل هذا الحساب");
-                      }
-                      else if (error == "Login Failed. Please check your username and password") {
-                          document.write("تاكد من ادخال بيانات صحيحة وباللغة الانجليزية .");
-                      }
-                      else if (error.search("Invalid_srvid") != -1) {
-                          document.write("لا يوجد صلاحيات لاستخدام هذا الحساب يرجا الاتصال بالدعم الفنى");
-                      }
-                      else if (error.search("not found") != -1) {
-                          document.write("لقد ادخلت اسم المستخدم بطريقة غير صحيحة، الرجاء المحاولة مرة اخرى ");
-                      }
-                      else if (error == "user_exceeded_total_quota_limit") {
-                          document.write("لقد انتهى رصيد تحميل هذا الحساب");
-                      }
-                      else document.write("$(error)<br />")
-                  </script>
-                </span>
-              </div>
-              $(endif)
-              <form
-                name="login"
-                action="$(link-login-only)"
-                method="post"
-                onSubmit="return false;"
-              >
-                <input type="hidden" name="dst" value="$(link-orig)" />
-                <input type="hidden" name="popup" value="true" />
-                <div class="login-cards text-base">
-                  <div class="card user-login">
-                    <div class="card-header">
-                      <div class="card-logo">
-                        <img src="img/solar--user-bold-duotone-md.png" alt="" />
-                      </div>
-                      <div class="card-info">
-                        <h2 class="card-title">عندك باقة؟</h2>
-                        <p class="card-subtitle">سجل الدخول باستخدام باقتك</p>
-                      </div>
+  <main class="main">
+    <section class="login-section">
+      <div class="container login-container">
+        <div class="login-main">
+          <div class="login-content">
+            <div class="login-header">
+              <h1 class="login-title">
+                <span class="ha">HA</span>
+                <span>تسجيل الدخول</span>
+              </h1>
+              <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24">
+                <g fill="none">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
+                      d="M2.75 8.988A12.068 12.068 0 0 1 21.25 9" />
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
+                      d="M5.64 11.964a8.297 8.297 0 0 1 12.72.01m-9.805 3.029a4.495 4.495 0 0 1 6.89.005" />
+                  <circle cx="12" cy="17.878" r="1.445" fill="currentColor" />
+                </g>
+              </svg>
+            </div>
+            $(if error)
+            <div class="login-error-message text-base">
+              <img src="img/iconoir--wifi-error.png" alt="" />
+              <span>
+                <script type="text/javascript">
+                  var error = "$(error)";
+                  if (error == "user_exceeded_download_quota") {
+                    document.write("انتهت كمية التحميل لهذا الجهاز . ");
+                  }
+                  else if (error == "account_expired") {
+                    document.write("عفوا الاشتراك منتهى . ");
+                  }
+                  else if (error == "already authorizing, retry later") {
+                    document.write("برجاء اعادة المحاولة");
+                  }
+                  else if (error == "Incorrect_MAC_address") {
+                    document.write("هذا الجهاز لايملك صلاحية لاستخدام هذا اليوزر . ");
+                  }
+                  else if (error == "user_exceeded_daily_uptime_quota") {
+                    document.write("انتهت مدة الوقت المخصصة لهذا اليوم  . ");
+                  }
+                  else if (error == "user_exceeded_daily_uptime_quota") {
+                    document.write("انتهت مدة الوقت المخصصة لهذا اليوم  . ");
+                  }
+                  else if (error == "RADIUS server is not responding") {
+                    document.write("من فضلك اعد المحاولة وكتابة الارقام بطرقة اسرع . ");
+                  }
+                  else if (error == "user_exceeded_daily_upload_quota") {
+                    document.write("انتهت كمية اليوم المخصصة للرفع . ");
+                  }
+                  else if (error == "user_exceeded_daily_total_quota") {
+                    document.write("انتهت الكمية الكلية المخصصة لليوم . ");
+                  }
+                  else if (error == "User Disabled") {
+                    document.write("تم ايقاف هذا المستخدم");
+                  }
+                  else if (error == "invalid username or password") {
+                    document.write("اسم المستخدم او كلمة السر خاطئة");
+                  }
+                  else if (error.search("traffic limit") != -1) {
+                    document.write("لقد انتهى رصيد تحميل هذا الحساب");
+                  }
+                  else if (error == "Login Failed. Please check your username and password") {
+                    document.write("تاكد من ادخال بيانات صحيحة وباللغة الانجليزية .");
+                  }
+                  else if (error.search("Invalid_srvid") != -1) {
+                    document.write("لا يوجد صلاحيات لاستخدام هذا الحساب يرجا الاتصال بالدعم الفنى");
+                  }
+                  else if (error.search("not found") != -1) {
+                    document.write("لقد ادخلت اسم المستخدم بطريقة غير صحيحة، الرجاء المحاولة مرة اخرى ");
+                  }
+                  else if (error == "user_exceeded_total_quota_limit") {
+                    document.write("لقد انتهى رصيد تحميل هذا الحساب");
+                  }
+                  else document.write("$(error)<br />")
+                </script>
+              </span>
+            </div>
+            $(endif)
+            <form name="login" action="$(link-login-only)" method="post" onSubmit="return false;">
+              <input type="hidden" name="dst" value="$(link-orig)" />
+              <input type="hidden" name="popup" value="true" />
+              <div class="login-cards text-base">
+                <div class="card user-login">
+                  <div class="card-header">
+                    <div class="card-logo">
+                      <img src="img/solar--user-bold-duotone-md.png" alt="" />
                     </div>
-                    <div class="card-body">
-                      <input
-                        name="username"
-                        type="text"
-                        value="$(username)"
-                        placeholder="ادخل اسم المستخدم"
-                      />
-                      <div class="password-field">
-                        <input
-                          name="password"
-                          type="password"
-                          placeholder="ادخل كلمة السر"
-                        />
-                        <button
-                          type="button"
-                          class="password-toggle"
-                          onclick="togglePassword()"
-                          aria-label="إظهار/إخفاء كلمة السر"
-                        >
-                          <svg
-                            class="eye-icon"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <path
-                              d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
-                            />
-                            <circle cx="12" cy="12" r="3" />
-                          </svg>
-                          <svg
-                            class="eye-slash-icon"
-                            style="display: none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
-                            <path
-                              d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 11 8 11 8a13.16 13.16 0 0 1-1.67 2.68"
-                            />
-                            <path
-                              d="M6.61 6.61A13.526 13.526 0 0 0 1 12s4 8 11 8a9.74 9.74 0 0 0 5.39-1.61"
-                            />
-                            <line x1="2" y1="2" x2="22" y2="22" />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="card-footer">
-                      <input
-                        type="button"
-                        value="تسجيل الدخول"
-                        onClick="doLogin('normal')"
-                      />
+                    <div class="card-info">
+                      <h2 class="card-title">عندك باقة؟</h2>
+                      <p class="card-subtitle">سجل الدخول باستخدام باقتك</p>
                     </div>
                   </div>
-                  <div class="dividing-line">
-                    <span>أو</span>
+                  <div class="card-body">
+                    <input name="username" type="text" value="$(username)" placeholder="ادخل اسم المستخدم" />
+                    <div class="password-field">
+                      <input name="password" type="password" placeholder="ادخل كلمة السر" />
+                      <button type="button" class="password-toggle" onclick="togglePassword()"
+                          aria-label="إظهار/إخفاء كلمة السر">
+                        <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                          <circle cx="12" cy="12" r="3" />
+                        </svg>
+                        <svg class="eye-slash-icon" style="display: none" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
+                          <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 11 8 11 8a13.16 13.16 0 0 1-1.67 2.68" />
+                          <path d="M6.61 6.61A13.526 13.526 0 0 0 1 12s4 8 11 8a9.74 9.74 0 0 0 5.39-1.61" />
+                          <line x1="2" y1="2" x2="22" y2="22" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
-                  <div class="card cart-login">
-                    <div class="card-header">
-                      <div class="card-logo">
-                        <img src="img/solar--card-2-bold.png" alt="" />
-                      </div>
-                      <div class="card-info">
-                        <h2 class="card-title">معاك كارت فكة؟</h2>
-                        <p class="card-subtitle hidden md:block">
-                          سجل الدخول باستخدام كارت فكة
-                        </p>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <input
-                        name="cardnumber"
-                        type="text"
-                        placeholder="ادخل رقم الكارت"
-                      />
-                    </div>
-                    <div class="card-footer">
-                      <input
-                        class="!bg-[#ff9c3f]"
-                        type="button"
-                        value="الدخول بالكارت"
-                        onClick="doLogin('card')"
-                      />
-                    </div>
+                  <div class="card-footer">
+                    <input type="button" value="تسجيل الدخول" onClick="doLogin('normal')" />
                   </div>
                 </div>
-              </form>
+                <div class="dividing-line">
+                  <span>أو</span>
+                </div>
+                <div class="card cart-login">
+                  <div class="card-header">
+                    <div class="card-logo">
+                      <img src="img/solar--card-2-bold.png" alt="" />
+                    </div>
+                    <div class="card-info">
+                      <h2 class="card-title">معاك كارت فكة؟</h2>
+                      <p class="card-subtitle hidden md:block">
+                        سجل الدخول باستخدام كارت فكة
+                      </p>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <input name="cardnumber" type="text" placeholder="ادخل رقم الكارت" />
+                  </div>
+                  <div class="card-footer">
+                    <input class="!bg-[#ff9c3f]" type="button" value="الدخول بالكارت" onClick="doLogin('card')" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="login-graphics text-base">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="605.25"
+                height="761.48" viewBox="0 0 605.25 761.48" role="img" artist="Katerina Limpitsouni"
+                source="https://undraw.co/" style="width: 80%">
+              <defs>
+                <linearGradient id="c07350d9-0c50-4d35-b63a-3c71f5ac29f1-31" x1="304.32" y1="452.8" x2="304.32"
+                    y2="148.23" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="gray" stop-opacity="0.25" />
+                  <stop offset="0.54" stop-color="gray" stop-opacity="0.12" />
+                  <stop offset="1" stop-color="gray" stop-opacity="0.1" />
+                </linearGradient>
+              </defs>
+              <title>broadcast</title>
+              <path
+                  d="M847.51,148.64a84.83,84.83,0,0,1,31.57,57.89,6.66,6.66,0,0,0,6.82,6l10.24-.3a6.68,6.68,0,0,0,6.46-7.31,108.65,108.65,0,0,0-113.2-98.3,6.69,6.69,0,0,0-6.34,7.42l1.14,10.18a6.65,6.65,0,0,0,6.85,5.92A84.79,84.79,0,0,1,847.51,148.64Z"
+                  transform="translate(-297.37 -69.26)" style="fill: var(--primary-color)" fill="#6c63ff" />
+              <path
+                  d="M839.34,158.88a84.78,84.78,0,0,0-55.4-18.56,6.67,6.67,0,0,0-6.42,7.42l.85,7.59a6.66,6.66,0,0,0,6.74,5.92,64.15,64.15,0,0,1,64.79,56.22,6.68,6.68,0,0,0,6.81,5.89l7.63-.22a6.66,6.66,0,0,0,6.45-7.37A84.82,84.82,0,0,0,839.34,158.88Z"
+                  transform="translate(-297.37 -69.26)" style="fill: var(--primary-color)" fill="#6c63ff" />
+              <path
+                  d="M807.48,198.8a47,47,0,0,1,17.15,29.52,6.73,6.73,0,0,0,6.81,5.77l3.69-.11a6.69,6.69,0,0,0,6.41-7.69,64.15,64.15,0,0,0-63.32-54.82,6.64,6.64,0,0,0-6.52,7.42l.41,3.68a6.73,6.73,0,0,0,6.67,5.93A46.94,46.94,0,0,1,807.48,198.8Z"
+                  transform="translate(-297.37 -69.26)" style="fill: var(--primary-color)" fill="#6c63ff" />
+              <path
+                  d="M352.49,148.64a84.83,84.83,0,0,0-31.57,57.89,6.66,6.66,0,0,1-6.82,6l-10.24-.3a6.68,6.68,0,0,1-6.46-7.31,108.65,108.65,0,0,1,113.2-98.3,6.69,6.69,0,0,1,6.34,7.42L415.8,124.2a6.65,6.65,0,0,1-6.85,5.92A84.79,84.79,0,0,0,352.49,148.64Z"
+                  transform="translate(-297.37 -69.26)" style="fill: var(--primary-color)" fill="#6c63ff" />
+              <path
+                  d="M360.66,158.88a84.78,84.78,0,0,1,55.4-18.56,6.67,6.67,0,0,1,6.42,7.42l-.85,7.59a6.66,6.66,0,0,1-6.74,5.92,64.15,64.15,0,0,0-64.79,56.22,6.68,6.68,0,0,1-6.81,5.89l-7.63-.22a6.66,6.66,0,0,1-6.45-7.37A84.82,84.82,0,0,1,360.66,158.88Z"
+                  transform="translate(-297.37 -69.26)" style="fill: var(--primary-color)" fill="#6c63ff" />
+              <path
+                  d="M392.52,198.8a47,47,0,0,0-17.15,29.52,6.73,6.73,0,0,1-6.81,5.77l-3.69-.11a6.69,6.69,0,0,1-6.41-7.69,64.15,64.15,0,0,1,63.32-54.82,6.64,6.64,0,0,1,6.52,7.42l-.41,3.68a6.73,6.73,0,0,1-6.67,5.93A46.94,46.94,0,0,0,392.52,198.8Z"
+                  transform="translate(-297.37 -69.26)" style="fill: var(--primary-color)" fill="#6c63ff" />
+              <path
+                  d="M577.93,822.91V88.25a19,19,0,0,1,19-19h11.26a19,19,0,0,1,19,19V822.91C627.17,833.35,577.93,833.35,577.93,822.91Z"
+                  transform="translate(-297.37 -69.26)" fill="#535461" />
+              <rect x="120.96" y="148.23" width="366.73" height="304.56" rx="44.36" ry="44.36"
+                  fill="url(#c07350d9-0c50-4d35-b63a-3c71f5ac29f1-31)" />
+              <rect x="125.44" y="152.71" width="358.31" height="295.61" rx="44.36" ry="44.36" fill="#fff" />
+              <path transform="translate(275 275)" style="fill: var(--primary-color)" fill="#6c63ff"
+                  d="M17.50 44.10L17.50 33.05L10 33.05L10 44.10L0 44.10L0 12.85L10 12.85L10 23.90L17.50 23.90L17.50 12.85L27.50 12.85L27.50 44.10L17.50 44.10ZM39.95 44.10L29.40 44.10L37.50 12.85L52.95 12.85L61.05 44.10L50.50 44.10L49.35 39.15L41.10 39.15L39.95 44.10M44.95 22.45L42.90 31.20L47.50 31.20L45.50 22.45L44.95 22.45Z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pricing-section text-base">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-info">
+            <span class="section-header-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22"
+                    opacity="0.5" />
+                <path fill="currentColor"
+                    d="M12.75 8a.75.75 0 0 0-1.5 0v.01c-1.089.275-2 1.133-2 2.323c0 1.457 1.365 2.417 2.75 2.417c.824 0 1.25.533 1.25.917s-.426.916-1.25.916s-1.25-.532-1.25-.916a.75.75 0 0 0-1.5 0c0 1.19.911 2.049 2 2.323V16a.75.75 0 0 0 1.5 0v-.01c1.089-.274 2-1.133 2-2.323c0-1.457-1.365-2.417-2.75-2.417c-.824 0-1.25-.533-1.25-.917s.426-.916 1.25-.916s1.25.532 1.25.916a.75.75 0 0 0 1.5 0c0-1.19-.911-2.048-2-2.323z" />
+              </svg>
+            </span>
+            <div class="section-header-content">
+              <h2>الاسعار</h2>
+              <p>سعر الباقة يتضمن اشراك الباقة + الاشتراك الشهري للخط الارضي + اشتراك باقات bein sport والمجلة</p>
+            </div>
+          </div>
+          <div class="section-header-note">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
+              <defs>
+                <mask id="ipSCheckOne0">
+                  <g fill="none" stroke-linejoin="round" stroke-width="4">
+                    <path fill="#fff" stroke="#fff"
+                        d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                    <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                  </g>
+                </mask>
+              </defs>
+              <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+            </svg>
+            <span>جميع البيانات محدثة</span>
+          </div>
+        </div>
+        <div class="plans" id="plans">
+          <div class="plan">
+            <div class="badges">
+              <div class="plan-badge">20GB</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">50 جنية</h3>
+              <span class="usage-limit">20 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">1 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">2 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">3 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan">
+            <div class="badges">
+              <div class="plan-badge">30GB</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">75 جنية</h3>
+              <span class="usage-limit">30 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">1 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">2 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">3 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">4 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan">
+            <div class="badges">
+              <div class="plan-badge">40GB</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">100 جنية</h3>
+              <span class="usage-limit">40 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">1 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">2 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">3 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">4 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">5 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">8 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan">
+            <div class="badges">
+              <div class="plan-badge">60GB</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">140 جنية</h3>
+              <span class="usage-limit">60 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">1 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">2 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">5 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">8 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">16 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan">
+            <div class="badges">
+              <div class="plan-badge">80GB</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">190 جنية</h3>
+              <span class="usage-limit">80 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">2 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">4 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">5 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">8 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">16 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">30 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan">
+            <div class="badges">
+              <div class="plan-badge">100GB</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">230 جنية</h3>
+              <span class="usage-limit">100 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">2 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">4 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">5 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">8 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">16 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">30 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan">
+            <div class="badges">
+              <div class="plan-badge">140GB</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">300 جنية</h3>
+              <span class="usage-limit">140 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">2 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">4 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">5 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">8 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">16 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">30 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan">
+            <div class="badges">
+              <div class="plan-badge">180GB</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">400 جنية</h3>
+              <span class="usage-limit">180 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">2 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">4 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">5 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">8 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">16 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">30 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan">
+            <div class="badges">
+              <div class="plan-badge">230GB</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">500 جنية</h3>
+              <span class="usage-limit">230 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">2 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">4 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">5 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">8 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">16 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">30 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan">
+            <div class="badges">
+              <div class="plan-badge">300GB</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">640 جنية</h3>
+              <span class="usage-limit">300 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">2 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">4 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">5 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">8 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">16 ميجا</span>
+                </li>
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">30 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan cart ">
+            <div class="badges">
+              <div class="plan-badge">2GB</div>
+              <div class="extra-badge">كارت فكة</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">11 جنية</h3>
+              <span class="usage-limit">2 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">5 ميجا</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="plan cart ">
+            <div class="badges">
+              <div class="plan-badge">4GB</div>
+              <div class="extra-badge">كارت فكة</div>
+            </div>
+            <div class="plan-header">
+              <h3 class="plan-price">20 جنية</h3>
+              <span class="usage-limit">4 جيجا</span>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-speeds">
+                <li>
+                  <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 48 48">
+                      <defs>
+                        <mask id="ipSCheckOne0">
+                          <g fill="none" stroke-linejoin="round" stroke-width="4">
+                            <path fill="#fff" stroke="#fff"
+                                d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z" />
+                            <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+                          </g>
+                        </mask>
+                      </defs>
+                      <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
+                    </svg></span>
+                  <span class="plan-speed">5 ميجا</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </section>
-      <section class="pricing-section text-base">
-        <div class="container">
-          <div class="plans" id="plans">
-            <div class="plan">
-              <div class="badges">
-                <div class="plan-badge">20GB</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">50 جنية</h3>
-                <span class="usage-limit">20 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">1 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">2 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">3 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+      </div>
+    </section>
+  </main>
+  <script src="app.js?v=2.0.0" type="text/javascript"></script>
+</body>
 
-            <div class="plan">
-              <div class="badges">
-                <div class="plan-badge">30GB</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">75 جنية</h3>
-                <span class="usage-limit">30 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">1 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">2 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">3 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">4 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="plan">
-              <div class="badges">
-                <div class="plan-badge">40GB</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">100 جنية</h3>
-                <span class="usage-limit">40 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">1 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">2 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">3 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">4 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">5 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">8 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="plan">
-              <div class="badges">
-                <div class="plan-badge">60GB</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">140 جنية</h3>
-                <span class="usage-limit">60 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">1 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">2 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">5 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">8 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">16 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="plan">
-              <div class="badges">
-                <div class="plan-badge">80GB</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">190 جنية</h3>
-                <span class="usage-limit">80 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">2 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">4 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">5 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">8 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">16 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">30 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="plan">
-              <div class="badges">
-                <div class="plan-badge">100GB</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">230 جنية</h3>
-                <span class="usage-limit">100 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">2 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">4 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">5 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">8 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">16 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">30 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="plan">
-              <div class="badges">
-                <div class="plan-badge">140GB</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">300 جنية</h3>
-                <span class="usage-limit">140 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">2 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">4 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">5 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">8 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">16 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">30 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="plan">
-              <div class="badges">
-                <div class="plan-badge">180GB</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">400 جنية</h3>
-                <span class="usage-limit">180 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">2 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">4 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">5 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">8 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">16 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">30 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="plan">
-              <div class="badges">
-                <div class="plan-badge">230GB</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">500 جنية</h3>
-                <span class="usage-limit">230 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">2 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">4 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">5 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">8 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">16 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">30 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="plan">
-              <div class="badges">
-                <div class="plan-badge">300GB</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">640 جنية</h3>
-                <span class="usage-limit">300 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">2 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">4 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">5 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">8 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">16 ميجا</span>
-                  </li>
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">30 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="plan cart ">
-              <div class="badges">
-                <div class="plan-badge">2GB</div>
-                <div class="extra-badge">كارت فكة</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">11 جنية</h3>
-                <span class="usage-limit">2 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">5 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="plan cart ">
-              <div class="badges">
-                <div class="plan-badge">4GB</div>
-                <div class="extra-badge">كارت فكة</div>
-              </div>
-              <div class="plan-header">
-                <h3 class="plan-price">20 جنية</h3>
-                <span class="usage-limit">4 جيجا</span>
-              </div>
-              <div class="plan-body">
-                <ul class="plan-speeds">
-                  <li>
-                    <span class="plan-speed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><defs><mask id="ipSCheckOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44a19.94 19.94 0 0 0 14.142-5.858A19.94 19.94 0 0 0 44 24a19.94 19.94 0 0 0-5.858-14.142A19.94 19.94 0 0 0 24 4A19.94 19.94 0 0 0 9.858 9.858A19.94 19.94 0 0 0 4 24a19.94 19.94 0 0 0 5.858 14.142A19.94 19.94 0 0 0 24 44Z"/><path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)"/></svg></span>
-                    <span class="plan-speed">5 ميجا</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <script src="app.js?v=2.0.0" type="text/javascript"></script>
-  </body>
 </html>

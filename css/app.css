@@ -643,21 +643,83 @@ input[type="button"]:active {
     border-color: var(--primary-extra-light-color);
 }
 
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.section-header-info {
+    display: flex;
+    align-items: start;
+    flex: 1;
+}
+
+.section-header-icon {
+    margin-left: 12px;
+    margin-right: -4px;
+}
+
+.section-header-icon svg {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    color: var(--primary-color);
+}
+
+.section-header-content h2 {
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1.7;
+    margin-top: 4px;
+}
+
+.section-header-content p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2;
+    margin-top: 4px;
+    color: #535353;
+}
+
+.section-header-note {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: var(--primary-color);
+    background-color: var(--primary-extra-light-color);
+}
+
+.section-header-note svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+    margin-right: -4px;
+}
+
+.login-graphics {
+    display: none;
+}
+
 @media (min-width: 768px) {
     .plan {
         width: 50%;
     }
 
-    .login-content {
-        max-width: 500px;
-        margin: 0 auto;
+    .section-header {
+        flex-direction: row;
+        align-items: center;
     }
 
-    .login-main {
-        border-radius: 16px;
-        padding-inline: 32px;
-        padding-block: 56px;
-        border: 3px dashed var(--primary-extra-light-color);
+    .section-header-icon svg {
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
     }
 }
 
@@ -690,6 +752,24 @@ input[type="button"]:active {
         border-color: var(--primary-light-color);
         padding-top: 28px;
         justify-content: start;
+    }
+
+    .login-main {
+        display: flex;
+    }
+
+    .login-graphics {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex: 1;
+        padding-right: 20%;
+    }
+
+    .login-content {
+        max-width: 425px;
+        min-width: 425px;
     }
 }
 

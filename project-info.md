@@ -1,5 +1,5 @@
 # Mikrotik Hotspot Auth UI
-Generated on: 2025-06-11 18:58:55
+Generated on: 2025-06-12 23:17:43
 
 ## Project Information
 * Name: Mikrotik Hotspot Auth UI
@@ -15,24 +15,14 @@ Generated on: 2025-06-11 18:58:55
 ```
 .
 ├── backups
-│   ├── alogin.html.20250611_172924.backup
-│   ├── alogin.html.20250611_173004.backup
-│   ├── alogin.html.20250611_173149.backup
-│   ├── alogin.html.20250611_174002.backup
-│   ├── alogin.html.20250611_182559.backup
-│   ├── alogin.html.20250611_182641.backup
-│   ├── alogin.html.20250611_184148.backup
-│   ├── alogin.html.20250611_185824.backup
-│   ├── login.html.20250611_014642.backup
-│   ├── login.html.20250611_020603.backup
-│   ├── login.html.20250611_023446.backup
-│   ├── login.html.20250611_023534.backup
-│   ├── login.html.20250611_173148.backup
-│   ├── login.html.20250611_174001.backup
-│   ├── login.html.20250611_182558.backup
-│   ├── login.html.20250611_182640.backup
-│   ├── login.html.20250611_184146.backup
-│   └── login.html.20250611_185822.backup
+│   ├── alogin.html.20250611_193156.backup
+│   ├── alogin.html.20250612_230952.backup
+│   ├── alogin.html.20250612_231604.backup
+│   ├── alogin.html.20250612_231741.backup
+│   ├── alogin.html.20250612_231743.backup
+│   ├── login.html.20250611_193155.backup
+│   ├── login.html.20250612_230950.backup
+│   └── login.html.20250612_231603.backup
 ├── .claude
 │   └── instructions.md
 ├── css
@@ -49,10 +39,13 @@ Generated on: 2025-06-11 18:58:55
 │           └── NotoKufiArabic-Regular.ttf
 ├── img
 │   ├── sites
+│   │   ├── canva.png
 │   │   ├── chatgpt.png
 │   │   ├── claude.png
+│   │   ├── deepseek.png
 │   │   ├── gmail.png
 │   │   ├── google-new.png
+│   │   ├── grok.png
 │   │   ├── instagram.png
 │   │   ├── logos--facebook.png
 │   │   ├── logos--google-icon.png
@@ -63,7 +56,10 @@ Generated on: 2025-06-11 18:58:55
 │   │   ├── logos--whatsapp-icon.png
 │   │   ├── mdi--1password.png
 │   │   ├── netflix.png
+│   │   ├── perplexity.png
 │   │   ├── quora.png
+│   │   ├── simple-icons--deepl.png
+│   │   ├── simple-icons--googletranslate.png
 │   │   ├── snapchat.png
 │   │   ├── twitter.png
 │   │   ├── vscode-icons--file-type-outlook.png
@@ -128,5 +124,5 @@ Generated on: 2025-06-11 18:58:55
 ├── shortcuts.json
 └── status.html
 
-15 directories, 99 files
+15 directories, 95 files
 ```

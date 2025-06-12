@@ -192,3 +192,9 @@ window.switchToPalette = (index) => {
 
 // Make it globally accessible for debugging/manual control
 window.colorChanger = colorChanger;
+
+// Remove flying lert completely after 1.5 seconds
+const element = document.getElementById('flyingAlert');
+setTimeout(() => {
+    element.remove();
+}, 1500);

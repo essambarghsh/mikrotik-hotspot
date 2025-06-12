@@ -6,7 +6,7 @@
 	"author": "Ashwab, Essam Barghsh",
 	"homepage": "https://www.ashwab.com",
 	"scripts": {
-		"build": "npm run plans && npm run shortcuts",
+		"build": "npm run plans && npm run shortcuts && npm run info",
 		"info": "./info.sh",
 		"plans": "./configure-plans.sh",
 		"plans:validate": "./configure-plans.sh --validate",

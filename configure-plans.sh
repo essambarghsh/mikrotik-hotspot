@@ -8,7 +8,7 @@ set -e  # Exit on any error
 # Configuration
 PLANS_FILE="plans.json"
 DEFAULT_TARGET_FILE="login.html"
-TARGET_FILE=""
+TARGET_FILE="alogin.html"
 BACKUP_DIR="backups"
 
 # Colors for output

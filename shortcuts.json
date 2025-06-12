@@ -7,6 +7,30 @@
             "target": "_blank"
         },
         {
+            "name": "G Translate",
+            "url": "https://translate.google.com/?source=gtx&sl=auto&tl=ar&op=translate",
+            "icon": "img/sites/simple-icons--googletranslate.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Perplexity",
+            "url": "https://www.perplexity.ai",
+            "icon": "img/sites/perplexity.png",
+            "target": "_blank"
+        },
+        {
+            "name": "DeepSeek",
+            "url": "https://chat.deepseek.com",
+            "icon": "img/sites/deepseek.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Grok",
+            "url": "https://grok.com",
+            "icon": "img/sites/grok.png",
+            "target": "_blank"
+        },
+        {
             "name": "ChatGPT",  
             "url": "https://chatgpt.com",
             "icon": "img/sites/chatgpt.png",
@@ -118,6 +142,18 @@
             "name": "اليوم السابع",
             "url": "https://www.youm7.com",
             "icon": "img/sites/youm7.png",
+            "target": "_blank"
+        },
+        {
+            "name": "Canva",
+            "url": "https://www.canva.com",
+            "icon": "img/sites/canva.png",
+            "target": "_blank"
+        },
+        {
+            "name": "DeepL",
+            "url": "https://www.deepl.com/ar/translator",
+            "icon": "img/sites/simple-icons--deepl.png",
             "target": "_blank"
         }
     ]
