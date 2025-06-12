@@ -1,5 +1,5 @@
 # Mikrotik Hotspot Auth UI
-Generated on: 2025-06-13 01:55:02
+Generated on: 2025-06-13 02:33:23
 
 ## Project Information
 * Name: Mikrotik Hotspot Auth UI
@@ -14,25 +14,6 @@ Generated on: 2025-06-13 01:55:02
 ## Directory Structure
 ```
 .
-├── backups
-│   ├── alogin.html.20250613_014754.backup
-│   ├── alogin.html.20250613_014756.backup
-│   ├── alogin.html.20250613_014809.backup
-│   ├── alogin.html.20250613_014810.backup
-│   ├── alogin.html.20250613_015223.backup
-│   ├── alogin.html.20250613_015241.backup
-│   ├── alogin.html.20250613_015243.backup
-│   ├── alogin.html.20250613_015434.backup
-│   ├── alogin.html.20250613_015435.backup
-│   ├── alogin.html.20250613_015501.backup
-│   ├── login.html.20250611_193155.backup
-│   ├── login.html.20250612_230950.backup
-│   ├── login.html.20250612_231603.backup
-│   ├── login.html.20250613_013725.backup
-│   ├── login.html.20250613_015222.backup
-│   ├── login.html.20250613_015240.backup
-│   ├── login.html.20250613_015434.backup
-│   └── login.html.20250613_015501.backup
 ├── .claude
 │   └── instructions.md
 ├── components
@@ -119,6 +100,7 @@ Generated on: 2025-06-13 01:55:02
 ├── alogin.html
 ├── api.json
 ├── app.js
+├── components.sh
 ├── configure-plans.sh
 ├── configure-shortcuts.sh
 ├── error.html
@@ -136,5 +118,5 @@ Generated on: 2025-06-13 01:55:02
 ├── shortcuts.json
 └── status.html
 
-16 directories, 106 files
+15 directories, 89 files
 ```

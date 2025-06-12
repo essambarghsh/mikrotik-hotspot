@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration - Add patterns to exclude (space-separated)
-EXCLUDE_PATTERNS=(".git node_modules .next old *.gitignore .deprecated project-info.md info info.sh shell.sh prompt commands")
+EXCLUDE_PATTERNS=(".git node_modules .next old *.gitignore .deprecated backups project-info.md info info.sh shell.sh prompt commands")
 
 # Output file
 OUTPUT_FILE="project-info.md"
