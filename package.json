@@ -6,8 +6,8 @@
 	"author": "Ashwab, Essam Barghsh",
 	"homepage": "https://www.ashwab.com",
 	"scripts": {
-		"build": "npm run plans && npm run shortcuts && npm run info",
-		"dev": "npm run plans:dev && npm run shortcuts:dev && npm run info",
+		"build": "npm run plans && npm run shortcuts && npm run components && npm run info",
+		"dev": "npm run plans:dev && npm run shortcuts:dev && npm run components:dev &&npm run info",
 		"info": "./info.sh",
 		"plans": "./configure-plans.sh --file login.html && ./configure-plans.sh --file alogin.html",
 		"plans:dev": "./configure-plans.sh --file login.html --limit 3 && ./configure-plans.sh --file alogin.html --limit 3",
@@ -18,6 +18,11 @@
 		"shortcuts": "./configure-shortcuts.sh",
 		"shortcuts:dev": "./configure-shortcuts.sh --limit 3",
 		"shortcuts:validate": "./configure-shortcuts.sh --validate",
-		"shortcuts:help": "./configure-shortcuts.sh --help"
+		"shortcuts:help": "./configure-shortcuts.sh --help",
+
+		"components": "npm run footer",
+		"components:dev": "npm run footer:dev",
+		"footer": "./components.sh comp footer.html file alogin.html && ./components.sh comp footer.html file login.html",
+		"footer:dev": "./components.sh comp footer.html file alogin.html --no-compress && ./components.sh comp footer.html file login.html --no-compress"
 	}
 }

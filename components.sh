@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Mikrotik Hotspot Component Injector - Simple Single-Operation Version
-# Injects ONE component into ONE file - much more reliable!
+# Mikrotik Hotspot Component Injector - With HTML Compression
+# Injects ONE component into ONE file with compressed HTML output
 
 set -e  # Exit on any error
 
@@ -10,6 +10,7 @@ COMPONENTS_DIR="components"
 BACKUP_DIR="backups"
 DRY_RUN=false
 DEBUG=false
+COMPRESS_HTML=true  # New: Enable HTML compression
 
 # Colors for output
 RED='\033[0;31m'
@@ -49,8 +50,8 @@ print_debug() {
 
 # Show usage
 show_usage() {
-    echo "🧩 Mikrotik Hotspot Component Injector (Simple Version)"
-    echo "======================================================"
+    echo "🧩 Mikrotik Hotspot Component Injector (Compressed Version)"
+    echo "=========================================================="
     echo
     echo "Usage: $0 comp <component.html> file <target.html> [options]"
     echo
@@ -61,21 +62,28 @@ show_usage() {
     echo "Options:"
     echo "  --dry-run               Show what would be done without making changes"
     echo "  --debug                 Enable detailed debug output"
+    echo "  --no-compress           Disable HTML compression (default: enabled)"
     echo "  --help, -h              Show this help message"
     echo
     echo "Examples:"
-    echo "  $0 comp footer.html file alogin.html      # Inject footer into alogin.html"
-    echo "  $0 comp footer.html file login.html       # Inject footer into login.html"
-    echo "  $0 comp header.html file alogin.html      # Inject header into alogin.html"
+    echo "  $0 comp footer.html file alogin.html      # Inject compressed footer into alogin.html"
+    echo "  $0 comp footer.html file login.html       # Inject compressed footer into login.html"
+    echo "  $0 comp header.html file alogin.html      # Inject compressed header into alogin.html"
     echo "  $0 comp footer.html file alogin.html --dry-run  # Preview changes"
+    echo "  $0 comp footer.html file alogin.html --no-compress  # Inject without compression"
+    echo
+    echo "HTML Compression Features:"
+    echo "  • Removes unnecessary whitespace and newlines"
+    echo "  • Strips HTML comments (preserves conditional comments)"
+    echo "  • Compresses spaces between tags"
+    echo "  • Preserves text content formatting"
+    echo "  • Maintains Mikrotik template variables"
     echo
     echo "How it works:"
     echo "  1. Looks for element with id matching component name (without .html)"
     echo "  2. Example: footer.html → looks for id=\"footer\""
-    echo "  3. Replaces content inside that element with component content"
-    echo
-    echo "Example HTML:"
-    echo "  <footer id=\"footer\"></footer>  <!-- Gets content from components/footer.html -->"
+    echo "  3. Compresses component HTML content"
+    echo "  4. Replaces content inside that element with compressed component"
     echo
     echo "Requirements:"
     echo "  - python3"
@@ -131,7 +139,7 @@ file_contains_component() {
     fi
 }
 
-# Inject component using Python
+# Inject component using Python with HTML compression
 inject_component() {
     local component_file="$1"
     local target_file="$2"
@@ -141,6 +149,7 @@ inject_component() {
     print_debug "  Component file: $component_file"
     print_debug "  Target file: $target_file"
     print_debug "  Component ID: $component_name"
+    print_debug "  HTML Compression: $COMPRESS_HTML"
     
     # Read component content
     local component_content
@@ -149,18 +158,91 @@ inject_component() {
         return 1
     fi
     
-    print_debug "Component content length: ${#component_content} characters"
+    print_debug "Component content length: ${#component_content} characters (before compression)"
     
     # Create temporary files
     local temp_file="${target_file}.tmp.$$"
     local error_file="injection_error.$$.log"
     
-    # Create Python script inline
-    print_debug "Creating and running Python injection script..."
+    # Convert bash boolean to Python boolean
+    local python_compress_enabled="True"
+    if [[ "$COMPRESS_HTML" == "false" ]]; then
+        python_compress_enabled="False"
+    fi
+    
+    # Create Python script inline with HTML compression
+    print_debug "Creating and running Python injection script with compression..."
     
     python3 << PYTHON_SCRIPT > "$temp_file" 2>"$error_file"
 import sys
 import re
+
+def compress_html(html_content, compress_enabled=True):
+    """
+    Compress HTML content by removing unnecessary whitespace and comments
+    while preserving functionality and Mikrotik template variables.
+    """
+    if not compress_enabled:
+        return html_content
+    
+    original_length = len(html_content)
+    
+    # Preserve Mikrotik template variables and their surrounding context
+    # Store them temporarily with placeholders
+    mikrotik_vars = []
+    mikrotik_pattern = r'\$\([^)]+\)'
+    
+    def preserve_mikrotik_var(match):
+        mikrotik_vars.append(match.group(0))
+        return f"___MIKROTIK_VAR_{len(mikrotik_vars)-1}___"
+    
+    # Replace Mikrotik variables with placeholders
+    html_content = re.sub(mikrotik_pattern, preserve_mikrotik_var, html_content)
+    
+    # Remove HTML comments (but preserve conditional comments)
+    html_content = re.sub(r'<!--(?!\[if|\[endif).*?-->', '', html_content, flags=re.DOTALL)
+    
+    # Remove extra whitespace between tags
+    html_content = re.sub(r'>\s+<', '><', html_content)
+    
+    # Remove leading/trailing whitespace from lines
+    lines = html_content.split('\n')
+    compressed_lines = []
+    
+    for line in lines:
+        # Strip leading/trailing whitespace but preserve non-empty lines
+        stripped_line = line.strip()
+        if stripped_line:
+            compressed_lines.append(stripped_line)
+    
+    # Join lines with single spaces instead of newlines for most content
+    html_content = ' '.join(compressed_lines)
+    
+    # Restore some strategic line breaks for readability
+    # Add line breaks after closing tags of block elements
+    block_elements = ['div', 'section', 'article', 'header', 'footer', 'nav', 'main', 'aside']
+    for element in block_elements:
+        html_content = re.sub(f'</{element}>', f'</{element}>\n', html_content, flags=re.IGNORECASE)
+    
+    # Remove excessive consecutive spaces
+    html_content = re.sub(r' {2,}', ' ', html_content)
+    
+    # Remove spaces around = in attributes
+    html_content = re.sub(r'\s*=\s*', '=', html_content)
+    
+    # Restore Mikrotik variables
+    for i, var in enumerate(mikrotik_vars):
+        html_content = html_content.replace(f"___MIKROTIK_VAR_{i}___", var)
+    
+    # Final cleanup - remove any remaining excessive whitespace
+    html_content = html_content.strip()
+    
+    compressed_length = len(html_content)
+    compression_ratio = ((original_length - compressed_length) / original_length * 100) if original_length > 0 else 0
+    
+    print(f"INFO: HTML compression: {original_length} → {compressed_length} chars ({compression_ratio:.1f}% reduction)", file=sys.stderr)
+    
+    return html_content
 
 # Read the target file
 try:
@@ -173,6 +255,14 @@ except Exception as e:
 # Component content from bash
 component_content = '''$component_content'''
 component_name = '$component_name'
+compress_enabled = $python_compress_enabled
+
+# Compress component content if enabled
+if compress_enabled:
+    component_content = compress_html(component_content, True)
+    print(f"INFO: Component HTML compressed successfully", file=sys.stderr)
+else:
+    print(f"INFO: HTML compression disabled - using original content", file=sys.stderr)
 
 original_content = content
 found_match = False
@@ -197,19 +287,24 @@ print(f"INFO: Extracted tag name: {tag_name}", file=sys.stderr)
 if opening_tag_content.endswith('/'):
     # Handle self-closing tag - convert to opening/closing tag pair
     tag_content = opening_tag_content.rstrip('/')
-    replacement = f'<{tag_content}>\n{component_content}\n</{tag_name}>'
+    if compress_enabled:
+        replacement = f'<{tag_content}>{component_content}</{tag_name}>'
+    else:
+        replacement = f'<{tag_content}>\n{component_content}\n</{tag_name}>'
     content = content.replace(opening_tag_full, replacement)
     found_match = True
     print(f"INFO: Processed self-closing tag for component '{component_name}'", file=sys.stderr)
 else:
     # Handle regular opening/closing tags - find the complete element
-    # Create a more specific pattern that matches the exact opening and closing tags
     specific_pattern = rf'(<' + re.escape(tag_name) + r'[^>]+id=["\']' + re.escape(component_name) + r'["\'][^>]*>)(.*?)(<\/' + re.escape(tag_name) + r'>)'
     
     match = re.search(specific_pattern, content, re.DOTALL | re.IGNORECASE)
     if match:
         # Replace the content between the specific opening and closing tags
-        replacement = f'{match.group(1)}\n{component_content}\n{match.group(3)}'
+        if compress_enabled:
+            replacement = f'{match.group(1)}{component_content}{match.group(3)}'
+        else:
+            replacement = f'{match.group(1)}\n{component_content}\n{match.group(3)}'
         content = content.replace(match.group(0), replacement)
         found_match = True
         print(f"INFO: Processed regular tags for component '{component_name}' (tag: {tag_name})", file=sys.stderr)
@@ -239,11 +334,11 @@ if not found_match:
 # Check if anything was actually changed
 if content == original_content:
     print(f"INFO: Content already matches - component '{component_name}' is up to date", file=sys.stderr)
-    # Don't exit with error - this is actually a success case
 else:
-    print(f"SUCCESS: Component '{component_name}' content updated successfully", file=sys.stderr)
+    compression_status = "with compression" if compress_enabled else "without compression"
+    print(f"SUCCESS: Component '{component_name}' content updated successfully ({compression_status})", file=sys.stderr)
 
-# Output the result (even if unchanged, we still output it)
+# Output the result
 print(content, end='')
 PYTHON_SCRIPT
 
@@ -269,7 +364,11 @@ PYTHON_SCRIPT
         fi
         
         if [[ "$DRY_RUN" == "true" ]]; then
-            print_status "DRY RUN: Would inject $component_name into $target_file"
+            local compress_status=""
+            if [[ "$COMPRESS_HTML" == "true" ]]; then
+                compress_status=" (compressed)"
+            fi
+            print_status "DRY RUN: Would inject $component_name into $target_file$compress_status"
             rm -f "$temp_file" "$error_file"
             return 0
         else
@@ -277,7 +376,11 @@ PYTHON_SCRIPT
             if [[ -s "$temp_file" ]]; then
                 print_debug "Temp file created successfully, replacing original"
                 mv "$temp_file" "$target_file"
-                print_component "✓ Successfully injected $component_name into $target_file"
+                local compress_status=""
+                if [[ "$COMPRESS_HTML" == "true" ]]; then
+                    compress_status=" (compressed)"
+                fi
+                print_component "✓ Successfully injected $component_name into $target_file$compress_status"
                 rm -f "$error_file"
                 return 0
             else
@@ -334,6 +437,10 @@ main() {
                 DEBUG=true
                 shift
                 ;;
+            --no-compress)
+                COMPRESS_HTML=false
+                shift
+                ;;
             --help|-h)
                 show_usage
                 exit 0
@@ -367,6 +474,7 @@ main() {
     print_debug "Component: $component_html"
     print_debug "Target file: $target_file"
     print_debug "Dry run: $DRY_RUN"
+    print_debug "HTML Compression: $COMPRESS_HTML"
     
     # Check dependencies
     check_dependencies
@@ -412,6 +520,10 @@ main() {
         echo "  • Component: $component_html"
         echo "  • Target file: $target_file"
         echo "  • Component ID: $component_name"
+        echo "  • HTML Compression: $COMPRESS_HTML"
+        if [[ "$COMPRESS_HTML" == "true" ]]; then
+            echo "  • Compression features: whitespace removal, comment stripping, tag optimization"
+        fi
         if [[ "$DRY_RUN" != "true" ]]; then
             echo "  • Backup created in: $BACKUP_DIR/"
         fi

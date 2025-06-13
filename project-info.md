@@ -1,5 +1,5 @@
 # Mikrotik Hotspot Auth UI
-Generated on: 2025-06-13 02:33:23
+Generated on: 2025-06-13 04:38:29
 
 ## Project Information
 * Name: Mikrotik Hotspot Auth UI
@@ -60,6 +60,7 @@ Generated on: 2025-06-13 02:33:23
 │   │   ├── youm7.png
 │   │   └── youtube.png
 │   ├── bein-sport.jpg
+│   ├── brand.gif
 │   ├── fluent--data-area-20-filled.png
 │   ├── googleplay.png
 │   ├── hugeicons--logout-04.png
@@ -86,6 +87,7 @@ Generated on: 2025-06-13 02:33:23
 │   │   └── aos.css
 │   └── js
 │       └── aos.js
+├── python
 ├── .vscode
 │   ├── settings.json
 │   └── tailwind.json
@@ -118,5 +120,5 @@ Generated on: 2025-06-13 02:33:23
 ├── shortcuts.json
 └── status.html
 
-15 directories, 89 files
+16 directories, 90 files
 ```
