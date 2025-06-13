@@ -706,6 +706,17 @@ input[type="button"]:active {
     display: none;
 }
 
+.test-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    background-color: #086925;
+    color: #ffffff;
+    height: 64px;
+}
+
 @media (min-width: 768px) {
     .plan {
         width: 50%;
