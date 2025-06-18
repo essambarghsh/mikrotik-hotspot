@@ -1,5 +1,5 @@
 # Mikrotik Hotspot Auth UI & Landing Page
-Generated on: 2025-06-18 08:03:41
+Generated on: 2025-06-18 19:44:57
 
 ## Project Information
 * Name: Mikrotik Hotspot Auth UI & Landing Page
@@ -66,6 +66,7 @@ Generated on: 2025-06-18 08:03:41
 │   ├── hugeicons--logout-04.png
 │   ├── iconoir--wifi-error.png
 │   ├── icon-park-solid--check-one.png
+│   ├── map-bg-sm.png
 │   ├── mdi--address-marker.png
 │   ├── mingcute--close-line.png
 │   ├── mingcute--menu-line.png
@@ -122,5 +123,5 @@ Generated on: 2025-06-18 08:03:41
 ├── shortcuts.json
 └── status.html
 
-16 directories, 92 files
+16 directories, 93 files
 ```

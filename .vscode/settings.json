@@ -9,6 +9,5 @@
     "search.exclude": {
         "**/node_modules": true,
         "**/xml": true,
-        "**/css": true
     }
 }

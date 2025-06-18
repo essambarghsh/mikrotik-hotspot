@@ -10,8 +10,7 @@
                 "دعم فني"
             ],
             "map_url": "https://maps.app.goo.gl/RuC4avfozWFFrwP6A",
-            "phone": "-",
-            "hours": "من 10 صباحاً إلى 10 مساءً"
+            "hours": "من 1 مساءً إلى 11 مساءً"
         },
         {
             "name": "قرطام ماركت",
@@ -22,7 +21,6 @@
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/Pm3c35NpQqLiidwc9",
-            "phone": "01012216606",
             "hours": "من 8 صباحاً إلى 2 صباحاً"
         },
         {
@@ -34,8 +32,7 @@
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/kNTsXmdkwktNZFyf6",
-            "phone": "-",
-            "hours": "-"
+            "hours": "طوال اليوم"
         },
         {
             "name": "سوبر ماركت ابو مندور",
@@ -46,8 +43,7 @@
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/ZvT6bcSkien7K7HL7",
-            "phone": "-",
-            "hours": "-"
+            "hours": "طوال اليوم"
         },
         {
             "name": "ماركت أم هشام",
@@ -58,8 +54,7 @@
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/YkAHAKQnKGrVNn6K8",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 8 صباحاً إلى 12 صباحاً"
         },
         {
             "name": "ماركت محمد فاروق الغرباوي",
@@ -70,20 +65,18 @@
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/Z6PZWTymidKmi8Sz7",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 8 صباحاً إلى 12 صباحاً"
         },
         {
             "name": "سنترال شبل",
             "village": "غربال",
-            "address": "-",
+            "address": "بجوار محول غربال امام ماركت ام بسمة",
             "services": [
                 "تجديد باقة",
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/iEqy5ysXKwK538GG9",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 10 صباحاً إلى 12 صباحاً"
         },
         {
             "name": "سوبر ماركت ابوانس",
@@ -94,32 +87,29 @@
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/k6XsheAFWd4LPv948",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 8 صباحاً إلى 2 صباحاً"
         },
         {
             "name": "سنترال محمد شوشو ابو يسري",
             "village": "غربال",
-            "address": "-",
+            "address": "بجوار المسجد الغربي",
             "services": [
                 "تجديد باقة",
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/WuDdfBitjsQx5XYc9",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 8 صباحاً إلى 2 صباحاً"
         },
         {
             "name": "ماركت محمد رمضان ابو اسماء",
             "village": "غربال",
-            "address": "-",
+            "address": "بجوار تموين نادر الدفراوي",
             "services": [
                 "تجديد باقة",
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/PA7BynEwUnUQ3apU8",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 8 صباحاً إلى 12 صباحاً"
         },
         {
             "name": "ماركت ايهاب الشرقاوي ",
@@ -130,56 +120,51 @@
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/hmF2bzUme6YMi9V17",
-            "phone": "-",
-            "hours": "-"
+            "hours": "طوال اليوم"
         },
         {
             "name": "ماركت الحاجه ساميه",
             "village": "الحمامية",
-            "address": "-",
+            "address": "بجوار المزرعة",
             "services": [
                 "تجديد باقة",
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/EpVUuBjxFbUjvaA3A",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 1 مساءً إلى 8 صباحاً"
         },
         {
             "name": "ماركت محمد شعبان الخولي",
             "village": "الحمامية",
-            "address": "-",
+            "address": "بجوار محول الحمامية",
             "services": [
                 "تجديد باقة",
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/bbBBVwZwvdsitcKS8",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 8 صباحاً إلى 2 صباحاً"
         },
         {
             "name": "ماركت الشباسي",
             "village": "الحمامية",
-            "address": "-",
+            "address": "بجوار مركز الشباب",
             "services": [
                 "تجديد باقة",
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/zjDvaEyHSwjyuJFx9",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 8 صباحاً إلى 2 صباحاً"
         },
         {
             "name": "ماركت الشيخ كارم",
             "village": "الحمامية",
-            "address": "-",
+            "address": "بجوار الشيخ حامد المأذون",
             "services": [
                 "تجديد باقة",
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/k5gnRAWXeo3bGv9Q6",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 8 صباحاً إلى 2 صباحاً"
         },
         {
             "name": "اسامه عادل",
@@ -190,8 +175,7 @@
                 "كروت فكة"
             ],
             "map_url": "https://maps.app.goo.gl/KUTECE8D67ZUydKs8",
-            "phone": "-",
-            "hours": "-"
+            "hours": "من 8 صباحاً إلى 2 صباحاً"
         }
     ]
 }

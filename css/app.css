@@ -92,10 +92,10 @@ select {
 }
 
 select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: '';
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }
 
 /* 8. Avoid text overflows */
@@ -788,7 +788,7 @@ input[type="button"]:active {
     flex-direction: column;
     overflow: hidden;
     border-radius: 25px;
-    background-color: #000000;
+    background-color: var(--primary-color);
     color: #ffffff;
 }
 
@@ -837,9 +837,24 @@ input[type="button"]:active {
 }
 
 .pos-cta {
+    position: relative;
     display: flex;
-    justify-content: end;
-    padding: 16px;
+    justify-content: center;
+    padding: 32px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../img/map-bg-sm.png');
+}
+
+.pos-cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: block;
+    opacity: 0.3;
+    background-color: var(--primary-color);
+    z-index: 1;
 }
 
 .pos-cta a {
@@ -855,12 +870,12 @@ input[type="button"]:active {
     transition: var(--transition-duration) all;
     color: #000000;
     background-color: #ffffff;
+    z-index: 2;
 }
 
 .pos-cta a:hover {
     padding-left: 56px;
-    background-color: var(--primary-color);
-    color: #ffffff;
+    background-color: #ffffffad;
 }
 
 .pos-cta a:active {
@@ -1001,6 +1016,51 @@ input[type="button"]:active {
 
 .pos-item.hidden {
     display: none;
+}
+
+.contact-us {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    background-color: #ffffff;
+}
+
+.contact-us-card {
+    display: block;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #e6e6e6;
+    background-color: #f5f4f4;
+}
+
+.contact-us .section-header {
+    margin-bottom: 0;
+}
+
+.section-cta {
+    display: flex;
+    align-items: center;
+}
+
+.section-cta a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    line-height: 1;
+    border-radius: 9999px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #30b945;
+    transition: var(--transition-duration) all;
+}
+
+.section-cta a:hover {
+    opacity: 0.7;
+}
+
+.section-cta a svg {
+    margin-left: 12px;
+    margin-right: -6px;
 }
 
 @media (min-width: 768px) {
