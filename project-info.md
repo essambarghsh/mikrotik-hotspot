@@ -1,5 +1,5 @@
 # Mikrotik Hotspot Auth UI
-Generated on: 2025-06-13 04:38:29
+Generated on: 2025-06-18 06:51:14
 
 ## Project Information
 * Name: Mikrotik Hotspot Auth UI
@@ -104,6 +104,7 @@ Generated on: 2025-06-13 04:38:29
 ├── app.js
 ├── components.sh
 ├── configure-plans.sh
+├── configure-pos.sh
 ├── configure-shortcuts.sh
 ├── error.html
 ├── errors.txt
@@ -113,6 +114,7 @@ Generated on: 2025-06-13 04:38:29
 ├── md5.js
 ├── package.json
 ├── plans.json
+├── pos.json
 ├── radvert.html
 ├── README.md
 ├── redirect.html
@@ -120,5 +122,5 @@ Generated on: 2025-06-13 04:38:29
 ├── shortcuts.json
 └── status.html
 
-16 directories, 90 files
+16 directories, 92 files
 ```

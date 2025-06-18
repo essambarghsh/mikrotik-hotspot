@@ -1,0 +1,197 @@
+{
+    "locations": [
+        {
+            "name": "محل أبوعيسي",
+            "village": "قراقص",
+            "address": "بجوار صيدليه د/وليد حجازي امام الفصل الواحد",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة",
+                "دعم فني"
+            ],
+            "map_url": "https://maps.app.goo.gl/RuC4avfozWFFrwP6A",
+            "phone": "-",
+            "hours": "من 10 صباحاً إلى 10 مساءً"
+        },
+        {
+            "name": "قرطام ماركت",
+            "village": "قراقص",
+            "address": "امام الإسعاف",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/Pm3c35NpQqLiidwc9",
+            "phone": "01012216606",
+            "hours": "من 8 صباحاً إلى 2 صباحاً"
+        },
+        {
+            "name": "سوبر ماركت الهنا",
+            "village": "قراقص",
+            "address": "السويقه عند الابراج",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/kNTsXmdkwktNZFyf6",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "سوبر ماركت ابو مندور",
+            "village": "قراقص",
+            "address": "امام محمصة الطاهرة",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/ZvT6bcSkien7K7HL7",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "ماركت أم هشام",
+            "village": "قراقص",
+            "address": "امام المقابر",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/YkAHAKQnKGrVNn6K8",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "ماركت محمد فاروق الغرباوي",
+            "village": "قراقص",
+            "address": "حومه الحاج امام منزل العمده القديم",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/Z6PZWTymidKmi8Sz7",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "سنترال شبل",
+            "village": "غربال",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/iEqy5ysXKwK538GG9",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "سوبر ماركت ابوانس",
+            "village": "غربال",
+            "address": "عند الجامع الشرقي بغربال",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/k6XsheAFWd4LPv948",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "سنترال محمد شوشو ابو يسري",
+            "village": "غربال",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/WuDdfBitjsQx5XYc9",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "ماركت محمد رمضان ابو اسماء",
+            "village": "غربال",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/PA7BynEwUnUQ3apU8",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "ماركت ايهاب الشرقاوي ",
+            "village": "قراقص",
+            "address": "امام مزلقان قراقص",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/hmF2bzUme6YMi9V17",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "ماركت الحاجه ساميه",
+            "village": "الحمامية",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/EpVUuBjxFbUjvaA3A",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "ماركت محمد شعبان الخولي",
+            "village": "الحمامية",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/bbBBVwZwvdsitcKS8",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "ماركت الشباسي",
+            "village": "الحمامية",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/zjDvaEyHSwjyuJFx9",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "ماركت الشيخ كارم",
+            "village": "الحمامية",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/k5gnRAWXeo3bGv9Q6",
+            "phone": "-",
+            "hours": "-"
+        },
+        {
+            "name": "اسامه عادل",
+            "village": "عزبة زغلول",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/KUTECE8D67ZUydKs8",
+            "phone": "-",
+            "hours": "-"
+        }
+    ]
+}
