@@ -210,6 +210,169 @@
     margin-left: 8px;
 }
 
+.pos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -12px;
+    margin-right: -12px;
+}
+
+.pos-item {
+    position: relative;
+    padding: 12px 12px;
+    width: 100%;
+}
+
+.pos-header,
+.pos-details .pos-detail-row {
+    border-bottom: 1px solid #ffffff36;
+}
+
+.pos-item .pos-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 25px;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.pos-header {
+    display: flex;
+    padding: 16px;
+}
+
+.pos-header svg {
+    margin-left: 12px;
+}
+
+.pos-details .pos-detail-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 8px 16px;
+}
+
+.pos-details .pos-detail-row .first {
+    min-width: max-content;
+    flex: 1;
+    padding-left: 16px;
+    padding-top: 8px;
+    font-size: 0.688rem;
+    font-weight: 700;
+}
+
+.pos-details .pos-detail-row .end {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+.pos-details .pos-detail-row .first,
+.pos-details .pos-detail-row .end {
+    line-height: 1.8;
+}
+
+.pos-name {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+.pos-cta {
+    display: flex;
+    justify-content: end;
+    padding: 16px;
+}
+
+.pos-cta a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 19px;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-size: 0.625rem;
+    font-weight: 700;
+    transition: var(--transition-duration) all;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.pos-cta a:hover {
+    padding-left: 56px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.pos-cta a:active {
+    transform: scale(0.95);
+}
+
+.pos-cta a>svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: 12px;
+    margin-right: -4px;
+    transition: var(--transition-duration) all;
+}
+
+.pos-cta .new-tab {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    left: 0px;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: var(--transition-duration) all;
+    z-index: 1;
+}
+
+.pos-cta .new-tab svg {
+    width: 0.875rem;
+    height: 0.875rem;
+}
+
+.pos-cta a:hover .new-tab {
+    opacity: 1;
+}
+
+.pos-detail-row.as-badges ul {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pos-detail-row.as-badges ul li {
+    display: inline-flex;
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: 0.625rem;
+    margin-right: 8px;
+    color: #ffffff;
+    background-color: #ffffff5b;
+}
+
+.pos-detail-row.as-badges ul li:first-of-type {
+    margin-right: 0;
+}
+
+.pos-detail-row.as-badges .first {
+    display: inline-flex;
+    align-items: center;
+    padding-bottom: 8px;
+}
+
 @supports (display: grid) {
     .shortcuts {
         display: grid;
@@ -310,4 +473,24 @@
     .hero-villages-list li:first-of-type {
         margin-right: 0;
     }
+
+    .pos-item {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .pos-item {
+        width: 33.333333333%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .pos-item {
+        width: 25%;
+    }
+}
+
+.plan-body {
+    border: none !important;
 }
