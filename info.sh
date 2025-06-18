@@ -36,8 +36,8 @@ cat > "$OUTPUT_FILE" << EOF
 Generated on: $TIMESTAMP
 
 ## Project Information
-* Name: Mikrotik Hotspot Auth UI
-* Description: A user interface for Mikrotik Hotspot authentication.
+* Name: Mikrotik Hotspot Auth UI & Landing Page
+* Description: A user interface for Mikrotik RouterOS Hotspot authentication and landing page after login.
 * Author: Essam Barghsh
 * Language: Javascript, CSS, HTML
 

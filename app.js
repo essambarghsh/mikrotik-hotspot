@@ -321,3 +321,56 @@ class POSFilter {
 document.addEventListener("DOMContentLoaded", () => {
   new POSFilter();
 });
+
+// Scroll Mouse Functionality
+function scrollToNextSection() {
+    const nextSection = document.querySelector('.pricing-section, .pos-section, section:nth-of-type(2)');
+    if (nextSection) {
+        nextSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    } else {
+        window.scrollBy({ 
+            top: window.innerHeight,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Hide/Show scroll mouse based on scroll position
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    const scrollMouse = document.querySelector('.scroll-mouse');
+    if (scrollMouse) {
+        scrollMouse.style.opacity = '0.3';
+        
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            if (window.scrollY < 100) {
+                scrollMouse.style.opacity = '1';
+            }
+        }, 1000);
+        
+        if (window.scrollY > 200) {
+            scrollMouse.style.display = 'none';
+        } else {
+            scrollMouse.style.display = 'flex';
+        }
+    }
+});
+
+// Entrance animation
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollMouse = document.querySelector('.scroll-mouse');
+    if (scrollMouse) {
+        scrollMouse.style.opacity = '0';
+        scrollMouse.style.transform = 'translateX(-50%) translateY(20px)';
+        
+        setTimeout(() => {
+            scrollMouse.style.transition = 'all 0.8s ease-out';
+            scrollMouse.style.opacity = '1';
+            scrollMouse.style.transform = 'translateX(-50%) translateY(0px)';
+        }, 1000);
+    }
+});
