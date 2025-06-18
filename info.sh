@@ -32,7 +32,7 @@ fi
 
 # Create the output file with header and project information
 cat > "$OUTPUT_FILE" << EOF
-# Mikrotik Hotspot Auth UI
+# Mikrotik Hotspot Auth UI & Landing Page
 Generated on: $TIMESTAMP
 
 ## Project Information

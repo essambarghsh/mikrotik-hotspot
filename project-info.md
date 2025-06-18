@@ -1,5 +1,5 @@
-# Mikrotik Hotspot Auth UI
-Generated on: 2025-06-18 07:58:29
+# Mikrotik Hotspot Auth UI & Landing Page
+Generated on: 2025-06-18 08:03:41
 
 ## Project Information
 * Name: Mikrotik Hotspot Auth UI & Landing Page
