@@ -150,7 +150,7 @@ The interface adapts across devices:
 - **Tablet** - Grid layouts for plans and shortcuts
 - **Desktop** - Full feature set with animations
 
-## 🌈 Dynamic Theming
+## Dynamic Theming
 
 Automatic color palette cycling with smooth transitions:
 - Default Blue, Purple Dream, Sunset Orange, Rose Pink
