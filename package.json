@@ -6,9 +6,8 @@
 	"author": "Ashwab, Essam Barghsh",
 	"homepage": "https://www.ashwab.com",
 	"scripts": {
-		"build": "npm run plans && npm run shortcuts && npm run pos && npm run components && npm run info",
-		"dev": "npm run plans:dev && npm run shortcuts:dev && npm run pos:dev && npm run components:dev && npm run info",
-		"info": "./info.sh",
+		"build": "npm run plans && npm run shortcuts && npm run pos && npm run components",
+		"dev": "npm run plans:dev && npm run shortcuts:dev && npm run pos:dev && npm run components:dev",
 		"plans": "./configure-plans.sh --file login.html && ./configure-plans.sh --file alogin.html",
 		"plans:dev": "./configure-plans.sh --file login.html --limit 3 && ./configure-plans.sh --file alogin.html --limit 3",
 		"plans:validate": "./configure-plans.sh --validate",

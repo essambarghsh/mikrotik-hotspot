@@ -1171,3 +1171,23 @@ input[type="button"]:active {
 .plan-body {
     border: none !important;
 }
+
+.validation-error {
+    align-items: center;
+    font-size: 13px;
+    text-align: center;
+    padding: 14px 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    line-height: 1.9;
+    font-weight: 700;
+    margin-top: -1px;
+    color: #730505;
+    background-color: #e5c4c4;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.validation-error svg {
+    margin-left: 12px;
+}
