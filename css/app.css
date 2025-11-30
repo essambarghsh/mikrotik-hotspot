@@ -33,11 +33,11 @@
 }
 
 :root {
-    --primary-color: #f4a261;
-    --primary-dark-color: #e76f51;
-    --primary-light-color: #ffd6a5;
-    --primary-extra-light-color: #ffe8cc;
-    --body-bg-color: #fff8f0;
+    --primary-color: #ffc107;
+    --primary-dark-color: #ff9800;
+    --primary-light-color: #ffe082;
+    --primary-extra-light-color: #fff3cd;
+    --body-bg-color: #fffbf0;
     --transition-duration: 0.2s;
     --poems-animation-duration: 2s;
     --text-size: 0.75rem;

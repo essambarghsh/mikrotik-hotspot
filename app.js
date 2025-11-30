@@ -10,43 +10,43 @@ class ColorPaletteChanger {
     // Define your color palettes here - easily add more!
     this.palettes = [
       {
-        name: "Vibrant Red",
+        name: "Amber Gold",
         colors: {
-          "--primary-color": "#e63946",
-          "--primary-dark-color": "#c1121f",
-          "--primary-light-color": "#ff758f",
-          "--primary-extra-light-color": "#ffccd5",
-          "--body-bg-color": "#fff5f7",
+          "--primary-color": "#ffc107",
+          "--primary-dark-color": "#ff9800",
+          "--primary-light-color": "#ffe082",
+          "--primary-extra-light-color": "#fff3cd",
+          "--body-bg-color": "#fffbf0",
         },
       },
       {
-        name: "Golden Yellow",
+        name: "Fresh Green",
         colors: {
-          "--primary-color": "#f4a261",
-          "--primary-dark-color": "#e76f51",
-          "--primary-light-color": "#ffd6a5",
-          "--primary-extra-light-color": "#ffe8cc",
-          "--body-bg-color": "#fff8f0",
+          "--primary-color": "#22c55e",
+          "--primary-dark-color": "#16a34a",
+          "--primary-light-color": "#86efac",
+          "--primary-extra-light-color": "#dcfce7",
+          "--body-bg-color": "#f0fdf4",
         },
       },
       {
-        name: "Deep Rose",
+        name: "Vivid Purple",
         colors: {
-          "--primary-color": "#d8315b",
-          "--primary-dark-color": "#a91e3a",
-          "--primary-light-color": "#f093a8",
-          "--primary-extra-light-color": "#f8d7da",
-          "--body-bg-color": "#fef0f3",
+          "--primary-color": "#a855f7",
+          "--primary-dark-color": "#9333ea",
+          "--primary-light-color": "#d8b4fe",
+          "--primary-extra-light-color": "#f3e8ff",
+          "--body-bg-color": "#faf5ff",
         },
       },
       {
-        name: "Elegant Black",
+        name: "Sky Blue",
         colors: {
-          "--primary-color": "#2d3748",
-          "--primary-dark-color": "#1a202c",
-          "--primary-light-color": "#718096",
-          "--primary-extra-light-color": "#e2e8f0",
-          "--body-bg-color": "#f7fafc",
+          "--primary-color": "#48CCFF",
+          "--primary-dark-color": "#0ea5e9",
+          "--primary-light-color": "#bae6fd",
+          "--primary-extra-light-color": "#e0f2fe",
+          "--body-bg-color": "#f0f9ff",
         },
       },
     ];
@@ -158,20 +158,20 @@ class ColorPaletteChanger {
 // Initialize and start the color changer
 const colorChanger = new ColorPaletteChanger({
   interval: 2000, // Change every 2 seconds
-  transitionDuration: "0.2s", // 0.2 second smooth transition
+  transitionDuration: "0.3s", // 0.2 second smooth transition
 });
 
 // Start the automatic cycling
 colorChanger.start();
 
 // Example: Add your own custom palette
-colorChanger.addPalette("Custom Dark", {
+/* colorChanger.addPalette("Custom Dark", {
   "--primary-color": "#374151",
   "--primary-dark-color": "#1f2937",
   "--primary-light-color": "#9ca3af",
   "--primary-extra-light-color": "#d1d5db",
   "--body-bg-color": "#f9fafb",
-});
+}); */
 
 // Optional: Add control buttons (uncomment if needed)
 /*
@@ -324,53 +324,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Scroll Mouse Functionality
 function scrollToNextSection() {
-    const nextSection = document.querySelector('.pricing-section, .pos-section, section:nth-of-type(2)');
-    if (nextSection) {
-        nextSection.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-        });
-    } else {
-        window.scrollBy({ 
-            top: window.innerHeight,
-            behavior: 'smooth'
-        });
-    }
+  const nextSection = document.querySelector(
+    ".pricing-section, .pos-section, section:nth-of-type(2)"
+  );
+  if (nextSection) {
+    nextSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  } else {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  }
 }
 
 // Hide/Show scroll mouse based on scroll position
 let scrollTimeout;
-window.addEventListener('scroll', () => {
-    const scrollMouse = document.querySelector('.scroll-mouse');
-    if (scrollMouse) {
-        scrollMouse.style.opacity = '0.3';
-        
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            if (window.scrollY < 100) {
-                scrollMouse.style.opacity = '1';
-            }
-        }, 1000);
-        
-        if (window.scrollY > 200) {
-            scrollMouse.style.display = 'none';
-        } else {
-            scrollMouse.style.display = 'flex';
-        }
+window.addEventListener("scroll", () => {
+  const scrollMouse = document.querySelector(".scroll-mouse");
+  if (scrollMouse) {
+    scrollMouse.style.opacity = "0.3";
+
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      if (window.scrollY < 100) {
+        scrollMouse.style.opacity = "1";
+      }
+    }, 1000);
+
+    if (window.scrollY > 200) {
+      scrollMouse.style.display = "none";
+    } else {
+      scrollMouse.style.display = "flex";
     }
+  }
 });
 
 // Entrance animation
-document.addEventListener('DOMContentLoaded', () => {
-    const scrollMouse = document.querySelector('.scroll-mouse');
-    if (scrollMouse) {
-        scrollMouse.style.opacity = '0';
-        scrollMouse.style.transform = 'translateX(-50%) translateY(20px)';
-        
-        setTimeout(() => {
-            scrollMouse.style.transition = 'all 0.8s ease-out';
-            scrollMouse.style.opacity = '1';
-            scrollMouse.style.transform = 'translateX(-50%) translateY(0px)';
-        }, 1000);
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollMouse = document.querySelector(".scroll-mouse");
+  if (scrollMouse) {
+    scrollMouse.style.opacity = "0";
+    scrollMouse.style.transform = "translateX(-50%) translateY(20px)";
+
+    setTimeout(() => {
+      scrollMouse.style.transition = "all 0.8s ease-out";
+      scrollMouse.style.opacity = "1";
+      scrollMouse.style.transform = "translateX(-50%) translateY(0px)";
+    }, 1000);
+  }
 });
