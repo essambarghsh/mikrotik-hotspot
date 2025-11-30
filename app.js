@@ -10,43 +10,43 @@ class ColorPaletteChanger {
     // Define your color palettes here - easily add more!
     this.palettes = [
       {
-        name: "Default Blue",
+        name: "Vibrant Red",
         colors: {
-          "--primary-color": "#1877F2",
-          "--primary-dark-color": "#1367d2",
-          "--primary-light-color": "#a9cbfe",
-          "--primary-extra-light-color": "#bed8ff",
-          "--body-bg-color": "#e9f2ff",
+          "--primary-color": "#e63946",
+          "--primary-dark-color": "#c1121f",
+          "--primary-light-color": "#ff758f",
+          "--primary-extra-light-color": "#ffccd5",
+          "--body-bg-color": "#fff5f7",
         },
       },
       {
-        name: "Purple Dream",
+        name: "Golden Yellow",
         colors: {
-          "--primary-color": "#8b5cf6",
-          "--primary-dark-color": "#7c3aed",
-          "--primary-light-color": "#c4b5fd",
-          "--primary-extra-light-color": "#ddd6fe",
-          "--body-bg-color": "#f5f3ff",
+          "--primary-color": "#f4a261",
+          "--primary-dark-color": "#e76f51",
+          "--primary-light-color": "#ffd6a5",
+          "--primary-extra-light-color": "#ffe8cc",
+          "--body-bg-color": "#fff8f0",
         },
       },
       {
-        name: "Sunset Orange",
+        name: "Deep Rose",
         colors: {
-          "--primary-color": "#f97316",
-          "--primary-dark-color": "#ea580c",
-          "--primary-light-color": "#fed7aa",
-          "--primary-extra-light-color": "#ffedd5",
-          "--body-bg-color": "#fff7ed",
+          "--primary-color": "#d8315b",
+          "--primary-dark-color": "#a91e3a",
+          "--primary-light-color": "#f093a8",
+          "--primary-extra-light-color": "#f8d7da",
+          "--body-bg-color": "#fef0f3",
         },
       },
       {
-        name: "Rose Pink",
+        name: "Elegant Black",
         colors: {
-          "--primary-color": "#f43f5e",
-          "--primary-dark-color": "#e11d48",
-          "--primary-light-color": "#fda4af",
-          "--primary-extra-light-color": "#fecdd3",
-          "--body-bg-color": "#fff1f2",
+          "--primary-color": "#2d3748",
+          "--primary-dark-color": "#1a202c",
+          "--primary-light-color": "#718096",
+          "--primary-extra-light-color": "#e2e8f0",
+          "--body-bg-color": "#f7fafc",
         },
       },
     ];
@@ -157,7 +157,7 @@ class ColorPaletteChanger {
 
 // Initialize and start the color changer
 const colorChanger = new ColorPaletteChanger({
-  interval: 5000, // Change every 5 seconds
+  interval: 2000, // Change every 2 seconds
   transitionDuration: "0.2s", // 0.2 second smooth transition
 });
 

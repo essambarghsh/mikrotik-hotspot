@@ -176,6 +176,39 @@
             ],
             "map_url": "https://maps.app.goo.gl/KUTECE8D67ZUydKs8",
             "hours": "من 8 صباحاً إلى 2 صباحاً"
+        },
+        {
+            "name": "محمد الخولي البرنس",
+            "village": "عزبة الكوم",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/YhaHMp4dYeAroGkx8?g_st=aw",
+            "hours": "-"
+        },
+        {
+            "name": "ارباح احمد عبدالباقي",
+            "village": "غربال",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/dJajfZiiTtbXorAt9?g_st=aw",
+            "hours": "-"
+        },
+        {
+            "name": "رشوان فايد",
+            "village": "قراقص",
+            "address": "-",
+            "services": [
+                "تجديد باقة",
+                "كروت فكة"
+            ],
+            "map_url": "https://maps.app.goo.gl/Z55gwtJsUJdTy1Qm9?g_st=aw",
+            "hours": "-"
         }
     ]
 }

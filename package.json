@@ -22,9 +22,11 @@
 		"pos:dev": "./configure-pos.sh --file login.html --limit 3 && ./configure-pos.sh --file alogin.html --limit 3",
 		"pos:validate": "./configure-pos.sh --validate",
 		"pos:help": "./configure-pos.sh --help",
-		"components": "npm run footer",
-		"components:dev": "npm run footer:dev",
+		"components": "npm run footer && npm run poems",
+		"components:dev": "npm run footer:dev && npm run poems:dev",
 		"footer": "./components.sh comp footer.html file alogin.html && ./components.sh comp footer.html file login.html",
-		"footer:dev": "./components.sh comp footer.html file alogin.html --no-compress && ./components.sh comp footer.html file login.html --no-compress"
+		"footer:dev": "./components.sh comp footer.html file alogin.html --no-compress && ./components.sh comp footer.html file login.html --no-compress",
+		"poems": "./components.sh comp poems.html file login.html && ./components.sh comp poems.html file alogin.html",
+		"poems:dev": "./components.sh comp poems.html file login.html --no-compress && ./components.sh comp poems.html file alogin.html --no-compress"
 	}
 }

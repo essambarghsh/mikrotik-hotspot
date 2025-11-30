@@ -285,6 +285,21 @@
     animation-delay: 0.4s;
 }
 
+/* Ripple effect */
+.scroll-mouse::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 3s ease-in-out infinite;
+    z-index: -1;
+}
+
 /* Animations */
 @keyframes mouseFloat {
 
@@ -341,21 +356,6 @@
         opacity: 1;
         transform: translateY(4px);
     }
-}
-
-/* Ripple effect */
-.scroll-mouse::before {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: ripple 3s ease-in-out infinite;
-    z-index: -1;
 }
 
 @keyframes ripple {
@@ -473,4 +473,23 @@
     .hero-villages-list li:first-of-type {
         margin-right: 0;
     }
+}
+
+#poems {
+    padding: 0 32px;
+}
+
+#poems .poems {
+    max-width: 1400px;
+    padding: 0;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--poems-animation-duration) all;
+}
+
+#poems .poems.animate {
+    margin-bottom: 32px;
+    margin-top: 32px;
 }
