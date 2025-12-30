@@ -1379,3 +1379,43 @@ input[type="button"]:active {
 .validation-error svg {
     margin-left: 12px;
 }
+
+.free-gift {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 16px;
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
+    background-color: #ff2a23;
+}
+
+.free-gift > div {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex: 1;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.free-gift svg {
+    width: 64px;
+    height: 64px;
+    margin-left: 16px;
+}
+
+.free-gift h2 {
+    font-size: 16px;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: 6px;
+}
+
+.free-gift p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.8;
+}
