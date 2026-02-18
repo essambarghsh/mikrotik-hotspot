@@ -1081,7 +1081,7 @@ input[type="button"]:active {
         max-height: 0;
         transition: max-height var(--poems-animation-duration) cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     .poems.animate,
     .poems.no-clip-path {
         clip-path: none;
@@ -1387,10 +1387,10 @@ input[type="button"]:active {
     font-size: 16px;
     border-bottom: 1px solid #ffffff;
     color: #ffffff;
-    background-color: #ff2a23;
+    background-color: #fd9c64;
 }
 
-.free-gift > div {
+.free-gift>div {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -1418,4 +1418,50 @@ input[type="button"]:active {
     font-size: 14px;
     font-weight: 500;
     line-height: 1.8;
+}
+
+.free-cost-mjala {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 29px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.free-cost-mjala-title {
+    font-size: 14px;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: 6px;
+    line-height: 1.7;
+}
+
+.free-cost-mjala-cta {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    background-color: #f5f4f4;
+    color: #000000;
+    padding: 16px 24px;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: var(--transition-duration) all;
+}
+
+.free-cost-mjala-cta:hover {
+    background-color: #fd9c64;
+    color: #ffffff;
+}
+
+.free-cost-mjala-container {
+    padding: 0 20px;
 }
