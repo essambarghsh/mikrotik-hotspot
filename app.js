@@ -132,16 +132,18 @@ class ColorPaletteChanger {
 }); */
 
 // Start the automatic cycling
-colorChanger.start();
+/* colorChanger.start();
 
 // Make it globally accessible for debugging/manual control
-window.colorChanger = colorChanger;
+window.colorChanger = colorChanger; */
 
 // Remove flying lert completely after 1.5 seconds
 const element = document.getElementById("flyingAlert");
-setTimeout(() => {
-  element.remove();
-}, 1500);
+if (element) {
+  setTimeout(() => {
+    element.remove();
+  }, 1500);
+}
 
 // POS Filtering System
 class POSFilter {
