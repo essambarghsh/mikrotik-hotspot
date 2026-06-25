@@ -28,22 +28,25 @@
 .hero-logo {
     width: 100%;
     height: 153px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #ffffff;
     border-radius: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    backdrop-filter: blur(10px);
-    border: 3px solid rgba(255, 255, 255, 0.2);
     margin-bottom: 20px;
+    box-shadow: 0px 0px 0px 6px #ffffff30;
+    -webkit-box-shadow: 0px 0px 0px 6px #ffffff30;
+    -moz-box-shadow: 0px 0px 0px 6px #ffffff30;
+    color: var(--primary-dark-color);
 }
 
 .hero-header {
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
+    flex-direction: column;
 }
 
 .hero-header .first {
@@ -53,9 +56,12 @@
 }
 
 .hero-header .end {
-    margin-right: auto;
-    width: 130px;
-    display: none;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 24px;
 }
 
 .hero-title {
@@ -125,7 +131,6 @@
     height: auto;
     border-radius: 28px;
     pointer-events: none;
-
     box-shadow: 0px 0px 0px 6px #ffffff30;
     -webkit-box-shadow: 0px 0px 0px 6px #ffffff30;
     -moz-box-shadow: 0px 0px 0px 6px #ffffff30;
@@ -433,13 +438,13 @@
     .hero-logo {
         margin-left: 20px;
         margin-bottom: 0;
-        width: 298px;
-        min-width: 298px;
-        font-size: 3rem;
+        width: 250px;
+        min-width: 250px;
     }
 
     .hero-header {
         padding-top: 32px;
+        flex-direction: row;
     }
 
     .hero-header .first {
@@ -447,8 +452,9 @@
     }
 
     .hero-header .end {
-        display: flex;
-        justify-content: end;
+        margin-right: 24px;
+        margin-top: 0;
+        flex-direction: column;
     }
 
     .featured-services ul {
@@ -473,23 +479,4 @@
     .hero-villages-list li:first-of-type {
         margin-right: 0;
     }
-}
-
-#poems {
-    padding: 0 32px;
-}
-
-#poems .poems {
-    max-width: 1400px;
-    padding: 0;
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: var(--poems-animation-duration) all;
-}
-
-#poems .poems.animate {
-    margin-bottom: 32px;
-    margin-top: 32px;
 }

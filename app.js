@@ -12,41 +12,11 @@ class ColorPaletteChanger {
       {
         name: "Amber Gold",
         colors: {
-          "--primary-color": "#ffc107",
+          "--primary-color": "#057dcd",
           "--primary-dark-color": "#ff9800",
           "--primary-light-color": "#ffe082",
           "--primary-extra-light-color": "#fff3cd",
           "--body-bg-color": "#fffbf0",
-        },
-      },
-      {
-        name: "Fresh Green",
-        colors: {
-          "--primary-color": "#22c55e",
-          "--primary-dark-color": "#16a34a",
-          "--primary-light-color": "#86efac",
-          "--primary-extra-light-color": "#dcfce7",
-          "--body-bg-color": "#f0fdf4",
-        },
-      },
-      {
-        name: "Vivid Purple",
-        colors: {
-          "--primary-color": "#a855f7",
-          "--primary-dark-color": "#9333ea",
-          "--primary-light-color": "#d8b4fe",
-          "--primary-extra-light-color": "#f3e8ff",
-          "--body-bg-color": "#faf5ff",
-        },
-      },
-      {
-        name: "Sky Blue",
-        colors: {
-          "--primary-color": "#48CCFF",
-          "--primary-dark-color": "#0ea5e9",
-          "--primary-light-color": "#bae6fd",
-          "--primary-extra-light-color": "#e0f2fe",
-          "--body-bg-color": "#f0f9ff",
         },
       },
     ];
@@ -156,39 +126,13 @@ class ColorPaletteChanger {
 }
 
 // Initialize and start the color changer
-const colorChanger = new ColorPaletteChanger({
+/* const colorChanger = new ColorPaletteChanger({
   interval: 2000, // Change every 2 seconds
   transitionDuration: "0.3s", // 0.2 second smooth transition
-});
+}); */
 
 // Start the automatic cycling
 colorChanger.start();
-
-// Example: Add your own custom palette
-/* colorChanger.addPalette("Custom Dark", {
-  "--primary-color": "#374151",
-  "--primary-dark-color": "#1f2937",
-  "--primary-light-color": "#9ca3af",
-  "--primary-extra-light-color": "#d1d5db",
-  "--body-bg-color": "#f9fafb",
-}); */
-
-// Optional: Add control buttons (uncomment if needed)
-/*
-// Stop/Start controls
-window.toggleColorChanger = () => {
-    if (colorChanger.isRunning) {
-        colorChanger.stop();
-    } else {
-        colorChanger.start();
-    }
-};
-
-// Manual palette switching
-window.switchToPalette = (index) => {
-    colorChanger.applyPalette(index);
-};
-*/
 
 // Make it globally accessible for debugging/manual control
 window.colorChanger = colorChanger;
