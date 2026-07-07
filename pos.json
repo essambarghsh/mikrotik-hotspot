@@ -208,6 +208,405 @@
             ],
             "map_url": "https://maps.app.goo.gl/Z55gwtJsUJdTy1Qm9?g_st=aw",
             "hours": "-"
+        },
+        {
+            "name": "محمد الحمدي",
+            "village": "",
+            "address": "-",
+            "services": [
+                "تجديد",
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "شوشو",
+            "village": "غربال",
+            "address": "الجامع الغربي",
+            "services": [
+                "تجديد",
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "ام بسمه",
+            "village": "غربال",
+            "address": "المحول",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "مروان محمصه",
+            "village": "قراقص",
+            "address": "عند السرافيس",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "كريم نصر",
+            "village": "",
+            "address": "الجامع الغربي",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "اوطه",
+            "village": "",
+            "address": "الجامع القبلي",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "مدحت شبل",
+            "village": "غربال",
+            "address": "محول غربال",
+            "services": [
+                "تجديد",
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "امير",
+            "village": "حماميه",
+            "address": "ش المعب",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "ج ساميه",
+            "village": "حماميه",
+            "address": "عندالقهوه",
+            "services": [
+                "تجديد",
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "قهوه الملكه",
+            "village": "غربال",
+            "address": "المعهد الديني",
+            "services": [
+                "تجديد",
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "محمد عرفه",
+            "village": "غربال",
+            "address": "مكنه الدغيشه",
+            "services": [
+                "تجديد",
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "وليد نعيم",
+            "village": "قراقص",
+            "address": "السويقه",
+            "services": [
+                "تجديد",
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "طه عبدين",
+            "village": "غربال",
+            "address": "الجامع الشرقي",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "عادل الفقي",
+            "village": "غربال",
+            "address": "الجامع الغربي",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "ابو حبيبه",
+            "village": "عزبة الكوم",
+            "address": "-",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "محمود عبدين",
+            "village": "غربال",
+            "address": "الجامع الغربي",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "الغول",
+            "village": "حماميه",
+            "address": "عند المحول",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "عمر عبدالله",
+            "village": "غربال",
+            "address": "الجامع الغربي",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "السوساني",
+            "village": "غربال",
+            "address": "الجامع الغربي",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "جوده حشيش",
+            "village": "قراقص",
+            "address": "قبل الفلا",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "صباح ام ندي",
+            "village": "قراقص",
+            "address": "ش الجامع البحري",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "نصر الدماطي",
+            "village": "عزبة الكوم",
+            "address": "عندالبرنس",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "شريف عبدالله",
+            "village": "غربال",
+            "address": "عند سعيد خطاب",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "قهوه خميس",
+            "village": "حماميه",
+            "address": "-",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "مبروك",
+            "village": "قراقص",
+            "address": "المقام",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "مكتبه ام منه",
+            "village": "غربال",
+            "address": "بعد محول",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "رضوان",
+            "village": "غربال",
+            "address": "ش الجبابين",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "احمد الناظر",
+            "village": "غربال",
+            "address": "ش المحول",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "عزه ابوالنجا",
+            "village": "غربال",
+            "address": "الجامع الشرقي",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "محمد ابراهيم الخولي",
+            "village": "عزبة الكوم",
+            "address": "البرنس",
+            "services": [
+                "تجديد",
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "صبري فايد",
+            "village": "قراقص",
+            "address": "بجوار المدرسه",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "كمال الادهم",
+            "village": "عزبة الكوم",
+            "address": "بعد عماره",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "ابوكمال",
+            "village": "غربال",
+            "address": "-",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "عاطف نعيم",
+            "village": "قراقص",
+            "address": "مقابل المحل",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "محمد عماره",
+            "village": "عزبة الكوم",
+            "address": "-",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "محمود الصاوي",
+            "village": "قراقص",
+            "address": "العمده",
+            "services": [
+                "تجديد",
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "محمد المزين",
+            "village": "الحمامية",
+            "address": "المحول",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "خميس مرسي",
+            "village": "الحمامية",
+            "address": "محول",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
+        },
+        {
+            "name": "عبده المصري",
+            "village": "غربال",
+            "address": "عندالبسومي",
+            "services": [
+                "كروت"
+            ],
+            "map_url": "",
+            "hours": "-"
         }
     ]
 }

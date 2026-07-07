@@ -268,10 +268,40 @@ document.addEventListener("DOMContentLoaded", () => {
   new POSFilter();
 });
 
+// POS Dialog
+document.addEventListener("DOMContentLoaded", () => {
+  const posDialog = document.getElementById("posDialog");
+  const openPosDialogBtn = document.getElementById("openPosDialog");
+  const closePosDialogBtn = document.getElementById("closePosDialog");
+
+  if (!posDialog) {
+    return;
+  }
+
+  if (openPosDialogBtn) {
+    openPosDialogBtn.addEventListener("click", () => {
+      posDialog.showModal();
+    });
+  }
+
+  if (closePosDialogBtn) {
+    closePosDialogBtn.addEventListener("click", () => {
+      posDialog.close();
+    });
+  }
+
+  // Close when clicking on the backdrop
+  posDialog.addEventListener("click", (event) => {
+    if (event.target === posDialog) {
+      posDialog.close();
+    }
+  });
+});
+
 // Scroll Mouse Functionality
 function scrollToNextSection() {
   const nextSection = document.querySelector(
-    ".pricing-section, .pos-section, section:nth-of-type(2)"
+    ".pricing-section, section:nth-of-type(2)"
   );
   if (nextSection) {
     nextSection.scrollIntoView({

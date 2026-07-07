@@ -2,52 +2,51 @@
     "plans": [
         {
             "price": "50 جنية",
-            "data_limit": "20 جيجا",
-            "badge": "20GB",
+            "data_limit": "15 جيجا",
+            "badge": "15GB",
             "speeds": [
                 "1 ميجا",
-                "2 ميجا",
-                "3 ميجا"
+                "3 ميجا",
+                "5 ميجا"
             ]
         },
         {
             "price": "75 جنية",
-            "data_limit": "30 جيجا",
-            "badge": "30GB",
+            "data_limit": "25 جيجا",
+            "badge": "25GB",
             "speeds": [
                 "1 ميجا",
-                "2 ميجا",
                 "3 ميجا",
-                "4 ميجا"
-            ]
-        },
-        {
-            "price": "100 جنية",
-            "data_limit": "40 جيجا",
-            "badge": "40GB",
-            "speeds": [
-                "1 ميجا",
-                "2 ميجا",
-                "3 ميجا",
-                "4 ميجا",
                 "5 ميجا",
                 "8 ميجا"
             ]
         },
         {
-            "price": "140 جنية",
+            "price": "120 جنية",
+            "data_limit": "40 جيجا",
+            "badge": "40GB",
+            "speeds": [
+                "1 ميجا",
+                "3 ميجا",
+                "5 ميجا",
+                "8 ميجا",
+                "12 ميجا"
+            ]
+        },
+        {
+            "price": "170 جنية",
             "data_limit": "60 جيجا",
             "badge": "60GB",
             "speeds": [
                 "1 ميجا",
-                "2 ميجا",
+                "3 ميجا",
                 "5 ميجا",
                 "8 ميجا",
                 "16 ميجا"
             ]
         },
         {
-            "price": "190 جنية",
+            "price": "220 جنية",
             "data_limit": "80 جيجا",
             "badge": "80GB",
             "speeds": [
@@ -60,7 +59,7 @@
             ]
         },
         {
-            "price": "230 جنية",
+            "price": "270 جنية",
             "data_limit": "100 جيجا",
             "badge": "100GB",
             "speeds": [
@@ -73,7 +72,7 @@
             ]
         },
         {
-            "price": "300 جنية",
+            "price": "350 جنية",
             "data_limit": "140 جيجا",
             "badge": "140GB",
             "speeds": [
@@ -86,7 +85,7 @@
             ]
         },
         {
-            "price": "400 جنية",
+            "price": "450 جنية",
             "data_limit": "180 جيجا",
             "badge": "180GB",
             "speeds": [
@@ -99,7 +98,7 @@
             ]
         },
         {
-            "price": "500 جنية",
+            "price": "550 جنية",
             "data_limit": "230 جيجا",
             "badge": "230GB",
             "speeds": [
@@ -112,7 +111,7 @@
             ]
         },
         {
-            "price": "640 جنية",
+            "price": "730 جنية",
             "data_limit": "300 جيجا",
             "badge": "300GB",
             "speeds": [
@@ -125,20 +124,61 @@
             ]
         },
         {
-            "price": "11 جنية",
-            "data_limit": "2 جيجا",
-            "badge": "2GB",
+            "price": "15 جنية",
+            "data_limit": "2500 ميجا",
+            "badge": "2500MB",
             "extra_badge": "كارت فكة",
+            "css_classes": ["cart"],
+            "speeds": [
+                "8 ميجا"
+            ]
+        },
+        {
+            "price": "25 جنية",
+            "data_limit": "5000 ميجا",
+            "badge": "5000MB",
+            "extra_badge": "كارت فكة",
+            "css_classes": ["cart"],
+            "speeds": [
+                "8 ميجا"
+            ]
+        },
+
+        {
+            "price": "50 جنية",
+            "data_limit": "10000 ميجا",
+            "badge": "10000MB",
+            "extra_badge": "باقة كارت فكة خارجي",
             "css_classes": ["cart"],
             "speeds": [
                 "5 ميجا"
             ]
         },
         {
-            "price": "20 جنية",
-            "data_limit": "4 جيجا",
-            "badge": "4GB",
-            "extra_badge": "كارت فكة",
+            "price": "60 جنية",
+            "data_limit": "15000 ميجا",
+            "badge": "15000MB",
+            "extra_badge": "باقة كارت فكة خارجي",
+            "css_classes": ["cart"],
+            "speeds": [
+                "5 ميجا"
+            ]
+        },
+        {
+            "price": "90 جنية",
+            "data_limit": "25000 ميجا",
+            "badge": "25000MB",
+            "extra_badge": "باقة كارت فكة خارجي",
+            "css_classes": ["cart"],
+            "speeds": [
+                "5 ميجا"
+            ]
+        },
+        {
+            "price": "130 جنية",
+            "data_limit": "40000 ميجا",
+            "badge": "40000MB",
+            "extra_badge": "باقة كارت فكة خارجي",
             "css_classes": ["cart"],
             "speeds": [
                 "5 ميجا"

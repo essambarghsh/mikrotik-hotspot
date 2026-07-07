@@ -293,8 +293,9 @@ import sys
 with open(sys.argv[1], 'r', encoding='utf-8') as f:
     lines = f.readlines()
 
-# Get the new POS HTML from argument
-new_pos = sys.argv[2]
+# Get the new POS HTML from a file (avoids OS arg-length limits)
+with open(sys.argv[2], 'r', encoding='utf-8') as f:
+    new_pos = f.read()
 
 # Find the pos div and replace its contents
 in_pos_div = False
@@ -327,17 +328,21 @@ for line in result_lines:
     print(line, end='')
 PYTHON_SCRIPT
 
+    # Write the new POS HTML to a temp file to avoid OS argument-length limits
+    local pos_html_file="${TARGET_FILE}.pos_html.tmp"
+    printf '%s' "$new_pos_html" > "$pos_html_file"
+
     # Run the Python script
-    python3 replace_pos.py "$TARGET_FILE" "$new_pos_html" > "$temp_file"
-    
+    python3 replace_pos.py "$TARGET_FILE" "$pos_html_file" > "$temp_file"
+
     # Check if Python script succeeded
     if [[ $? -eq 0 ]]; then
         mv "$temp_file" "$TARGET_FILE"
-        rm -f replace_pos.py
+        rm -f replace_pos.py "$pos_html_file"
         print_success "Successfully updated $TARGET_FILE"
     else
         print_error "Failed to update $TARGET_FILE"
-        rm -f "$temp_file" replace_pos.py
+        rm -f "$temp_file" replace_pos.py "$pos_html_file"
         exit 1
     fi
 }
