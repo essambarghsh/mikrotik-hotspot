@@ -1207,6 +1207,19 @@ button#openPosDialog svg {
     height: 32px;
 }
 
+.call-us-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    gap: 32px;
+}
+
+.call-us-login > span {
+    flex: 1;
+}
+
 @media (min-width: 768px) {
     .plan {
         width: 50%;
